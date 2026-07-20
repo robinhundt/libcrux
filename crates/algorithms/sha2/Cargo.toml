@@ -1,6 +1,10 @@
 [package]
 description = "Formally verified SHA2 hash library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-sha2"
+=======
+version = "0.0.8"
+>>>>>>> Stashed changes
 readme = "Readme.md"
 version = "0.0.7"
 
@@ -14,9 +18,15 @@ repository.workspace = true
 expose-hacl = []
 
 [dependencies]
+<<<<<<< Updated upstream
 test-foo-bar-hacl-rs.workspace = true
 test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
 test-foo-bar-traits.workspace = true
+=======
+libcrux-hacl-rs.workspace = true
+libcrux-macros = { version = "=0.0.4", path = "../../utils/macros" }
+libcrux-traits.workspace = true
+>>>>>>> Stashed changes
 
 [dev-dependencies]
 hex = "0.4.3"

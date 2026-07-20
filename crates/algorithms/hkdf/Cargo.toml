@@ -1,4 +1,9 @@
 [package]
+<<<<<<< Updated upstream
+=======
+name = "libcrux-hkdf"
+version = "0.0.8"
+>>>>>>> Stashed changes
 description = "Libcrux HKDF implementation"
 name = "test-foo-bar-hkdf"
 readme = "Readme.md"

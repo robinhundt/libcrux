@@ -15,6 +15,11 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 
 [build-dependencies]
+<<<<<<< Updated upstream
+=======
+cc = { version = "1.1", features = ["parallel"] }
+libcrux-platform = { version = "=0.0.4", path = "../platform" }
+>>>>>>> Stashed changes
 bindgen = { version = "0.72", optional = true }
 cc = { version = "1.1", features = ["parallel"] }
 test-foo-bar-platform = { version = "=0.0.3", path = "../platform" }

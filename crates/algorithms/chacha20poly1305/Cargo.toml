@@ -1,6 +1,10 @@
 [package]
 description = "Formally verified ChaCha20-Poly1305 AEAD library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-chacha20poly1305"
+=======
+version = "0.0.9"
+>>>>>>> Stashed changes
 readme = "Readme.md"
 version = "0.0.8"
 
@@ -11,6 +15,7 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+<<<<<<< Updated upstream
 test-foo-bar-hacl-rs.workspace = true
 test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
 test-foo-bar-poly1305 = { version = "=0.0.6", path = "../poly1305/", features = [
@@ -18,6 +23,15 @@ test-foo-bar-poly1305 = { version = "=0.0.6", path = "../poly1305/", features = 
 ] }
 test-foo-bar-secrets.workspace = true
 test-foo-bar-traits.workspace = true
+=======
+libcrux-poly1305 = { version = "=0.0.7", path = "../poly1305/", features = [
+    "expose-hacl",
+] }
+libcrux-hacl-rs.workspace = true
+libcrux-macros = { version = "=0.0.4", path = "../../utils/macros" }
+libcrux-traits.workspace = true
+libcrux-secrets.workspace = true
+>>>>>>> Stashed changes
 
 [dev-dependencies]
 hex = { version = "0.4.3", features = ["serde"] }

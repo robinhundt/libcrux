@@ -1,6 +1,10 @@
 [package]
 description = "Libcrux ML-DSA implementation"
+<<<<<<< Updated upstream
 name = "test-foo-bar-ml-dsa"
+=======
+version = "0.0.10"
+>>>>>>> Stashed changes
 readme = "README.md"
 version = "0.0.9"
 
@@ -49,7 +53,11 @@ test-foo-bar-kats = { workspace = true, features = ["mldsa"] }
 pqcrypto-mldsa = { version = "0.1.0" } #, default-features = false
 
 [target.'cfg(hax)'.dependencies]
+<<<<<<< Updated upstream
 test-foo-bar-core-models = { path = "../crates/utils/core-models", version = "0.0.6" }
+=======
+core-models = { path = "../crates/utils/core-models", version = "0.0.7" }
+>>>>>>> Stashed changes
 
 [features]
 acvp = []                                                                  # expose internal API for ACVP testing

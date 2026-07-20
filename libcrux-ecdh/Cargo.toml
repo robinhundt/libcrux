@@ -1,4 +1,9 @@
 [package]
+<<<<<<< Updated upstream
+=======
+name = "libcrux-ecdh"
+version = "0.0.8"
+>>>>>>> Stashed changes
 description = "Libcrux ECDH implementation"
 name = "test-foo-bar-ecdh"
 readme = "Readme.md"

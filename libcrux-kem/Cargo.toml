@@ -1,4 +1,9 @@
 [package]
+<<<<<<< Updated upstream
+=======
+name = "libcrux-kem"
+version = "0.0.9"
+>>>>>>> Stashed changes
 description = "Libcrux KEM implementation"
 name = "test-foo-bar-kem"
 readme = "README.md"

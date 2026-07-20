@@ -1,4 +1,9 @@
 [package]
+<<<<<<< Updated upstream
+=======
+name = "libcrux-ml-kem"
+version = "0.0.10"
+>>>>>>> Stashed changes
 authors.workspace = true
 description = "Libcrux ML-KEM & Kyber implementations"
 edition.workspace = true

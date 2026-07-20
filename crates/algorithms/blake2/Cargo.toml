@@ -1,6 +1,10 @@
 [package]
 description = "Formally verified blake2 hash library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-blake2"
+=======
+version = "0.0.8"
+>>>>>>> Stashed changes
 readme = "Readme.md"
 version = "0.0.7"
 

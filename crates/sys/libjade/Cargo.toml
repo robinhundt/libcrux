@@ -14,7 +14,11 @@ version.workspace = true
 
 [build-dependencies]
 cc = { version = "1.1", features = ["parallel"] }
+<<<<<<< Updated upstream
 test-foo-bar-platform = { version = "=0.0.3", path = "../platform" }
+=======
+libcrux-platform = { version = "=0.0.4", path = "../platform" }
+>>>>>>> Stashed changes
 
 [target.'cfg(not(windows))'.build-dependencies]
 bindgen = { version = "0.72", optional = true }

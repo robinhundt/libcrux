@@ -1,4 +1,9 @@
 [package]
+<<<<<<< Updated upstream
+=======
+name = "libcrux-sha3"
+version = "0.0.10"
+>>>>>>> Stashed changes
 authors.workspace = true
 description = "Libcrux SHA-3 implementation"
 edition.workspace = true
@@ -21,6 +26,12 @@ version = "0.0.9"
 bench = false # so libtest doesn't eat the arguments to criterion
 
 [dependencies]
+<<<<<<< Updated upstream
+=======
+libcrux-platform = { version = "0.0.4", path = "../../sys/platform" }
+libcrux-intrinsics.workspace = true
+libcrux-traits.workspace = true
+>>>>>>> Stashed changes
 hax-lib.workspace = true
 test-foo-bar-intrinsics.workspace = true
 test-foo-bar-platform = { version = "0.0.3", path = "../../sys/platform" }

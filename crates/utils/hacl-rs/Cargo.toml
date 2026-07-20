@@ -1,7 +1,11 @@
 [package]
 description = "Formally verified Rust code extracted from HACL* - helper library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-hacl-rs"
 version = "0.0.5"
+=======
+version = "0.0.6"
+>>>>>>> Stashed changes
 
 authors.workspace = true
 edition.workspace = true

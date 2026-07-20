@@ -1,7 +1,11 @@
 [package]
 description = "Utils for testing and benchmarking"
+<<<<<<< Updated upstream
 name = "test-foo-bar-test-utils"
 version = "0.0.3"
+=======
+version = "0.0.4"
+>>>>>>> Stashed changes
 
 authors.workspace = true
 edition.workspace = true
@@ -11,4 +15,8 @@ readme.workspace = true
 repository.workspace = true
 
 [dependencies]
+<<<<<<< Updated upstream
 test-foo-bar-macros = { version = "0.0.3", path = "../macros" }
+=======
+libcrux-macros = { version = "0.0.4", path = "../macros" }
+>>>>>>> Stashed changes

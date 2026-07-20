@@ -1,6 +1,10 @@
 [package]
 description = "Libcrux Pre-Shared post-Quantum key establishement protocol"
+<<<<<<< Updated upstream
 name = "test-foo-bar-psq"
+=======
+version = "0.0.10"
+>>>>>>> Stashed changes
 readme = "README.md"
 version = "0.0.9"
 

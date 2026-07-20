@@ -1,6 +1,10 @@
 [package]
 description = "Formally verified curve25519 ECDH library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-curve25519"
+=======
+version = "0.0.8"
+>>>>>>> Stashed changes
 readme = "Readme.md"
 version = "0.0.7"
 
@@ -11,10 +15,17 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+<<<<<<< Updated upstream
 test-foo-bar-hacl-rs.workspace = true
 test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
 test-foo-bar-secrets.workspace = true
 test-foo-bar-traits.workspace = true
+=======
+libcrux-hacl-rs.workspace = true
+libcrux-macros = { version = "=0.0.4", path = "../../utils/macros" }
+libcrux-traits.workspace = true
+libcrux-secrets.workspace = true
+>>>>>>> Stashed changes
 
 [features]
 # Checking secret independence

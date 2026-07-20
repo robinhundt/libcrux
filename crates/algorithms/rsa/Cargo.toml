@@ -1,6 +1,10 @@
 [package]
 description = "Formally verified RSA signature library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-rsa"
+=======
+version = "0.0.8"
+>>>>>>> Stashed changes
 readme = "Readme.md"
 version = "0.0.7"
 

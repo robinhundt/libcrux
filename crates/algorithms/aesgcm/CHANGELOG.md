@@ -5,7 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<<<<<<< Updated upstream:crates/algorithms/aesgcm/CHANGELOG.md
 ## Unreleased
+=======
+## [Unreleased]
+
+## [0.0.9](https://github.com/robinhundt/libcrux/compare/libcrux-aes-v0.0.8...libcrux-aes-v0.0.9) - 2026-07-20
+
+### Other
+
+- updated the following local packages: libcrux-intrinsics, libcrux-platform, libcrux-secrets, libcrux-traits
+
+### Added
+
+- [#1474](https://github.com/cryspen/libcrux/pull/1474): Add support for AES-CCM
+
+### Fixed
+
+- [#1474](https://github.com/cryspen/libcrux/pull/1474): Enforce limits on plaintext and AAD lengths for AES-GCM, according to RFC 5116.
+
+### Changed
+
+- [#1474](https://github.com/cryspen/libcrux/pull/1474): Change crate name from `libcrux-aesgcm` to `libcrux-aes`
+
+## [0.0.8] (2026-05-13)
+>>>>>>> Stashed changes:crates/algorithms/aes/CHANGELOG.md
 
 ### Changed
 

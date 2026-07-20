@@ -1,6 +1,10 @@
 [package]
 description = "Formally verified ed25519 signature library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-ed25519"
+=======
+version = "0.0.9"
+>>>>>>> Stashed changes
 readme = "Readme.md"
 version = "0.0.8"
 
@@ -11,6 +15,14 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+<<<<<<< Updated upstream
+=======
+libcrux-hacl-rs.workspace = true
+libcrux-sha2 = { workspace = true, features = [
+    "expose-hacl",
+] }
+libcrux-macros = { version = "=0.0.4", path = "../../utils/macros" }
+>>>>>>> Stashed changes
 rand_core = { version = "0.10", optional = true }
 test-foo-bar-hacl-rs.workspace = true
 test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }

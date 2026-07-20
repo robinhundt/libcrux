@@ -1,7 +1,11 @@
 [package]
 description = "Traits for cryptographic algorithms"
+<<<<<<< Updated upstream
 name = "test-foo-bar-traits"
 version = "0.0.7"
+=======
+version = "0.0.8"
+>>>>>>> Stashed changes
 
 authors.workspace = true
 edition.workspace = true

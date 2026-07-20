@@ -1,6 +1,10 @@
 [package]
 description = "Models of the Rust core library"
+<<<<<<< Updated upstream
 name = "test-foo-bar-core-models"
+=======
+version = "0.0.7"
+>>>>>>> Stashed changes
 readme = "readme.md"
 version = "0.0.6"
 
