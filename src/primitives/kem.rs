@@ -1,2 +1,2 @@
 //! # KEM Algorithms
-pub use libcrux_kem::*;
+pub use test_foo_bar_kem::*;

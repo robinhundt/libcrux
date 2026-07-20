@@ -1,5 +1,5 @@
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
-use libcrux_blake2::{Blake2bBuilder, Blake2sBuilder};
+use test_foo_bar_blake2::{Blake2bBuilder, Blake2sBuilder};
 
 pub fn randombytes(n: usize) -> Vec<u8> {
     use rand::{rngs::SysRng, TryRng};

@@ -29,6 +29,6 @@ mod impl_digest_trait;
 pub use impl_hacl::*;
 
 /// Re-export the `Digest` trait.
-pub use libcrux_traits::Digest;
+pub use test_foo_bar_traits::Digest;
 
 pub use impl_digest_trait::*;

@@ -1,2 +1,2 @@
 //! # P256 ECDSA
-pub use libcrux_ecdsa::*;
+pub use test_foo_bar_ecdsa::*;

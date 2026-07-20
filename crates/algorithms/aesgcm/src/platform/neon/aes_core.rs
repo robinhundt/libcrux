@@ -1,4 +1,4 @@
-use libcrux_intrinsics::arm64::{
+use test_foo_bar_intrinsics::arm64::{
     _uint8x16_t, _vaeseq_u8, _vaesmcq_u8, _vdupq_laneq_u32, _vdupq_n_u32, _vdupq_n_u8, _veorq_u32,
     _veorq_u8, _vextq_u32, _vld1q_u32, _vld1q_u8, _vreinterpretq_u32_u8, _vreinterpretq_u8_u32,
     _vst1q_u8,

@@ -1,7 +1,7 @@
 use std::time::Duration;
 
 use criterion::{criterion_group, criterion_main, Criterion};
-use libcrux_ml_dsa::ml_dsa_65;
+use test_foo_bar_ml_dsa::ml_dsa_65;
 use rand::{rngs::SysRng, TryRng};
 
 pub fn comparisons_key_generation(c: &mut Criterion) {

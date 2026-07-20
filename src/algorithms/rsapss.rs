@@ -1,2 +1,2 @@
 //! # RSA-PSS
-pub use libcrux_rsa::*;
+pub use test_foo_bar_rsa::*;

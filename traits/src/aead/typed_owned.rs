@@ -3,7 +3,7 @@
 //! as arguments and writes outputs to mutable array references.
 
 use super::{arrayref::*, consts::AeadConsts};
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 // These are the types for the arguments to AEAD. I wonder if it makes sense to do stuff like
 // implementing a random constructor for Nonce for all LEN in 24..64 or so
@@ -89,13 +89,13 @@ impl<Algo: Aead> Key<Algo> {
 macro_rules! impl_aead_typed_owned {
     ($ty:ty, $keylen:expr, $taglen:expr, $noncelen:expr) => {
         impl $crate::aead::typed_owned::Aead for $ty {
-            type Key = [$crate::libcrux_secrets::U8; $keylen];
+            type Key = [$crate::test_foo_bar_secrets::U8; $keylen];
 
-            type Tag = [$crate::libcrux_secrets::U8; $taglen];
+            type Tag = [$crate::test_foo_bar_secrets::U8; $taglen];
 
-            type Nonce = [$crate::libcrux_secrets::U8; $noncelen];
+            type Nonce = [$crate::test_foo_bar_secrets::U8; $noncelen];
 
-            type Rand = [$crate::libcrux_secrets::U8; $keylen];
+            type Rand = [$crate::test_foo_bar_secrets::U8; $keylen];
 
             fn keygen(
                 key: &mut $crate::aead::typed_owned::Key<Self>,
@@ -111,7 +111,7 @@ macro_rules! impl_aead_typed_owned {
                 key: &$crate::aead::typed_owned::Key<Self>,
                 nonce: &$crate::aead::typed_owned::Nonce<Self>,
                 aad: &[u8],
-                plaintext: &[$crate::libcrux_secrets::U8],
+                plaintext: &[$crate::test_foo_bar_secrets::U8],
             ) -> Result<(), EncryptError> {
                 <$ty as $crate::aead::arrayref::Aead<$keylen, $taglen, $noncelen>>::encrypt(
                     ciphertext,
@@ -124,7 +124,7 @@ macro_rules! impl_aead_typed_owned {
             }
 
             fn decrypt(
-                plaintext: &mut [$crate::libcrux_secrets::U8],
+                plaintext: &mut [$crate::test_foo_bar_secrets::U8],
                 key: &$crate::aead::typed_owned::Key<Self>,
                 nonce: &$crate::aead::typed_owned::Nonce<Self>,
                 aad: &[u8],

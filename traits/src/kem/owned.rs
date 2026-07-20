@@ -1,7 +1,7 @@
 //! This module contains the trait and related errors for a KEM that takes array references as
 //! arguments and returns values as arrays.
 
-use libcrux_secrets::{Classify, U8};
+use test_foo_bar_secrets::{Classify, U8};
 
 use super::arrayref;
 

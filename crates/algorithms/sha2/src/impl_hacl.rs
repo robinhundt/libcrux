@@ -1,5 +1,5 @@
 use super::*;
-use libcrux_traits::Digest;
+use test_foo_bar_traits::Digest;
 
 /// The different Sha2 algorithms.
 #[derive(Clone, Copy, Debug)]
@@ -92,7 +92,7 @@ macro_rules! impl_hash {
             }
         }
 
-        impl libcrux_traits::Digest<$digest_size> for $name {
+        impl test_foo_bar_traits::Digest<$digest_size> for $name {
             /// Return the digest for the given input byte slice, in immediate mode.
             /// Will panic if `payload` is longer than `u32::MAX` to ensure that hacl-rs can
             /// process it.
@@ -149,7 +149,7 @@ macro_rules! impl_hash {
 impl_hash!(
     Sha256,
     32,
-    libcrux_hacl_rs::streaming_types::state_32,
+    test_foo_bar_hacl_rs::streaming_types::state_32,
     crate::hacl::malloc_256,
     crate::hacl::reset_256,
     crate::hacl::update_256,
@@ -160,7 +160,7 @@ impl_hash!(
 impl_hash!(
     Sha224,
     28,
-    libcrux_hacl_rs::streaming_types::state_32,
+    test_foo_bar_hacl_rs::streaming_types::state_32,
     crate::hacl::malloc_224,
     crate::hacl::reset_224,
     crate::hacl::update_224,
@@ -172,7 +172,7 @@ impl_hash!(
 impl_hash!(
     Sha512,
     64,
-    libcrux_hacl_rs::streaming_types::state_64,
+    test_foo_bar_hacl_rs::streaming_types::state_64,
     crate::hacl::malloc_512,
     crate::hacl::reset_512,
     crate::hacl::update_512,
@@ -183,7 +183,7 @@ impl_hash!(
 impl_hash!(
     Sha384,
     48,
-    libcrux_hacl_rs::streaming_types::state_64,
+    test_foo_bar_hacl_rs::streaming_types::state_64,
     crate::hacl::malloc_384,
     crate::hacl::reset_384,
     crate::hacl::update_384,

@@ -17,44 +17,44 @@ macro_rules! sha2_test {
 
 sha2_test!(
     SHA224ShortMsg,
-    libcrux_kats::sha2::sha224_short,
-    libcrux_sha2::sha224
+    test_foo_bar_kats::sha2::sha224_short,
+    test_foo_bar_sha2::sha224
 );
 sha2_test!(
     SHA224LongMsg,
-    libcrux_kats::sha2::sha224_long,
-    libcrux_sha2::sha224
+    test_foo_bar_kats::sha2::sha224_long,
+    test_foo_bar_sha2::sha224
 );
 
 sha2_test!(
     SHA256ShortMsg,
-    libcrux_kats::sha2::sha256_short,
-    libcrux_sha2::sha256
+    test_foo_bar_kats::sha2::sha256_short,
+    test_foo_bar_sha2::sha256
 );
 sha2_test!(
     SHA256LongMsg,
-    libcrux_kats::sha2::sha256_long,
-    libcrux_sha2::sha256
+    test_foo_bar_kats::sha2::sha256_long,
+    test_foo_bar_sha2::sha256
 );
 
 sha2_test!(
     SHA384ShortMsg,
-    libcrux_kats::sha2::sha384_short,
-    libcrux_sha2::sha384
+    test_foo_bar_kats::sha2::sha384_short,
+    test_foo_bar_sha2::sha384
 );
 sha2_test!(
     SHA384LongMsg,
-    libcrux_kats::sha2::sha384_long,
-    libcrux_sha2::sha384
+    test_foo_bar_kats::sha2::sha384_long,
+    test_foo_bar_sha2::sha384
 );
 
 sha2_test!(
     SHA512ShortMsg,
-    libcrux_kats::sha2::sha512_short,
-    libcrux_sha2::sha512
+    test_foo_bar_kats::sha2::sha512_short,
+    test_foo_bar_sha2::sha512
 );
 sha2_test!(
     SHA512LongMsg,
-    libcrux_kats::sha2::sha512_long,
-    libcrux_sha2::sha512
+    test_foo_bar_kats::sha2::sha512_long,
+    test_foo_bar_sha2::sha512
 );

@@ -1,2 +1,2 @@
 //! # ML-KEM
-pub use libcrux_ml_kem::*;
+pub use test_foo_bar_ml_kem::*;

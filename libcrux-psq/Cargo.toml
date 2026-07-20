@@ -1,63 +1,57 @@
 [package]
-name = "libcrux-psq"
 description = "Libcrux Pre-Shared post-Quantum key establishement protocol"
-version = "0.0.9"
+name = "test-foo-bar-psq"
 readme = "README.md"
+version = "0.0.9"
 
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
 edition.workspace = true
-repository.workspace = true
+homepage.workspace = true
+license.workspace = true
 publish = true
+repository.workspace = true
 
 [lib]
 bench = false # so libtest doesn't eat the arguments to criterion
 
 [dependencies]
-libcrux-traits.workspace = true
-libcrux-kem = { workspace = true, features = [
-    "codec",
-] }
-libcrux-chacha20poly1305.workspace = true
-libcrux-hkdf.workspace = true
-libcrux-hmac.workspace = true
-libcrux-sha2.workspace = true
 classic-mceliece-rust = { version = "3.1.0", features = [
     "mceliece460896f",
     "zeroize",
 ], optional = true }
 rand = { version = "0.10" }
 rand_old = { version = "0.8", package = "rand", optional = true }
-libcrux-ecdh = { workspace = true, default-features = true }
-libcrux-ml-kem = { workspace = true, default-features = true, features = [
+test-foo-bar-aesgcm.workspace = true
+test-foo-bar-chacha20poly1305.workspace = true
+test-foo-bar-ecdh = { workspace = true, default-features = true }
+test-foo-bar-ed25519 = { workspace = true, features = ["codec", "rand"] }
+test-foo-bar-hkdf.workspace = true
+test-foo-bar-hmac.workspace = true
+test-foo-bar-kem = { workspace = true, features = ["codec"] }
+test-foo-bar-ml-dsa = { workspace = true, features = ["codec"] }
+test-foo-bar-ml-kem = { workspace = true, default-features = true, features = [
     "codec",
     "rand",
 ] }
-libcrux-ed25519 = { workspace = true, features = [
-    "rand",
-    "codec",
-] }
+test-foo-bar-sha2.workspace = true
+test-foo-bar-traits.workspace = true
 tls_codec = { version = "0.4.2", features = ["derive"] }
-libcrux-ml-dsa = { workspace = true, features = ["codec"] }
-libcrux-aesgcm.workspace = true
 
 [dev-dependencies]
-rand_core = { version = "0.10" }
 clap = { version = "4.5.30", features = ["derive"] }
 criterion = "0.8"
 log = "0.4.26"
 pretty_env_logger = "0.5.0"
+rand_core = { version = "0.10" }
 
 [features]
-v1 = []
 classic-mceliece = ["dep:classic-mceliece-rust", "rand_old"]
+v1 = []
 
 # Allows external control over the AEAD nonces of transport channels.
 # ⚠️ CAUTION! Enabling this makes it the responsibility of the application to avoid nonce re-use.
 nonce-control = []
 
 [[bench]]
-name = "psq_v2"
 harness = false
-
+name = "psq_v2"

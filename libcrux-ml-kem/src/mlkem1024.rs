@@ -39,7 +39,7 @@ crate::impl_kem_trait!(
 // Provide the (packed) PQCP APIs
 #[cfg(feature = "pqcp")]
 crate::pqcp::pqcp_api!(
-    "use libcrux_ml_kem::mlkem1024::pqcp::*;",
+    "use test_foo_bar_ml_kem::mlkem1024::pqcp::*;",
     MlKem1024,
     " 1024 "
 );

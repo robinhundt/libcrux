@@ -1,2 +1,2 @@
 //! # SHA3
-pub use libcrux_sha3::*;
+pub use test_foo_bar_sha3::*;

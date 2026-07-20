@@ -72,7 +72,7 @@ pub(crate) trait Hash<const K: usize> {
 /// A portable implementation of [`Hash`]
 pub(crate) mod portable {
     use super::*;
-    use libcrux_sha3::portable::{self, incremental, KeccakState};
+    use test_foo_bar_sha3::portable::{self, incremental, KeccakState};
 
     /// The state.
     ///
@@ -231,7 +231,7 @@ pub(crate) mod portable {
 #[cfg(feature = "simd256")]
 pub(crate) mod avx2 {
     use super::*;
-    use libcrux_sha3::{
+    use test_foo_bar_sha3::{
         avx2::x4::{self, incremental::KeccakState},
         portable,
     };
@@ -496,7 +496,7 @@ pub(crate) mod avx2 {
 #[cfg(feature = "simd128")]
 pub(crate) mod neon {
     use super::*;
-    use libcrux_sha3::neon::x2::{self, incremental::KeccakState};
+    use test_foo_bar_sha3::neon::x2::{self, incremental::KeccakState};
 
     /// The state.
     ///
@@ -513,7 +513,7 @@ pub(crate) mod neon {
     #[inline(always)]
     fn G(input: &[u8]) -> [u8; G_DIGEST_SIZE] {
         let mut digest = [0u8; G_DIGEST_SIZE];
-        libcrux_sha3::neon::sha512(&mut digest, input);
+        test_foo_bar_sha3::neon::sha512(&mut digest, input);
         digest
     }
 
@@ -523,7 +523,7 @@ pub(crate) mod neon {
     #[inline(always)]
     fn H(input: &[u8]) -> [u8; H_DIGEST_SIZE] {
         let mut digest = [0u8; H_DIGEST_SIZE];
-        libcrux_sha3::neon::sha256(&mut digest, input);
+        test_foo_bar_sha3::neon::sha256(&mut digest, input);
         digest
     }
 

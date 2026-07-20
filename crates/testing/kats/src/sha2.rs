@@ -1,9 +1,10 @@
-pub use cavp::{Sha3 as Hash, TestVector};
+pub use test_foo_bar_cavp::{Sha3 as Hash, TestVector};
 
 macro_rules! load_fn {
     ($name:ident, $file:literal) => {
         pub fn $name() -> TestVector<Hash> {
-            cavp::read_string(include_str!($file)).expect("failed to parse CAVP test vector")
+            test_foo_bar_cavp::read_string(include_str!($file))
+                .expect("failed to parse CAVP test vector")
         }
     };
 }

@@ -4,9 +4,9 @@
 // This set of test vectors does not cover the pre-hashed variants of
 // ML-DSA.
 
-use libcrux_ml_dsa::{ml_dsa_44, ml_dsa_65, ml_dsa_87, MLDSASignature, MLDSAVerificationKey};
+use test_foo_bar_ml_dsa::{ml_dsa_44, ml_dsa_65, ml_dsa_87, MLDSASignature, MLDSAVerificationKey};
 
-use libcrux_kats::wycheproof::mldsa::{verify_schema::*, MlDsaVerifyTests, ParameterSet};
+use test_foo_bar_kats::wycheproof::mldsa::{verify_schema::*, MlDsaVerifyTests, ParameterSet};
 
 macro_rules! wycheproof_verify_test {
     ($name:ident, $test_name:expr, $verification_key_object:ty, $signature_object:ty, $verify:expr) => {

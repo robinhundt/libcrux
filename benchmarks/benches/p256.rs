@@ -11,13 +11,13 @@ fn derive(c: &mut Criterion) {
                 use rand_core::UnwrapErr;
                 let mut rng = UnwrapErr(SysRng);
                 let (_, pk1) =
-                    libcrux_ecdh::key_gen(libcrux_ecdh::Algorithm::P256, &mut rng).unwrap();
+                    test_foo_bar_ecdh::key_gen(test_foo_bar_ecdh::Algorithm::P256, &mut rng).unwrap();
                 let (sk2, _) =
-                    libcrux_ecdh::key_gen(libcrux_ecdh::Algorithm::P256, &mut rng).unwrap();
+                    test_foo_bar_ecdh::key_gen(test_foo_bar_ecdh::Algorithm::P256, &mut rng).unwrap();
                 (pk1, sk2)
             },
             |(pk1, sk2)| {
-                let _zz = libcrux_ecdh::derive(libcrux_ecdh::Algorithm::P256, &pk1, &sk2).unwrap();
+                let _zz = test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::P256, &pk1, &sk2).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -80,12 +80,12 @@ fn secret_to_public(c: &mut Criterion) {
         b.iter_batched(
             || {
                 let (sk, _) =
-                    libcrux_ecdh::key_gen(libcrux_ecdh::Algorithm::P256, &mut rng).unwrap();
+                    test_foo_bar_ecdh::key_gen(test_foo_bar_ecdh::Algorithm::P256, &mut rng).unwrap();
                 sk
             },
             |sk| {
                 let _pk =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::P256, &sk).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::P256, &sk).unwrap();
             },
             BatchSize::SmallInput,
         )

@@ -1,2 +1,2 @@
 //! # BLAKE2b and BLAKE2s
-pub use libcrux_blake2::*;
+pub use test_foo_bar_blake2::*;

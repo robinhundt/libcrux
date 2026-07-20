@@ -24,7 +24,7 @@ pub(crate) mod instantiations;
 #[cfg(not(eurydice))]
 pub(crate) mod multiplexing;
 
-#[libcrux_macros::ml_dsa_parameter_sets(44, 65, 87)]
+#[test_foo_bar_macros::ml_dsa_parameter_sets(44, 65, 87)]
 pub(crate) mod generic {
     use super::*;
 

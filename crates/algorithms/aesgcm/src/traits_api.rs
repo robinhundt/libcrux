@@ -4,9 +4,9 @@ use crate::{
     NONCE_LEN, TAG_LEN,
 };
 
-use libcrux_traits::aead::{arrayref, consts, slice, typed_owned};
+use test_foo_bar_traits::aead::{arrayref, consts, slice, typed_owned};
 
-/// Macro to implement the libcrux_traits public API traits
+/// Macro to implement the test_foo_bar_traits public API traits
 ///
 /// For the blanket impl of `typed_refs::Aead` to take place,
 /// the `$type` must implement `Copy` and `PartialEq`.
@@ -28,22 +28,22 @@ macro_rules! api {
     ($mod_name:ident, $variant:ident, $multiplexing:ty, $portable:ident, $neon:ident, $x64:ident) => {
         mod $mod_name {
             use super::*;
-            use libcrux_secrets::U8;
+            use test_foo_bar_secrets::U8;
 
-            use libcrux_traits::aead::arrayref::{DecryptError, EncryptError, KeyGenError};
+            use test_foo_bar_traits::aead::arrayref::{DecryptError, EncryptError, KeyGenError};
             use $variant::KEY_LEN;
 
             pub type Key = [u8; KEY_LEN];
             pub type Tag = [u8; TAG_LEN];
             pub type Nonce = [u8; NONCE_LEN];
 
-            mod _libcrux_traits_apis_multiplex {
+            mod _test_foo_bar_traits_apis_multiplex {
                 use super::*;
 
-                // implement `libcrux_traits` slice trait
+                // implement `test_foo_bar_traits` slice trait
                 slice::impl_aead_slice_trait!($multiplexing => KEY_LEN, TAG_LEN, NONCE_LEN);
 
-                // implement `libcrux_traits` public API traits
+                // implement `test_foo_bar_traits` public API traits
                 impl_traits_public_api!($multiplexing, KEY_LEN, TAG_LEN, NONCE_LEN);
 
                 /// The plaintext length must be equal to the ciphertext length.
@@ -63,10 +63,10 @@ macro_rules! api {
                     ) -> Result<(), EncryptError> {
                         // SIMD256 needs to come first because SIMD128 is true for
                         // x64 as well, but we don't actually implement it.
-                        if libcrux_platform::simd256_support() && libcrux_platform::aes_ni_support() {
+                        if test_foo_bar_platform::simd256_support() && test_foo_bar_platform::aes_ni_support() {
                             $x64::encrypt(ciphertext, tag, key, nonce, aad, plaintext)
-                        } else if libcrux_platform::simd128_support()
-                            && libcrux_platform::aes_ni_support()
+                        } else if test_foo_bar_platform::simd128_support()
+                            && test_foo_bar_platform::aes_ni_support()
                         {
                             $neon::encrypt(ciphertext, tag, key, nonce, aad, plaintext)
                         } else {
@@ -84,10 +84,10 @@ macro_rules! api {
                     ) -> Result<(), DecryptError> {
                         // SIMD256 needs to come first because SIMD128 is true for
                         // x64 as well, but we don't actually implement it.
-                        if libcrux_platform::simd256_support() && libcrux_platform::aes_ni_support() {
+                        if test_foo_bar_platform::simd256_support() && test_foo_bar_platform::aes_ni_support() {
                             $x64::decrypt(plaintext, key, nonce, aad, ciphertext, tag)
-                        } else if libcrux_platform::simd128_support()
-                            && libcrux_platform::aes_ni_support()
+                        } else if test_foo_bar_platform::simd128_support()
+                            && test_foo_bar_platform::aes_ni_support()
                         {
                             $neon::decrypt(plaintext, key, nonce, aad, ciphertext, tag)
                         } else {
@@ -97,13 +97,13 @@ macro_rules! api {
                 }
             }
 
-            mod _libcrux_traits_apis_portable {
+            mod _test_foo_bar_traits_apis_portable {
                 use super::*;
 
-                // implement `libcrux_traits` slice trait
+                // implement `test_foo_bar_traits` slice trait
                 slice::impl_aead_slice_trait!($portable => KEY_LEN, TAG_LEN, NONCE_LEN);
 
-                // implement `libcrux_traits` public API traits
+                // implement `test_foo_bar_traits` public API traits
                 impl_traits_public_api!($portable, KEY_LEN, TAG_LEN, NONCE_LEN);
 
                 /// The plaintext length must be equal to the ciphertext length.
@@ -138,13 +138,13 @@ macro_rules! api {
             }
 
             #[cfg(feature = "simd128")]
-            mod _libcrux_traits_apis_neon {
+            mod _test_foo_bar_traits_apis_neon {
                 use super::*;
 
-                // implement `libcrux_traits` slice trait
+                // implement `test_foo_bar_traits` slice trait
                 slice::impl_aead_slice_trait!($neon => KEY_LEN, TAG_LEN, NONCE_LEN);
 
-                // implement `libcrux_traits` public API traits
+                // implement `test_foo_bar_traits` public API traits
                 impl_traits_public_api!($neon, KEY_LEN, TAG_LEN, NONCE_LEN);
 
                 /// The plaintext length must be equal to the ciphertext length.
@@ -179,13 +179,13 @@ macro_rules! api {
             }
 
             #[cfg(feature = "simd256")]
-            mod _libcrux_traits_api_x64 {
+            mod _test_foo_bar_traits_api_x64 {
                 use super::*;
 
-                // implement `libcrux_traits` slice trait
+                // implement `test_foo_bar_traits` slice trait
                 slice::impl_aead_slice_trait!($x64 => KEY_LEN, TAG_LEN, NONCE_LEN);
 
-                // implement `libcrux_traits` public API traits
+                // implement `test_foo_bar_traits` public API traits
                 impl_traits_public_api!($x64, KEY_LEN, TAG_LEN, NONCE_LEN);
 
                 /// The plaintext length must be equal to the ciphertext length.

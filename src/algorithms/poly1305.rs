@@ -1,2 +1,2 @@
 //! # Poly1305
-pub use libcrux_poly1305::{mac, Error, KEY_LEN, TAG_LEN};
+pub use test_foo_bar_poly1305::{mac, Error, KEY_LEN, TAG_LEN};

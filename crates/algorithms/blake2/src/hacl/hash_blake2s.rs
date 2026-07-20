@@ -3,8 +3,8 @@
 #![allow(non_camel_case_types)]
 #![allow(dead_code)]
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
 
 #[inline]
 fn update_block(

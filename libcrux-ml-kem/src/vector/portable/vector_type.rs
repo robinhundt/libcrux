@@ -1,5 +1,5 @@
 use crate::vector::traits::FIELD_ELEMENTS_IN_VECTOR;
-use libcrux_secrets::*;
+use test_foo_bar_secrets::*;
 
 /// Values having this type hold a representative 'x' of the ML-KEM field.
 /// We use 'fe' as a shorthand for this type.

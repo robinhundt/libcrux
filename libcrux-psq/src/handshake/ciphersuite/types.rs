@@ -1,9 +1,9 @@
 use std::ops::Deref;
 
-use libcrux_ed25519::VerificationKey as Ed25519VerificationKey;
-use libcrux_kem::{MlKem768Ciphertext, MlKem768PrivateKey, MlKem768PublicKey};
-use libcrux_ml_dsa::ml_dsa_65::{MLDSA65Signature, MLDSA65VerificationKey};
-use libcrux_ml_kem::MlKemSharedSecret;
+use test_foo_bar_ed25519::VerificationKey as Ed25519VerificationKey;
+use test_foo_bar_kem::{MlKem768Ciphertext, MlKem768PrivateKey, MlKem768PublicKey};
+use test_foo_bar_ml_dsa::ml_dsa_65::{MLDSA65Signature, MLDSA65VerificationKey};
+use test_foo_bar_ml_kem::MlKemSharedSecret;
 use tls_codec::{TlsDeserialize, TlsSerialize, TlsSerializeBytes, TlsSize};
 
 #[cfg(feature = "classic-mceliece")]
@@ -90,14 +90,14 @@ impl SignatureVerificationKey {
         let payload = tx1.tls_serialize().map_err(HandshakeError::Serialize)?;
         match (self, signature) {
             (SignatureVerificationKey::Ed25519(verification_key), Signature::Ed25519(sig)) => {
-                libcrux_ed25519::verify(&payload, verification_key.as_ref(), sig)
+                test_foo_bar_ed25519::verify(&payload, verification_key.as_ref(), sig)
                     .map_err(|e| e.into())
             }
 
             (
                 SignatureVerificationKey::MlDsa65(mldsaverification_key),
                 Signature::MlDsa65(mldsasignature),
-            ) => libcrux_ml_dsa::ml_dsa_65::verify(
+            ) => test_foo_bar_ml_dsa::ml_dsa_65::verify(
                 mldsaverification_key,
                 &payload,
                 PSQ_MLDSA_CONTEXT,

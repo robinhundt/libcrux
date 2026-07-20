@@ -11,8 +11,8 @@
 
 use std::sync::LazyLock;
 
-use libcrux_ml_kem::mlkem768;
-use libcrux_psq::{
+use test_foo_bar_ml_kem::mlkem768;
+use test_foo_bar_psq::{
     handshake::{
         builders::{CiphersuiteBuilder, PrincipalBuilder},
         ciphersuites::CiphersuiteName,

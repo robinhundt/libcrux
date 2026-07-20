@@ -1,2 +1,2 @@
 //! # AEAD Algorithms
-pub use libcrux_aead::*;
+pub use test_foo_bar_aead::*;

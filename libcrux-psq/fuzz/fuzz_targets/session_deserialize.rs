@@ -5,7 +5,7 @@
 //! or adversarially crafted blobs cannot cause panics or undefined behaviour.
 #![no_main]
 
-use libcrux_psq::session::Session;
+use test_foo_bar_psq::session::Session;
 use libfuzzer_sys::fuzz_target;
 
 fuzz_target!(|data: &[u8]| {

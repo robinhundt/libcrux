@@ -109,19 +109,19 @@ macro_rules! type_aliases {
     ($implementation:ident, $alg_name:literal) => {
         pub use crate::implementations::$implementation;
         #[doc = concat!("An owned key for ",$alg_name, ".")]
-        pub type Key = libcrux_traits::aead::typed_owned::Key<$implementation>;
+        pub type Key = test_foo_bar_traits::aead::typed_owned::Key<$implementation>;
         #[doc = concat!("An owned tag for ",$alg_name, ".")]
-        pub type Tag = libcrux_traits::aead::typed_owned::Tag<$implementation>;
+        pub type Tag = test_foo_bar_traits::aead::typed_owned::Tag<$implementation>;
         #[doc = concat!("An owned nonce for ",$alg_name, ".")]
-        pub type Nonce = libcrux_traits::aead::typed_owned::Nonce<$implementation>;
+        pub type Nonce = test_foo_bar_traits::aead::typed_owned::Nonce<$implementation>;
         #[doc = concat!("A reference to a key for ",$alg_name, ".")]
-        pub type KeyRef<'a> = libcrux_traits::aead::typed_refs::KeyRef<'a, $implementation>;
+        pub type KeyRef<'a> = test_foo_bar_traits::aead::typed_refs::KeyRef<'a, $implementation>;
         #[doc = concat!("A reference to a tag for ",$alg_name, ".")]
-        pub type TagRef<'a> = libcrux_traits::aead::typed_refs::TagRef<'a, $implementation>;
+        pub type TagRef<'a> = test_foo_bar_traits::aead::typed_refs::TagRef<'a, $implementation>;
         #[doc = concat!("A mutable reference to a tag for ",$alg_name, ".")]
-        pub type TagMut<'a> = libcrux_traits::aead::typed_refs::TagMut<'a, $implementation>;
+        pub type TagMut<'a> = test_foo_bar_traits::aead::typed_refs::TagMut<'a, $implementation>;
         #[doc = concat!("A reference to a nonce for ",$alg_name, ".")]
-        pub type NonceRef<'a> = libcrux_traits::aead::typed_refs::NonceRef<'a, $implementation>;
+        pub type NonceRef<'a> = test_foo_bar_traits::aead::typed_refs::NonceRef<'a, $implementation>;
     };
 }
 

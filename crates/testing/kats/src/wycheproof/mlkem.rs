@@ -4,7 +4,7 @@
 //!
 //! ### Example usage
 //! ```rust
-//! use libcrux_kats::wycheproof::mlkem::{ParameterSet, MlKemTests};
+//! use test_foo_bar_kats::wycheproof::mlkem::{ParameterSet, MlKemTests};
 //!
 //! // load the tests for the ML-KEM-512 parameter set
 //! let tests = MlKemTests::load(ParameterSet::MlKem512);

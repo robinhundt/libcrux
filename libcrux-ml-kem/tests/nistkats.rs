@@ -2,7 +2,7 @@ use serde::Deserialize;
 use serde_json;
 use std::{fs::File, io::BufReader, path::Path};
 
-use libcrux_sha3::*;
+use test_foo_bar_sha3::*;
 
 #[derive(Deserialize)]
 struct MlKemNISTKAT {
@@ -89,7 +89,7 @@ impl_nist_known_answer_tests!(
     mlkem512_nist_kats_portable,
     "mlkem",
     512,
-    libcrux_ml_kem::mlkem512::portable
+    test_foo_bar_ml_kem::mlkem512::portable
 );
 
 #[cfg(all(feature = "mlkem768"))]
@@ -97,7 +97,7 @@ impl_nist_known_answer_tests!(
     mlkem768_nist_kats_portable,
     "mlkem",
     768,
-    libcrux_ml_kem::mlkem768::portable
+    test_foo_bar_ml_kem::mlkem768::portable
 );
 
 #[cfg(all(feature = "mlkem1024"))]
@@ -105,7 +105,7 @@ impl_nist_known_answer_tests!(
     mlkem1024_nist_kats_portable,
     "mlkem",
     1024,
-    libcrux_ml_kem::mlkem1024::portable
+    test_foo_bar_ml_kem::mlkem1024::portable
 );
 
 #[cfg(all(feature = "mlkem512", feature = "kyber"))]
@@ -113,7 +113,7 @@ impl_nist_known_answer_tests!(
     kyber512_nist_kats_portable,
     "kyber",
     512,
-    libcrux_ml_kem::kyber512
+    test_foo_bar_ml_kem::kyber512
 );
 
 #[cfg(all(feature = "mlkem768", feature = "kyber"))]
@@ -121,7 +121,7 @@ impl_nist_known_answer_tests!(
     kyber768_nist_kats_portable,
     "kyber",
     768,
-    libcrux_ml_kem::kyber768
+    test_foo_bar_ml_kem::kyber768
 );
 
 #[cfg(all(feature = "mlkem1024", feature = "kyber"))]
@@ -129,7 +129,7 @@ impl_nist_known_answer_tests!(
     kyber1024_nist_kats_portable,
     "kyber",
     1024,
-    libcrux_ml_kem::kyber1024
+    test_foo_bar_ml_kem::kyber1024
 );
 
 // Testing multiplexing APIs
@@ -210,15 +210,15 @@ macro_rules! impl_kats {
 }
 
 #[cfg(all(feature = "mlkem512"))]
-impl_kats!(mlkem512_nist_kats, "mlkem", 512, libcrux_ml_kem::mlkem512);
+impl_kats!(mlkem512_nist_kats, "mlkem", 512, test_foo_bar_ml_kem::mlkem512);
 
 #[cfg(all(feature = "mlkem768"))]
-impl_kats!(mlkem768_nist_kat, "mlkem", 768, libcrux_ml_kem::mlkem768);
+impl_kats!(mlkem768_nist_kat, "mlkem", 768, test_foo_bar_ml_kem::mlkem768);
 
 #[cfg(all(feature = "mlkem1024"))]
 impl_kats!(
     mlkem1024_nist_kats,
     "mlkem",
     1024,
-    libcrux_ml_kem::mlkem1024
+    test_foo_bar_ml_kem::mlkem1024
 );

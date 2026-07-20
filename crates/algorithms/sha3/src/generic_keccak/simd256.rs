@@ -1,6 +1,6 @@
 use super::*;
 
-use libcrux_intrinsics::avx2::Vec256;
+use test_foo_bar_intrinsics::avx2::Vec256;
 
 #[inline(always)]
 pub(crate) fn keccak4<const RATE: usize, const DELIM: u8>(

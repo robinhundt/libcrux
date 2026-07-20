@@ -1,2 +1,2 @@
 //! # Ed25519
-pub use libcrux_ed25519::*;
+pub use test_foo_bar_ed25519::*;

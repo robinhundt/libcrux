@@ -1,6 +1,6 @@
 #![no_main]
 
-use libcrux_ml_kem::{mlkem768, KEY_GENERATION_SEED_SIZE};
+use test_foo_bar_ml_kem::{mlkem768, KEY_GENERATION_SEED_SIZE};
 use libfuzzer_sys::fuzz_target;
 
 fuzz_target!(|data: &[u8]| {

@@ -1,13 +1,13 @@
 [package]
-name = "cavp"
-version.workspace = true
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
-edition.workspace = true
-repository.workspace = true
-readme = "Readme.md"
 description = "Libcrux helper to read NIST CAVP test vectors."
+edition.workspace = true
+homepage.workspace = true
+license.workspace = true
+name = "test-foo-bar-cavp"
+readme = "Readme.md"
+repository.workspace = true
+version.workspace = true
 
 [dependencies]
 hex = "0.4.3"

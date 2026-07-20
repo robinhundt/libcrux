@@ -6,8 +6,8 @@ extern crate alloc;
 mod hacl {
     pub(crate) mod rsapss;
 
-    use libcrux_hacl_rs::streaming_types;
-    use libcrux_sha2::hacl as hash_sha2;
+    use test_foo_bar_hacl_rs::streaming_types;
+    use test_foo_bar_sha2::hacl as hash_sha2;
 }
 
 /// The hacl-rs code for RSA signatures
@@ -16,8 +16,8 @@ pub mod hacl {
     /// The RSA-PSS signature code.
     pub mod rsapss;
 
-    use libcrux_hacl_rs::streaming_types;
-    use libcrux_sha2::hacl as hash_sha2;
+    use test_foo_bar_hacl_rs::streaming_types;
+    use test_foo_bar_sha2::hacl as hash_sha2;
 }
 
 /// The hash algorithm used for signing or verifying.

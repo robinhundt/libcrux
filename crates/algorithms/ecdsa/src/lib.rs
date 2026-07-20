@@ -23,7 +23,7 @@ pub enum Error {
 }
 
 /// The hash algorithm used for signing or verifying.
-pub type DigestAlgorithm = libcrux_sha2::Algorithm;
+pub type DigestAlgorithm = test_foo_bar_sha2::Algorithm;
 
 /// The number of iteration for rejection sampling.
 #[cfg(feature = "rand")]

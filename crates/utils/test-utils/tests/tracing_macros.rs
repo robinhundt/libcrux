@@ -4,7 +4,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use libcrux_test_utils::tracing::{trace_span, EventType, MutexTrace, Trace as _, TraceEvent};
+use test_foo_bar_test_utils::tracing::{trace_span, EventType, MutexTrace, Trace as _, TraceEvent};
 
 mod str_labels {
 

@@ -35,7 +35,7 @@ fn openssl_keygen(bits: u32) -> (Vec<u8>, openssl::rsa::Rsa<openssl::pkey::Priva
     (der, k)
 }
 
-fn parse_der_libcrux(sk_der: &[u8], _bits: usize) -> libcrux_rsa::VarLenPrivateKey<'_> {
+fn parse_der_libcrux(sk_der: &[u8], _bits: usize) -> test_foo_bar_rsa::VarLenPrivateKey<'_> {
     let mut decoder = der::SliceReader::new(sk_der).unwrap();
     let rsa_priv_key = pkcs1::RsaPrivateKey::decode(&mut decoder).unwrap();
 
@@ -49,7 +49,7 @@ fn parse_der_libcrux(sk_der: &[u8], _bits: usize) -> libcrux_rsa::VarLenPrivateK
     let d = rsa_priv_key.private_exponent.as_bytes();
     let d = trim_leading_zeroes(d);
 
-    libcrux_rsa::VarLenPrivateKey::from_components(n, d)
+    test_foo_bar_rsa::VarLenPrivateKey::from_components(n, d)
         .map_err(|err| (err, format!("n.len={}, d.len={}", n.len(), d.len())))
         .unwrap()
 }
@@ -105,8 +105,8 @@ macro_rules! verify {
                     || {
                         let sk = parse_der_libcrux(&der, bits);
                         let mut sig = [0; $bytes];
-                        libcrux_rsa::sign_varlen(
-                            libcrux_rsa::DigestAlgorithm::Sha2_256,
+                        test_foo_bar_rsa::sign_varlen(
+                            test_foo_bar_rsa::DigestAlgorithm::Sha2_256,
                             &sk,
                             MSG,
                             SALT,
@@ -117,8 +117,8 @@ macro_rules! verify {
                         (sk, sig)
                     },
                     |(sk, sig)| {
-                        libcrux_rsa::verify_varlen(
-                            libcrux_rsa::DigestAlgorithm::Sha2_256,
+                        test_foo_bar_rsa::verify_varlen(
+                            test_foo_bar_rsa::DigestAlgorithm::Sha2_256,
                             sk.pk(),
                             MSG,
                             SALT.len() as u32,
@@ -235,8 +235,8 @@ macro_rules! sign {
                     || parse_der_libcrux(der, bits),
                     |sk| {
                         let mut sig = [0; BYTES];
-                        libcrux_rsa::sign_varlen(
-                            libcrux_rsa::DigestAlgorithm::Sha2_256,
+                        test_foo_bar_rsa::sign_varlen(
+                            test_foo_bar_rsa::DigestAlgorithm::Sha2_256,
                             &sk,
                             MSG,
                             SALT,

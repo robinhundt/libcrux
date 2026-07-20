@@ -8,7 +8,7 @@ use classic_mceliece_rust::{
     SecretKey as Sk, SharedSecret as Ss, CRYPTO_PUBLICKEYBYTES as MCELIECE_PUBLIC_KEY_LEN,
     CRYPTO_SECRETKEYBYTES as MCELIECE_SECRET_KEY_LEN,
 };
-use libcrux_traits::kem::{KEMError, KeyPair as KEMKeyPair, KEM};
+use test_foo_bar_traits::kem::{KEMError, KeyPair as KEMKeyPair, KEM};
 use tls_codec::{Deserialize, Serialize, SerializeBytes, Size, VLByteSlice, VLBytes};
 
 const MCELIECE460896F_CIPHERTEXT_LEN: usize = 156;

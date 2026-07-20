@@ -1,6 +1,6 @@
 [package]
 description = "Digest library"
-name = "libcrux-digest"
+name = "test-foo-bar-digest"
 readme = "Readme.md"
 version = "0.0.8"
 
@@ -11,13 +11,13 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-libcrux-blake2 = { workspace = true, optional = true }
-libcrux-sha2 = { workspace = true, optional = true }
-libcrux-sha3 = { workspace = true, optional = true }
-libcrux-traits = { workspace = true, optional = true }
+test-foo-bar-blake2 = { workspace = true, optional = true }
+test-foo-bar-sha2 = { workspace = true, optional = true }
+test-foo-bar-sha3 = { workspace = true, optional = true }
+test-foo-bar-traits = { workspace = true, optional = true }
 
 [features]
-blake2 = ["dep:libcrux-blake2", "dep:libcrux-traits"]
+blake2 = ["dep:test-foo-bar-blake2", "dep:test-foo-bar-traits"]
 default = ["blake2", "sha2", "sha3"]
-sha2 = ["dep:libcrux-sha2", "dep:libcrux-traits"]
-sha3 = ["dep:libcrux-sha3", "dep:libcrux-traits"]
+sha2 = ["dep:test-foo-bar-sha2", "dep:test-foo-bar-traits"]
+sha3 = ["dep:test-foo-bar-sha3", "dep:test-foo-bar-traits"]

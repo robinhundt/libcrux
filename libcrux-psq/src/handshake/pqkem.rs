@@ -1,5 +1,5 @@
 use classic_mceliece_rust::{decapsulate_boxed, encapsulate_boxed};
-use libcrux_ml_kem::{
+use test_foo_bar_ml_kem::{
     mlkem768::{
         decapsulate, rand::encapsulate, MlKem768Ciphertext, MlKem768KeyPair, MlKem768PrivateKey,
         MlKem768PublicKey,

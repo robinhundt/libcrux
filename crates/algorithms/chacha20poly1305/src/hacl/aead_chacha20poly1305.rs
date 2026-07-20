@@ -6,8 +6,8 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
 
 #[inline]
 fn poly1305_padded_32(ctx: &mut [u64], len: u32, text: &[u8]) {

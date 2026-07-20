@@ -118,11 +118,11 @@ pub fn trace_span(args: TokenStream, item: TokenStream) -> TokenStream {
     let label = args[0].to_token_stream();
     let trace = args[1].to_token_stream();
 
-    let use_stmt_ts = quote! { use ::libcrux_test_utils::tracing::Trace as _; }.into();
+    let use_stmt_ts = quote! { use ::test_foo_bar_test_utils::tracing::Trace as _; }.into();
     let use_stmt = parse_macro_input!(use_stmt_ts as syn::Stmt);
 
     let assign_stmt_ts =
-        quote! { let __libcrux_trace_macro_span_handle = #trace .emit_span( #label ); }.into();
+        quote! { let __test_foo_bar_trace_macro_span_handle = #trace .emit_span( #label ); }.into();
     let assign_stmt = parse_macro_input!(assign_stmt_ts as syn::Stmt);
 
     let mut item_fn = parse_macro_input!(item as ItemFn);

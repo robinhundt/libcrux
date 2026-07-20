@@ -6,9 +6,9 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
-use libcrux_sha2::hacl as hash_sha2;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
+use test_foo_bar_sha2::hacl as hash_sha2;
 
 #[derive(PartialEq, Clone, Copy)]
 pub(crate) struct __uint32_t_uint32_t {

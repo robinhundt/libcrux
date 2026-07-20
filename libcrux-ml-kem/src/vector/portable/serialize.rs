@@ -13,7 +13,7 @@
 // and code that updates arrays (in the outer functions).
 
 use super::vector_type::*;
-use libcrux_secrets::*;
+use test_foo_bar_secrets::*;
 
 #[cfg_attr(
     hax,

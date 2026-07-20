@@ -96,11 +96,11 @@ impl<'a> VarLenPrivateKey<'a> {
 const E_BITS: u32 = 17;
 const E: [u8; 3] = [1, 0, 1];
 
-fn hacl_hash_alg(alg: crate::DigestAlgorithm) -> libcrux_hacl_rs::streaming_types::hash_alg {
+fn hacl_hash_alg(alg: crate::DigestAlgorithm) -> test_foo_bar_hacl_rs::streaming_types::hash_alg {
     match alg {
-        crate::DigestAlgorithm::Sha2_256 => libcrux_hacl_rs::streaming_types::hash_alg::SHA2_256,
-        crate::DigestAlgorithm::Sha2_384 => libcrux_hacl_rs::streaming_types::hash_alg::SHA2_384,
-        crate::DigestAlgorithm::Sha2_512 => libcrux_hacl_rs::streaming_types::hash_alg::SHA2_512,
+        crate::DigestAlgorithm::Sha2_256 => test_foo_bar_hacl_rs::streaming_types::hash_alg::SHA2_256,
+        crate::DigestAlgorithm::Sha2_384 => test_foo_bar_hacl_rs::streaming_types::hash_alg::SHA2_384,
+        crate::DigestAlgorithm::Sha2_512 => test_foo_bar_hacl_rs::streaming_types::hash_alg::SHA2_512,
     }
 }
 

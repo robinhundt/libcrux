@@ -1,4 +1,4 @@
-use libcrux_ml_kem::{mlkem768, KEY_GENERATION_SEED_SIZE};
+use test_foo_bar_ml_kem::{mlkem768, KEY_GENERATION_SEED_SIZE};
 use rand::{rngs::SysRng, TryRng};
 
 fn main() {

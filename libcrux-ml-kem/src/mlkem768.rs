@@ -46,7 +46,7 @@ crate::impl_kem_trait!(
 
 // Provide the (packed) PQCP APIs
 #[cfg(feature = "pqcp")]
-crate::pqcp::pqcp_api!("use libcrux_ml_kem::mlkem768::pqcp::*;", MlKem768, " 768 ");
+crate::pqcp::pqcp_api!("use test_foo_bar_ml_kem::mlkem768::pqcp::*;", MlKem768, " 768 ");
 
 /// An ML-KEM 768 Ciphertext
 pub type MlKem768Ciphertext = MlKemCiphertext<CPA_PKE_CIPHERTEXT_SIZE>;
@@ -669,7 +669,7 @@ pub(crate) mod kyber {
 /// ```
 /// #[cfg(feature = "rand")]
 /// {
-///     use libcrux_ml_kem::mlkem768::incremental::*;
+///     use test_foo_bar_ml_kem::mlkem768::incremental::*;
 ///
 ///     // USE ONLY CRYPTOGRAPHICALLY SECURE RANDOMNESS OR `generate`
 ///     let randomness = [0x13; 64];
@@ -707,7 +707,7 @@ pub(crate) mod kyber {
 /// ```
 /// #[cfg(feature = "rand")]
 /// {
-///     use libcrux_ml_kem::mlkem768::incremental::*;
+///     use test_foo_bar_ml_kem::mlkem768::incremental::*;
 ///
 ///     // Use a n RNG that is safe to use for cryptography.
 ///     // THIS ONE IS NOT!

@@ -13,7 +13,7 @@ use crate::handshake::{
     types::{Authenticator, Signature},
     AuthMessage, HandshakeError as Error,
 };
-use libcrux_sha2::{Digest, SHA256_LENGTH};
+use test_foo_bar_sha2::{Digest, SHA256_LENGTH};
 
 /// The initial transcript hash.
 #[derive(Debug, Default, Clone, Copy, TlsSerializeBytes, TlsSerialize, TlsDeserialize, TlsSize)]
@@ -28,7 +28,7 @@ impl Transcript {
         old_transcript: Option<&Transcript>,
         input: impl Serialize,
     ) -> Result<Transcript, Error> {
-        let mut hasher = libcrux_sha2::Sha256::new();
+        let mut hasher = test_foo_bar_sha2::Sha256::new();
         hasher.update(&[DOMAIN_SEPARATOR]);
         hasher.update(
             <Option<&Transcript> as SerializeBytes>::tls_serialize(&old_transcript)

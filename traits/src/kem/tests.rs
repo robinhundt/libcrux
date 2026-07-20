@@ -1,4 +1,4 @@
-use libcrux_secrets::{Classify, DeclassifyRef};
+use test_foo_bar_secrets::{Classify, DeclassifyRef};
 
 pub fn simple<
     const EK_LEN: usize,

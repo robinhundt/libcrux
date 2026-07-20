@@ -2,7 +2,7 @@ mod util;
 
 #[cfg(feature = "rand")]
 mod rand {
-    use libcrux_ecdsa::{
+    use test_foo_bar_ecdsa::{
         p256::{Nonce, PrivateKey, PublicKey},
         *,
     };

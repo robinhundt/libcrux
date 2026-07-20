@@ -1,4 +1,4 @@
-use libcrux_blake2::{
+use test_foo_bar_blake2::{
     Blake2bBuilder, Blake2bHash, Blake2bHasher, Blake2sBuilder, Blake2sHash, Blake2sHasher,
 };
 #[test]
@@ -222,14 +222,14 @@ fn test_digest_traits_2s() {
     let err = hasher.finish_slice(&mut too_short).unwrap_err();
     assert_eq!(
         err,
-        libcrux_traits::digest::slice::FinishError::InvalidDigestLength
+        test_foo_bar_traits::digest::slice::FinishError::InvalidDigestLength
     );
 
     let mut too_long = vec![0; 33];
     let err = hasher.finish_slice(&mut too_long).unwrap_err();
     assert_eq!(
         err,
-        libcrux_traits::digest::slice::FinishError::InvalidDigestLength
+        test_foo_bar_traits::digest::slice::FinishError::InvalidDigestLength
     );
 }
 #[test]
@@ -248,19 +248,19 @@ fn test_digest_traits_2b() {
     let err = hasher.finish_slice(&mut too_short).unwrap_err();
     assert_eq!(
         err,
-        libcrux_traits::digest::slice::FinishError::InvalidDigestLength
+        test_foo_bar_traits::digest::slice::FinishError::InvalidDigestLength
     );
 
     let mut too_long = vec![0; 33];
     let err = hasher.finish_slice(&mut too_long).unwrap_err();
     assert_eq!(
         err,
-        libcrux_traits::digest::slice::FinishError::InvalidDigestLength
+        test_foo_bar_traits::digest::slice::FinishError::InvalidDigestLength
     );
 }
 
 #[test]
 fn traits_generic_tests() {
-    libcrux_traits::digest::tests::simple::<32, Blake2sHash<32>>();
-    libcrux_traits::digest::tests::simple::<32, Blake2bHash<32>>();
+    test_foo_bar_traits::digest::tests::simple::<32, Blake2sHash<32>>();
+    test_foo_bar_traits::digest::tests::simple::<32, Blake2bHash<32>>();
 }

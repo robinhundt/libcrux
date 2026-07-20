@@ -1,5 +1,5 @@
 use crate::impl_hacl::*;
-use libcrux_traits::digest::{
+use test_foo_bar_traits::digest::{
     arrayref, slice, DigestIncrementalBase, Hasher, InitializeDigestState, UpdateError,
 };
 
@@ -110,7 +110,7 @@ macro_rules! impl_digest_traits {
             }
         }
 
-        // Convert to `libcrux_traits::digest::Hasher`
+        // Convert to `test_foo_bar_traits::digest::Hasher`
         impl<const $out_size: usize> From<$blake2> for $hasher
         where
             // implement for supported digest lengths only
@@ -123,7 +123,7 @@ macro_rules! impl_digest_traits {
     };
 }
 
-/// A struct that implements [`libcrux_traits::digest`] traits.
+/// A struct that implements [`test_foo_bar_traits::digest`] traits.
 ///
 /// [`Blake2bHasher`] is a convenience hasher for this struct.
 pub struct Blake2bHash<const OUT_SIZE: usize>;
@@ -140,7 +140,7 @@ impl_digest_traits!(
 /// A hasher for [`Blake2bHash`].
 pub type Blake2bHasher<const OUT_SIZE: usize> = Hasher<OUT_SIZE, Blake2bHash<OUT_SIZE>>;
 
-/// A struct that implements [`libcrux_traits::digest`] traits.
+/// A struct that implements [`test_foo_bar_traits::digest`] traits.
 ///
 /// [`Blake2sHasher`] is a convenience hasher for this struct.
 pub struct Blake2sHash<const OUT_SIZE: usize>;

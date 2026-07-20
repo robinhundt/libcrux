@@ -1,5 +1,5 @@
-use libcrux_ed25519::{SigningKey as Ed25519SigningKey, VerificationKey as Ed25519VerificationKey};
-use libcrux_ml_dsa::ml_dsa_65::{MLDSA65KeyPair, MLDSA65SigningKey, MLDSA65VerificationKey};
+use test_foo_bar_ed25519::{SigningKey as Ed25519SigningKey, VerificationKey as Ed25519VerificationKey};
+use test_foo_bar_ml_dsa::ml_dsa_65::{MLDSA65KeyPair, MLDSA65SigningKey, MLDSA65VerificationKey};
 use rand::CryptoRng;
 use tls_codec::SerializeBytes;
 
@@ -23,7 +23,7 @@ use crate::{
 #[derive(Clone, Copy)]
 pub(crate) enum PqKemPublicKey<'a> {
     None,
-    MlKem(&'a libcrux_ml_kem::mlkem768::MlKem768PublicKey),
+    MlKem(&'a test_foo_bar_ml_kem::mlkem768::MlKem768PublicKey),
     #[cfg(feature = "classic-mceliece")]
     Cmc(&'a PublicKey),
     #[cfg(not(feature = "classic-mceliece"))]
@@ -31,8 +31,8 @@ pub(crate) enum PqKemPublicKey<'a> {
     Cmc(std::marker::PhantomData<&'a [u8]>),
 }
 
-impl<'a> From<&'a libcrux_ml_kem::mlkem768::MlKem768PublicKey> for PqKemPublicKey<'a> {
-    fn from(value: &'a libcrux_ml_kem::mlkem768::MlKem768PublicKey) -> Self {
+impl<'a> From<&'a test_foo_bar_ml_kem::mlkem768::MlKem768PublicKey> for PqKemPublicKey<'a> {
+    fn from(value: &'a test_foo_bar_ml_kem::mlkem768::MlKem768PublicKey) -> Self {
         PqKemPublicKey::MlKem(value)
     }
 }
@@ -74,13 +74,13 @@ impl<'a> SigningKeyPair<'a> {
         let payload = tx.tls_serialize().map_err(HandshakeError::Serialize)?;
         match self {
             SigningKeyPair::Ed25519(signing_key, _) => {
-                let sig = libcrux_ed25519::sign(&payload, signing_key.as_ref())?;
+                let sig = test_foo_bar_ed25519::sign(&payload, signing_key.as_ref())?;
                 Ok(Signature::Ed25519(sig))
             }
             SigningKeyPair::MlDsa65(mldsasigning_key, _) => {
-                let mut randomness = [0u8; libcrux_ml_dsa::SIGNING_RANDOMNESS_SIZE];
+                let mut randomness = [0u8; test_foo_bar_ml_dsa::SIGNING_RANDOMNESS_SIZE];
                 rng.fill_bytes(&mut randomness);
-                let sig = libcrux_ml_dsa::ml_dsa_65::sign(
+                let sig = test_foo_bar_ml_dsa::ml_dsa_65::sign(
                     mldsasigning_key,
                     &payload,
                     PSQ_MLDSA_CONTEXT,
@@ -205,9 +205,9 @@ impl<'a> InitiatorCiphersuite<'a> {
         match self.pq {
             PqKemPublicKey::None => Ok((None, None)),
             PqKemPublicKey::MlKem(ml_kem_public_key) => {
-                let mut rand = [0u8; libcrux_ml_kem::ENCAPS_SEED_SIZE];
+                let mut rand = [0u8; test_foo_bar_ml_kem::ENCAPS_SEED_SIZE];
                 rng.fill_bytes(&mut rand);
-                let (ct, ss) = libcrux_ml_kem::mlkem768::encapsulate(ml_kem_public_key, rand);
+                let (ct, ss) = test_foo_bar_ml_kem::mlkem768::encapsulate(ml_kem_public_key, rand);
 
                 Ok((
                     Some(PQCiphertext::MlKem(Box::new(ct))),
@@ -217,7 +217,7 @@ impl<'a> InitiatorCiphersuite<'a> {
             #[cfg(feature = "classic-mceliece")]
             PqKemPublicKey::Cmc(public_key) => {
                 use crate::classic_mceliece::ClassicMcEliece;
-                use libcrux_traits::kem::KEM;
+                use test_foo_bar_traits::kem::KEM;
 
                 let (ss, ct) = <ClassicMcEliece as KEM>::encapsulate(public_key, rng)
                     .map_err(|_| HandshakeError::CryptoError)?;

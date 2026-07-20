@@ -15,14 +15,14 @@ fn sign(c: &mut Criterion) {
                 let sk: [u8; 32] = sk.raw_private_key().unwrap().try_into().unwrap();
 
                 let mut pk = [0; 32];
-                libcrux_ed25519::secret_to_public(&mut pk, &sk);
+                test_foo_bar_ed25519::secret_to_public(&mut pk, &sk);
 
                 let payload = randombytes(PAYLOAD_SIZE);
 
                 (sk, payload)
             },
             |(sk, payload)| {
-                let _signature = libcrux_ed25519::sign(&payload, &sk).unwrap();
+                let _signature = test_foo_bar_ed25519::sign(&payload, &sk).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -96,16 +96,16 @@ fn verify(c: &mut Criterion) {
                 let sk = openssl::pkey::PKey::generate_ed25519().unwrap();
                 let sk: [u8; 32] = sk.raw_private_key().unwrap().try_into().unwrap();
                 let mut pk = [0; 32];
-                libcrux_ed25519::secret_to_public(&mut pk, &sk);
+                test_foo_bar_ed25519::secret_to_public(&mut pk, &sk);
 
                 let payload = randombytes(PAYLOAD_SIZE);
 
-                let signature = libcrux_ed25519::sign(&payload, &sk).unwrap();
+                let signature = test_foo_bar_ed25519::sign(&payload, &sk).unwrap();
 
                 (pk, payload, signature)
             },
             |(pk, payload, signature)| {
-                libcrux_ed25519::verify(&payload, &pk, &signature).unwrap();
+                test_foo_bar_ed25519::verify(&payload, &pk, &signature).unwrap();
             },
             BatchSize::SmallInput,
         )

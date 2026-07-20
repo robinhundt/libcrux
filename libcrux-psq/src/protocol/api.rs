@@ -107,7 +107,7 @@ fn derive_pk_binder(
         .map_err(serialize_error)?;
 
     let mut pk_binder = [0; PK_BINDER_LEN];
-    libcrux_hkdf::sha2_256::hkdf(
+    test_foo_bar_hkdf::sha2_256::hkdf(
         &mut pk_binder,
         &[],
         &SerializeBytes::tls_serialize(&key.key).map_err(serialize_error)?,

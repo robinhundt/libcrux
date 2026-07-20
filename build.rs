@@ -21,7 +21,7 @@ fn main() {
     let cross = target != host;
 
     if !cross
-        && libcrux_platform::simd128_support()
+        && test_foo_bar_platform::simd128_support()
         && target_arch != "x86"
         && !target_arch.contains("wasm")
         && !disable_simd128
@@ -29,18 +29,18 @@ fn main() {
         println!("cargo:rustc-cfg=simd128");
     }
     if !cross
-        && libcrux_platform::simd256_support()
+        && test_foo_bar_platform::simd256_support()
         && target_arch != "x86"
         && !target_arch.contains("wasm")
         && !disable_simd256
     {
         println!("cargo:rustc-cfg=simd256");
     }
-    if !cross && libcrux_platform::bmi2_adx_support() {
+    if !cross && test_foo_bar_platform::bmi2_adx_support() {
         println!("cargo:rustc-cfg=bmi2");
         println!("cargo:rustc-cfg=adx");
     }
-    if !cross && libcrux_platform::aes_ni_support() && target_arch == "x86_64" {
+    if !cross && test_foo_bar_platform::aes_ni_support() && target_arch == "x86_64" {
         println!("cargo:rustc-cfg=aes_ni");
     }
 }

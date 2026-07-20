@@ -1,4 +1,4 @@
-use libcrux_intrinsics::arm64::*;
+use test_foo_bar_intrinsics::arm64::*;
 
 /// A Neon gf128 field element
 #[derive(Clone, Copy)]

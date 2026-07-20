@@ -7,8 +7,8 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
 
 pub const h224: [u32; 8] = [
     0xc1059ed8u32,

@@ -16,15 +16,15 @@ bench = false # so libtest doesn't eat the arguments for criterion
 rand = { version = "0.10" }
 
 [dev-dependencies]
-libcrux = { path = "../", features = ["rand", "tests"] }
-libcrux-chacha20poly1305 = { path = "../crates/algorithms/chacha20poly1305" }
-libcrux-ecdh = { path = "../libcrux-ecdh" }
-libcrux-ecdsa = { path = "../crates/algorithms/ecdsa" }
-libcrux-ed25519 = { path = "../crates/algorithms/ed25519" }
-libcrux-kem = { path = "../libcrux-kem", features = ["tests"] }
-libcrux-ml-kem = { path = "../libcrux-ml-kem" }
-libcrux-rsa = { path = "../crates/algorithms/rsa" }
-libcrux-sha2 = { path = "../crates/algorithms/sha2" }
+test-foo-bar = { path = "../", features = ["rand", "tests"] }
+test-foo-bar-chacha20poly1305 = { path = "../crates/algorithms/chacha20poly1305" }
+test-foo-bar-ecdh = { path = "../libcrux-ecdh" }
+test-foo-bar-ecdsa = { path = "../crates/algorithms/ecdsa" }
+test-foo-bar-ed25519 = { path = "../crates/algorithms/ed25519" }
+test-foo-bar-kem = { path = "../libcrux-kem", features = ["tests"] }
+test-foo-bar-ml-kem = { path = "../libcrux-ml-kem" }
+test-foo-bar-rsa = { path = "../crates/algorithms/rsa" }
+test-foo-bar-sha2 = { path = "../crates/algorithms/sha2" }
 
 rand_core = { version = "0.10" }
 rand_core_old = { version = "0.6", package = "rand_core" }
@@ -61,7 +61,7 @@ lib25519 = { path = "../crates/sys/lib25519" }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 criterion = "0.8"
-# libcrux-pqclean = { version = "0.0.2-alpha.1", path = "sys/pqclean" }
+# test-foo-bar-pqclean = { version = "0.0.2-alpha.1", path = "sys/pqclean" }
 pqcrypto-kyber = { version = "0.8.0" }
 
 # Benchmarking "OpenSSL"

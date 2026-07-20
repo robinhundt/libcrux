@@ -18,15 +18,15 @@ fn test_invalid_modulus(p: &str) {
         let pk = pk.as_slice();
         match p {
             #[cfg(feature = "mlkem512")]
-            "512" => assert!(!libcrux_ml_kem::mlkem512::validate_public_key(
+            "512" => assert!(!test_foo_bar_ml_kem::mlkem512::validate_public_key(
                 &pk.try_into().unwrap()
             )),
             #[cfg(feature = "mlkem768")]
-            "768" => assert!(!libcrux_ml_kem::mlkem768::validate_public_key(
+            "768" => assert!(!test_foo_bar_ml_kem::mlkem768::validate_public_key(
                 &pk.try_into().unwrap()
             )),
             #[cfg(feature = "mlkem1024")]
-            "1024" => assert!(!libcrux_ml_kem::mlkem1024::validate_public_key(
+            "1024" => assert!(!test_foo_bar_ml_kem::mlkem1024::validate_public_key(
                 &pk.try_into().unwrap()
             )),
             _ => unreachable!(),
@@ -86,17 +86,17 @@ fn test_invalid_dk(p: &str) {
         let ct = ct.as_slice();
         match p {
             #[cfg(feature = "mlkem512")]
-            "512" => assert!(!libcrux_ml_kem::mlkem512::validate_private_key(
+            "512" => assert!(!test_foo_bar_ml_kem::mlkem512::validate_private_key(
                 &dk.try_into().unwrap(),
                 &ct.try_into().unwrap(),
             )),
             #[cfg(feature = "mlkem768")]
-            "768" => assert!(!libcrux_ml_kem::mlkem768::validate_private_key(
+            "768" => assert!(!test_foo_bar_ml_kem::mlkem768::validate_private_key(
                 &dk.try_into().unwrap(),
                 &ct.try_into().unwrap(),
             )),
             #[cfg(feature = "mlkem1024")]
-            "1024" => assert!(!libcrux_ml_kem::mlkem1024::validate_private_key(
+            "1024" => assert!(!test_foo_bar_ml_kem::mlkem1024::validate_private_key(
                 &dk.try_into().unwrap(),
                 &ct.try_into().unwrap(),
             )),

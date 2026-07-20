@@ -118,7 +118,7 @@ macro_rules! impl_kem_trait {
     ($variant:ty, $pk:ty, $sk:ty, $ct:ty) => {
         #[hax_lib::exclude]
         impl
-            libcrux_traits::kem::arrayref::Kem<
+            test_foo_bar_traits::kem::arrayref::Kem<
                 CPA_PKE_PUBLIC_KEY_SIZE,
                 SECRET_KEY_SIZE,
                 CPA_PKE_CIPHERTEXT_SIZE,
@@ -131,7 +131,7 @@ macro_rules! impl_kem_trait {
                 ek: &mut [u8; CPA_PKE_PUBLIC_KEY_SIZE],
                 dk: &mut [u8; SECRET_KEY_SIZE],
                 rand: &[u8; KEY_GENERATION_SEED_SIZE],
-            ) -> Result<(), libcrux_traits::kem::owned::KeyGenError> {
+            ) -> Result<(), test_foo_bar_traits::kem::owned::KeyGenError> {
                 let key_pair = generate_key_pair(*rand);
                 ek.copy_from_slice(key_pair.pk());
                 dk.copy_from_slice(key_pair.sk());
@@ -144,7 +144,7 @@ macro_rules! impl_kem_trait {
                 ss: &mut [u8; SHARED_SECRET_SIZE],
                 ek: &[u8; CPA_PKE_PUBLIC_KEY_SIZE],
                 rand: &[u8; SHARED_SECRET_SIZE],
-            ) -> Result<(), libcrux_traits::kem::owned::EncapsError> {
+            ) -> Result<(), test_foo_bar_traits::kem::owned::EncapsError> {
                 let public_key: $pk = ek.into();
 
                 let (ct_, ss_) = encapsulate(&public_key, *rand);
@@ -158,7 +158,7 @@ macro_rules! impl_kem_trait {
                 ss: &mut [u8; SHARED_SECRET_SIZE],
                 ct: &[u8; CPA_PKE_CIPHERTEXT_SIZE],
                 dk: &[u8; SECRET_KEY_SIZE],
-            ) -> Result<(), libcrux_traits::kem::owned::DecapsError> {
+            ) -> Result<(), test_foo_bar_traits::kem::owned::DecapsError> {
                 let secret_key: $sk = dk.into();
                 let ciphertext: $ct = ct.into();
 
@@ -171,7 +171,7 @@ macro_rules! impl_kem_trait {
         }
 
     #[cfg(not(hax))]
-    libcrux_traits::kem::slice::impl_trait!($variant =>
+    test_foo_bar_traits::kem::slice::impl_trait!($variant =>
         CPA_PKE_PUBLIC_KEY_SIZE, SECRET_KEY_SIZE,
         CPA_PKE_CIPHERTEXT_SIZE, SHARED_SECRET_SIZE,
         KEY_GENERATION_SEED_SIZE, SHARED_SECRET_SIZE);

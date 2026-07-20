@@ -6,8 +6,8 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
 
 pub(crate) const chacha20_constants: [u32; 4] =
     [0x61707865u32, 0x3320646eu32, 0x79622d32u32, 0x6b206574u32];

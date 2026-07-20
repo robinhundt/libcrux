@@ -4,7 +4,7 @@ mod test_vectors;
 
 use crate::test_vectors::{DIGEST_LEN_SHAKE256, STRING_LEN_SHAKE256};
 
-use libcrux_sha3::neon::x2::incremental::{
+use test_foo_bar_sha3::neon::x2::incremental::{
     init, shake256_absorb_final, shake256_squeeze_first_block,
 };
 

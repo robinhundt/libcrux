@@ -1,6 +1,6 @@
 use super::arithmetic::*;
 use super::vector_type::*;
-use libcrux_intrinsics::arm64::*;
+use test_foo_bar_intrinsics::arm64::*;
 
 #[inline(always)]
 pub(crate) fn ntt_layer_1_step(

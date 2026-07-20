@@ -10,7 +10,7 @@
 
 use std::sync::LazyLock;
 
-use libcrux_psq::{
+use test_foo_bar_psq::{
     handshake::{builders::PrincipalBuilder, types::DHKeyPair},
     Channel,
 };

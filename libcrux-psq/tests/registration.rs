@@ -1,8 +1,8 @@
-use libcrux_ml_dsa::ml_dsa_65::MLDSA65KeyPair;
-use libcrux_ml_kem::mlkem768::MlKem768KeyPair;
+use test_foo_bar_ml_dsa::ml_dsa_65::MLDSA65KeyPair;
+use test_foo_bar_ml_kem::mlkem768::MlKem768KeyPair;
 #[cfg(feature = "classic-mceliece")]
-use libcrux_psq::classic_mceliece::KeyPair;
-use libcrux_psq::{
+use test_foo_bar_psq::classic_mceliece::KeyPair;
+use test_foo_bar_psq::{
     handshake::{builders::*, ciphersuites::*, types::*, HandshakeError},
     session::{Session, SessionBinding, SessionError},
     Channel, IntoSession,
@@ -17,8 +17,8 @@ struct CommonSetup {
     pub initiator_x25519_keys: DHKeyPair,
     pub initiator_mldsa_keys: MLDSA65KeyPair,
     pub initiator_ed25519_keys: (
-        libcrux_ed25519::SigningKey,
-        libcrux_ed25519::VerificationKey,
+        test_foo_bar_ed25519::SigningKey,
+        test_foo_bar_ed25519::VerificationKey,
     ),
 }
 
@@ -194,19 +194,19 @@ impl CommonSetup {
 
     fn new() -> Self {
         let mut rng = rand::rng();
-        let responder_mlkem_keys = libcrux_ml_kem::mlkem768::rand::generate_key_pair(&mut rng);
+        let responder_mlkem_keys = test_foo_bar_ml_kem::mlkem768::rand::generate_key_pair(&mut rng);
         #[cfg(feature = "classic-mceliece")]
         let responder_cmc_keys =
-            libcrux_psq::classic_mceliece::KeyPair::generate_key_pair(&mut rng);
+            test_foo_bar_psq::classic_mceliece::KeyPair::generate_key_pair(&mut rng);
 
         let responder_x25519_keys = DHKeyPair::new(&mut rng);
         let initiator_x25519_keys = DHKeyPair::new(&mut rng);
 
-        let mut rand = [0u8; libcrux_ml_dsa::KEY_GENERATION_RANDOMNESS_SIZE];
+        let mut rand = [0u8; test_foo_bar_ml_dsa::KEY_GENERATION_RANDOMNESS_SIZE];
         rng.fill(&mut rand);
-        let initiator_mldsa_keys = libcrux_ml_dsa::ml_dsa_65::generate_key_pair(rand);
+        let initiator_mldsa_keys = test_foo_bar_ml_dsa::ml_dsa_65::generate_key_pair(rand);
 
-        let initiator_ed25519_keys = libcrux_ed25519::generate_key_pair(&mut rng).unwrap();
+        let initiator_ed25519_keys = test_foo_bar_ed25519::generate_key_pair(&mut rng).unwrap();
 
         CommonSetup {
             responder_mlkem_keys,

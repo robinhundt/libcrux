@@ -28,4 +28,4 @@ pub mod digest;
 pub mod ecdh;
 pub mod kem;
 
-pub use libcrux_secrets;
+pub use test_foo_bar_secrets;

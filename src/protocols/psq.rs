@@ -1,2 +1,2 @@
 //! # PSQ: HNDL-secure PSK derivation
-pub use libcrux_psq::*;
+pub use test_foo_bar_psq::*;

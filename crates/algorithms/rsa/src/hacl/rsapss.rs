@@ -7,7 +7,7 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::{bignum, fstar, vec, Box};
+use test_foo_bar_hacl_rs::prelude::{bignum, fstar, vec, Box};
 
 #[inline]
 fn hash_len(a: crate::hacl::streaming_types::hash_alg) -> u32 {

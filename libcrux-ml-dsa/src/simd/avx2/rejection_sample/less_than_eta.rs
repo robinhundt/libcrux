@@ -1,6 +1,6 @@
 use crate::simd::avx2::{encoding, rejection_sample::shuffle_table::SHUFFLE_TABLE, Eta};
 
-use libcrux_intrinsics::avx2::*;
+use test_foo_bar_intrinsics::avx2::*;
 
 // TODO: This code seems to slow the implementation down, but stabilizes
 // benchmarks. Revisit this once the other functions are vectorized.

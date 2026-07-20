@@ -1,20 +1,20 @@
 [package]
-name = "libcrux-intrinsics"
-version = "0.0.7"
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
-edition.workspace = true
-repository.workspace = true
-readme.workspace = true
 description = "Libcrux intrinsics crate"
+edition.workspace = true
 exclude = ["/proofs"]
+homepage.workspace = true
+license.workspace = true
+name = "test-foo-bar-intrinsics"
+readme.workspace = true
+repository.workspace = true
+version = "0.0.7"
 
 [dependencies]
 hax-lib.workspace = true
 
 [target.'cfg(hax)'.dependencies]
-core-models = { path = "../core-models", version = "0.0.6" }
+test-foo-bar-core-models = { path = "../core-models", version = "0.0.6" }
 
 [features]
 simd128 = []
@@ -24,7 +24,7 @@ simd256 = []
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(eurydice)',
     'cfg(hax)',
     'cfg(pre_core_models)',
-    'cfg(eurydice)',
 ] }

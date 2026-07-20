@@ -131,7 +131,7 @@ fn derive_pk_binder(
 
     let mut binder = [0u8; PK_BINDER_LEN];
 
-    libcrux_hkdf::sha2_256::hkdf(
+    test_foo_bar_hkdf::sha2_256::hkdf(
         &mut binder,
         &[],
         &SerializeBytes::tls_serialize(&key.key).map_err(SessionError::Serialize)?,
@@ -374,7 +374,7 @@ impl Session {
             separator: [u8; 17],
         }
 
-        libcrux_hkdf::sha2_256::hkdf(
+        test_foo_bar_hkdf::sha2_256::hkdf(
             out,
             b"",
             self.session_key.key.as_ref(),

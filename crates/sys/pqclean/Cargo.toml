@@ -1,18 +1,18 @@
 [package]
-name = "libcrux-pqclean"
-version.workspace = true
-edition.workspace = true
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
-repository.workspace = true
-readme.workspace = true
 description = "pqclean wrapper for libcrux tests and benchmarks."
+edition.workspace = true
+homepage.workspace = true
+license.workspace = true
+name = "test-foo-bar-pqclean"
 publish = false
+readme.workspace = true
+repository.workspace = true
+version.workspace = true
 
 [dependencies]
 
 [build-dependencies]
-cc = { version = "1.1", features = ["parallel"] }
 bindgen = "0.72"
+cc = { version = "1.1", features = ["parallel"] }
 fs_extra = "1.2"

@@ -1,34 +1,34 @@
 [package]
-name = "libcrux-ml-kem"
-version = "0.0.9"
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
-edition.workspace = true
-repository.workspace = true
-readme = "README.md"
 description = "Libcrux ML-KEM & Kyber implementations"
+edition.workspace = true
 exclude = [
-    "/tests",
     "*.pdf",
     "/extracts",
-    "/proofs",
     "/hax.py",
+    "/proofs",
+    "/tests",
     "C-CODE.md",
     "TOOLS.md",
 ]
+homepage.workspace = true
+license.workspace = true
+name = "test-foo-bar-ml-kem"
+readme = "README.md"
+repository.workspace = true
+version = "0.0.9"
 
 [lib]
 bench = false # so libtest doesn't eat the arguments to criterion
 
 [dependencies]
-rand = { version = "0.10", optional = true, default-features = false }
-libcrux-platform.workspace = true
-libcrux-sha3.workspace = true
-libcrux-intrinsics.workspace = true
-libcrux-secrets.workspace = true
-libcrux-traits.workspace = true
 hax-lib.workspace = true
+rand = { version = "0.10", optional = true, default-features = false }
+test-foo-bar-intrinsics.workspace = true
+test-foo-bar-platform.workspace = true
+test-foo-bar-secrets.workspace = true
+test-foo-bar-sha3.workspace = true
+test-foo-bar-traits.workspace = true
 tls_codec = { version = "0.4.2", features = [
     "derive",
 ], default-features = false, optional = true }
@@ -36,7 +36,7 @@ tls_codec = { version = "0.4.2", features = [
 [features]
 # By default all variants and std are enabled.
 default = ["default-no-std", "std"]
-default-no-std = ["mlkem512", "mlkem768", "mlkem1024", "rand"]
+default-no-std = ["mlkem1024", "mlkem512", "mlkem768", "rand"]
 
 # Serialization & Deserialization using tls_codec
 codec = ["dep:tls_codec"]
@@ -44,13 +44,13 @@ codec = ["dep:tls_codec"]
 # Hardware features can be force enabled.
 # It is not recommended to use these. This crate performs CPU feature detection
 # and enables the features when they are available.
-simd128 = ["libcrux-sha3/simd128", "libcrux-intrinsics/simd128"]
-simd256 = ["libcrux-sha3/simd256", "libcrux-intrinsics/simd256"]
+simd128 = ["test-foo-bar-intrinsics/simd128", "test-foo-bar-sha3/simd128"]
+simd256 = ["test-foo-bar-intrinsics/simd256", "test-foo-bar-sha3/simd256"]
 
 # Features for the different key sizes of ML-KEM
+mlkem1024 = []
 mlkem512 = []
 mlkem768 = []
-mlkem1024 = []
 
 # Enable Round 3 Kyber in addition to ML-KEM
 kyber = []
@@ -59,16 +59,16 @@ kyber = []
 rand = ["dep:rand"]
 
 # std support
-std = ["alloc", "rand/std", "tls_codec/std"]
 alloc = []
+std = ["alloc", "rand/std", "tls_codec/std"]
 
 # Incremental encapsulation API
 incremental = []
 
 # Checking secret independence
 check-secret-independence = [
-    "libcrux-secrets/check-secret-independence",
-    "libcrux-traits/check-secret-independence",
+    "test-foo-bar-secrets/check-secret-independence",
+    "test-foo-bar-traits/check-secret-independence",
 ]
 
 
@@ -76,19 +76,17 @@ check-secret-independence = [
 pqcp = []
 
 [dev-dependencies]
-rand = { version = "0.10", features = ["thread_rng"] }
-serde_json = { version = "1.0" }
-serde = { version = "1.0", features = ["derive"] }
-hex = { version = "0.4.3", features = ["serde"] }
 criterion = "0.8"
-libcrux-traits = { workspace = true, features = [
-    "generic-tests",
-] }
-libcrux-kats = { path = "../crates/testing/kats", features = ["mlkem"] }
+hex = { version = "0.4.3", features = ["serde"] }
+rand = { version = "0.10", features = ["thread_rng"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+test-foo-bar-kats = { path = "../crates/testing/kats", features = ["mlkem"] }
+test-foo-bar-traits = { workspace = true, features = ["generic-tests"] }
 
 [[bench]]
-name = "ml-kem"
 harness = false
+name = "ml-kem"
 
 [[example]]
 name = "encapsulate"
@@ -103,12 +101,12 @@ name = "keygen"
 required-features = ["mlkem768"]
 
 [package.metadata."docs.rs"]
-features = ["kyber", "pqcp", "codec"]
+features = ["codec", "kyber", "pqcp"]
 rustdoc-args = ["--cfg", "doc_cfg"]
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = [
-    'cfg(hax)',
-    'cfg(eurydice)',
     'cfg(doc_cfg)',
+    'cfg(eurydice)',
+    'cfg(hax)',
 ] }

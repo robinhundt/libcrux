@@ -6,7 +6,7 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::*;
+use test_foo_bar_hacl_rs::prelude::*;
 
 /**
 Expand pseudorandom key to desired length.
@@ -40,7 +40,7 @@ pub fn expand_sha2_256(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if i == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_sha2_256(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_256(
                 &mut tag,
                 prk,
                 prklen,
@@ -50,7 +50,7 @@ pub fn expand_sha2_256(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_sha2_256(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_256(
                 &mut tag,
                 prk,
                 prklen,
@@ -67,7 +67,7 @@ pub fn expand_sha2_256(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if n == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_sha2_256(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_256(
                 &mut tag,
                 prk,
                 prklen,
@@ -77,7 +77,7 @@ pub fn expand_sha2_256(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_sha2_256(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_256(
                 &mut tag,
                 prk,
                 prklen,
@@ -102,7 +102,7 @@ Extract a fixed-length pseudorandom key from input keying material.
 @param ikmlen Length of input keying material.
 */
 pub fn extract_sha2_256(prk: &mut [u8], salt: &[u8], saltlen: u32, ikm: &[u8], ikmlen: u32) {
-    libcrux_hmac::hacl::hmac::compute_sha2_256(prk, salt, saltlen, ikm, ikmlen)
+    test_foo_bar_hmac::hacl::hmac::compute_sha2_256(prk, salt, saltlen, ikm, ikmlen)
 }
 
 /**
@@ -137,7 +137,7 @@ pub fn expand_sha2_384(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if i == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_sha2_384(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_384(
                 &mut tag,
                 prk,
                 prklen,
@@ -147,7 +147,7 @@ pub fn expand_sha2_384(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_sha2_384(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_384(
                 &mut tag,
                 prk,
                 prklen,
@@ -164,7 +164,7 @@ pub fn expand_sha2_384(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if n == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_sha2_384(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_384(
                 &mut tag,
                 prk,
                 prklen,
@@ -174,7 +174,7 @@ pub fn expand_sha2_384(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_sha2_384(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_384(
                 &mut tag,
                 prk,
                 prklen,
@@ -199,7 +199,7 @@ Extract a fixed-length pseudorandom key from input keying material.
 @param ikmlen Length of input keying material.
 */
 pub fn extract_sha2_384(prk: &mut [u8], salt: &[u8], saltlen: u32, ikm: &[u8], ikmlen: u32) {
-    libcrux_hmac::hacl::hmac::compute_sha2_384(prk, salt, saltlen, ikm, ikmlen)
+    test_foo_bar_hmac::hacl::hmac::compute_sha2_384(prk, salt, saltlen, ikm, ikmlen)
 }
 
 /**
@@ -234,7 +234,7 @@ pub fn expand_sha2_512(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if i == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_sha2_512(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_512(
                 &mut tag,
                 prk,
                 prklen,
@@ -244,7 +244,7 @@ pub fn expand_sha2_512(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_sha2_512(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_512(
                 &mut tag,
                 prk,
                 prklen,
@@ -261,7 +261,7 @@ pub fn expand_sha2_512(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if n == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_sha2_512(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_512(
                 &mut tag,
                 prk,
                 prklen,
@@ -271,7 +271,7 @@ pub fn expand_sha2_512(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_sha2_512(
+            test_foo_bar_hmac::hacl::hmac::compute_sha2_512(
                 &mut tag,
                 prk,
                 prklen,
@@ -296,7 +296,7 @@ Extract a fixed-length pseudorandom key from input keying material.
 @param ikmlen Length of input keying material.
 */
 pub fn extract_sha2_512(prk: &mut [u8], salt: &[u8], saltlen: u32, ikm: &[u8], ikmlen: u32) {
-    libcrux_hmac::hacl::hmac::compute_sha2_512(prk, salt, saltlen, ikm, ikmlen)
+    test_foo_bar_hmac::hacl::hmac::compute_sha2_512(prk, salt, saltlen, ikm, ikmlen)
 }
 
 /*
@@ -332,7 +332,7 @@ pub fn expand_blake2s_32(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if i == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_blake2s_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2s_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -342,7 +342,7 @@ pub fn expand_blake2s_32(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_blake2s_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2s_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -359,7 +359,7 @@ pub fn expand_blake2s_32(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if n == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_blake2s_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2s_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -369,7 +369,7 @@ pub fn expand_blake2s_32(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_blake2s_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2s_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -394,7 +394,7 @@ Extract a fixed-length pseudorandom key from input keying material.
 @param ikmlen Length of input keying material.
 */
 pub fn extract_blake2s_32(prk: &mut [u8], salt: &[u8], saltlen: u32, ikm: &[u8], ikmlen: u32) {
-    libcrux_hmac::hacl::hmac::compute_blake2s_32(prk, salt, saltlen, ikm, ikmlen)
+    test_foo_bar_hmac::hacl::hmac::compute_blake2s_32(prk, salt, saltlen, ikm, ikmlen)
 }
 
 /**
@@ -429,7 +429,7 @@ pub fn expand_blake2b_32(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if i == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_blake2b_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2b_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -439,7 +439,7 @@ pub fn expand_blake2b_32(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_blake2b_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2b_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -456,7 +456,7 @@ pub fn expand_blake2b_32(
         lowstar::ignore::ignore::<&[u8]>(&text);
         let text0: (&[u8], &[u8]) = text.split_at(tlen as usize);
         if n == 0u32 {
-            libcrux_hmac::hacl::hmac::compute_blake2b_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2b_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -466,7 +466,7 @@ pub fn expand_blake2b_32(
         } else {
             ((&mut (&mut text)[0usize..])[0usize..tlen as usize])
                 .copy_from_slice(&(&tag)[0usize..tlen as usize]);
-            libcrux_hmac::hacl::hmac::compute_blake2b_32(
+            test_foo_bar_hmac::hacl::hmac::compute_blake2b_32(
                 &mut tag,
                 prk,
                 prklen,
@@ -491,6 +491,6 @@ Extract a fixed-length pseudorandom key from input keying material.
 @param ikmlen Length of input keying material.
 */
 pub fn extract_blake2b_32(prk: &mut [u8], salt: &[u8], saltlen: u32, ikm: &[u8], ikmlen: u32) {
-    libcrux_hmac::hacl::hmac::compute_blake2b_32(prk, salt, saltlen, ikm, ikmlen)
+    test_foo_bar_hmac::hacl::hmac::compute_blake2b_32(prk, salt, saltlen, ikm, ikmlen)
 }
 */

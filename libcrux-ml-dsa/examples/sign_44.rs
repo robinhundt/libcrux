@@ -1,4 +1,4 @@
-use libcrux_ml_dsa::ml_dsa_44::*;
+use test_foo_bar_ml_dsa::ml_dsa_44::*;
 use rand::{rngs::SysRng, TryRng};
 
 fn random_array<const L: usize>() -> [u8; L] {
