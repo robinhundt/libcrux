@@ -1,4 +1,4 @@
-use libcrux_intrinsics::avx2::{
+use test_foo_bar_intrinsics::avx2::{
     mm_clmulepi64_si128, mm_loadu_si128_u128, mm_slli_si128, mm_srli_si128, mm_storeu_si128_u128,
     mm_unpackhi_epi64, mm_unpacklo_epi64, mm_xor_si128, Vec128,
 };

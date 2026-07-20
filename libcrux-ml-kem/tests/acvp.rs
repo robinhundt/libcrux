@@ -1,10 +1,10 @@
 #![cfg(any(feature = "mlkem512", feature = "mlkem768", feature = "mlkem1024",))]
 
-use libcrux_kats::acvp::mlkem::{encap_decap_schema::*, keygen_schema::*, *};
+use test_foo_bar_kats::acvp::mlkem::{encap_decap_schema::*, keygen_schema::*, *};
 
 #[test]
 fn keygen() {
-    use libcrux_ml_kem::*;
+    use test_foo_bar_ml_kem::*;
 
     let KeyGenTests { prompts, results } = KeyGenTests::load();
     assert!(prompts.algorithm == "ML-KEM");
@@ -64,7 +64,7 @@ fn keygen() {
 
 #[test]
 fn encap_decap() {
-    use libcrux_ml_kem::*;
+    use test_foo_bar_ml_kem::*;
 
     let EncapDecapTests { prompts, results } = EncapDecapTests::load();
     assert!(prompts.algorithm == "ML-KEM");

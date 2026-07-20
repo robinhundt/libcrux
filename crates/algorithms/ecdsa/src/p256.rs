@@ -1,6 +1,6 @@
 //! ECDSA on P-256
 
-use libcrux_p256::{
+use test_foo_bar_p256::{
     compressed_to_raw, ecdsa_sign_p256_sha2, ecdsa_sign_p256_sha384, ecdsa_sign_p256_sha512,
     ecdsa_verif_p256_sha2, ecdsa_verif_p256_sha384, ecdsa_verif_p256_sha512, uncompressed_to_raw,
     validate_private_key, validate_public_key,
@@ -278,7 +278,7 @@ fn _sign(
         DigestAlgorithm::Sha512 => {
             ecdsa_sign_p256_sha512(&mut signature, len, payload, private_key.as_ref(), &nonce.0)
         }
-        libcrux_sha2::Algorithm::Sha224 => return Err(Error::UnsupportedHash),
+        test_foo_bar_sha2::Algorithm::Sha224 => return Err(Error::UnsupportedHash),
     };
 
     if !success {
@@ -338,16 +338,16 @@ pub fn verify(
     let len = u32_len(payload)?;
 
     let success = match hash {
-        libcrux_sha2::Algorithm::Sha256 => {
+        test_foo_bar_sha2::Algorithm::Sha256 => {
             ecdsa_verif_p256_sha2(len, payload, &public_key.0, &signature.r, &signature.s)
         }
-        libcrux_sha2::Algorithm::Sha384 => {
+        test_foo_bar_sha2::Algorithm::Sha384 => {
             ecdsa_verif_p256_sha384(len, payload, &public_key.0, &signature.r, &signature.s)
         }
-        libcrux_sha2::Algorithm::Sha512 => {
+        test_foo_bar_sha2::Algorithm::Sha512 => {
             ecdsa_verif_p256_sha512(len, payload, &public_key.0, &signature.r, &signature.s)
         }
-        libcrux_sha2::Algorithm::Sha224 => return Err(Error::UnsupportedHash),
+        test_foo_bar_sha2::Algorithm::Sha224 => return Err(Error::UnsupportedHash),
     };
 
     if success {

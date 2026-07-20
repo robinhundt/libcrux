@@ -33,20 +33,20 @@ pub enum HandshakeError {
     InvalidDHSecret,
 }
 
-impl From<libcrux_ed25519::Error> for HandshakeError {
-    fn from(_value: libcrux_ed25519::Error) -> Self {
+impl From<test_foo_bar_ed25519::Error> for HandshakeError {
+    fn from(_value: test_foo_bar_ed25519::Error) -> Self {
         Self::CryptoError
     }
 }
 
-impl From<libcrux_ml_dsa::SigningError> for HandshakeError {
-    fn from(_value: libcrux_ml_dsa::SigningError) -> Self {
+impl From<test_foo_bar_ml_dsa::SigningError> for HandshakeError {
+    fn from(_value: test_foo_bar_ml_dsa::SigningError) -> Self {
         Self::CryptoError
     }
 }
 
-impl From<libcrux_ml_dsa::VerificationError> for HandshakeError {
-    fn from(_value: libcrux_ml_dsa::VerificationError) -> Self {
+impl From<test_foo_bar_ml_dsa::VerificationError> for HandshakeError {
+    fn from(_value: test_foo_bar_ml_dsa::VerificationError) -> Self {
         Self::CryptoError
     }
 }

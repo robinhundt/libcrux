@@ -1,5 +1,5 @@
-use cavp::*;
-use libcrux_sha3::*;
+use test_foo_bar_cavp::*;
+use test_foo_bar_sha3::*;
 
 macro_rules! sha3_test {
     ($file:ident, $digest_len:expr, $algorithm:expr) => {
@@ -8,7 +8,7 @@ macro_rules! sha3_test {
         fn $file() {
             let file = "tests/tv/".to_string();
             let file = file + stringify!($file) + ".rsp";
-            let tv: TestVector<cavp::Sha3> = read_file(&file).unwrap();
+            let tv: TestVector<test_foo_bar_cavp::Sha3> = read_file(&file).unwrap();
 
             let mut c = 0;
             for test in &tv.tests {
@@ -40,7 +40,7 @@ macro_rules! shake_test {
             let _ = pretty_env_logger::try_init();
             let file = "tests/tv/".to_string();
             let file = file + stringify!($file) + ".rsp";
-            let tv: TestVector<cavp::ShakeMsg> = read_file(&file).unwrap();
+            let tv: TestVector<test_foo_bar_cavp::ShakeMsg> = read_file(&file).unwrap();
 
             let mut c = 0;
             for test in &tv.tests {
@@ -68,7 +68,7 @@ macro_rules! shake_vo_test {
             let _ = pretty_env_logger::try_init();
             let file = "tests/tv/".to_string();
             let file = file + stringify!($file) + ".rsp";
-            let tv: TestVector<cavp::ShakeVariableOut> = read_file(&file).unwrap();
+            let tv: TestVector<test_foo_bar_cavp::ShakeVariableOut> = read_file(&file).unwrap();
 
             let mut c = 0;
             for test in &tv.tests {
@@ -89,11 +89,11 @@ macro_rules! shake_vo_test_incremental {
         #[test]
         #[allow(non_snake_case)]
         fn $name() {
-            use libcrux_sha3::portable::incremental::Xof;
+            use test_foo_bar_sha3::portable::incremental::Xof;
             let _ = pretty_env_logger::try_init();
             let file = "tests/tv/".to_string();
             let file = file + stringify!($file) + ".rsp";
-            let tv: TestVector<cavp::ShakeVariableOut> = read_file(&file).unwrap();
+            let tv: TestVector<test_foo_bar_cavp::ShakeVariableOut> = read_file(&file).unwrap();
 
             let mut c = 0;
             for test in &tv.tests {
@@ -111,10 +111,10 @@ macro_rules! shake_vo_test_incremental {
 shake_vo_test_incremental!(
     SHAKE128VariableOut_incremental,
     SHAKE128VariableOut,
-    libcrux_sha3::portable::incremental::Shake128Xof
+    test_foo_bar_sha3::portable::incremental::Shake128Xof
 );
 shake_vo_test_incremental!(
     SHAKE256VariableOut_incremental,
     SHAKE256VariableOut,
-    libcrux_sha3::portable::incremental::Shake256Xof
+    test_foo_bar_sha3::portable::incremental::Shake256Xof
 );

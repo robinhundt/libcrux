@@ -1,4 +1,4 @@
-use libcrux_kem::{MlKem768PrivateKey, MlKem768PublicKey};
+use test_foo_bar_kem::{MlKem768PrivateKey, MlKem768PublicKey};
 
 #[cfg(feature = "classic-mceliece")]
 use crate::classic_mceliece::{PublicKey, SecretKey};
@@ -110,14 +110,14 @@ impl<'a> ResponderCiphersuite<'a> {
                     return Err(HandshakeError::CryptoError);
                 };
                 let shared_secret =
-                    libcrux_ml_kem::mlkem768::decapsulate(ml_kem_private_key, inner_ctxt);
+                    test_foo_bar_ml_kem::mlkem768::decapsulate(ml_kem_private_key, inner_ctxt);
 
                 Ok(PQSharedSecret::MlKem(shared_secret))
             }
             #[cfg(feature = "classic-mceliece")]
             PqKemKeyPair::Cmc(secret_key, _) => {
                 use crate::classic_mceliece::ClassicMcEliece;
-                use libcrux_traits::kem::KEM;
+                use test_foo_bar_traits::kem::KEM;
 
                 let PQCiphertext::CMC(inner_ctxt) = ciphertext else {
                     return Err(HandshakeError::CryptoError);

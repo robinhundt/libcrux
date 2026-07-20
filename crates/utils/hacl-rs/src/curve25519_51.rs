@@ -4,7 +4,7 @@
 #![allow(unused_assignments)]
 #![allow(unreachable_patterns)]
 
-use libcrux_macros as krml;
+use test_foo_bar_macros as krml;
 
 use crate::fstar;
 use crate::lowstar;

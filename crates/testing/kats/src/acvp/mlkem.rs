@@ -5,7 +5,7 @@
 //!
 //! ### Example usage
 //! ```rust
-//! use libcrux_kats::acvp::mlkem::{
+//! use test_foo_bar_kats::acvp::mlkem::{
 //!     KeyGenTests, EncapDecapTests, encap_decap_schema::EncapDecapTestPrompts
 //! };
 //!

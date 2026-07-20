@@ -65,9 +65,9 @@ macro_rules! parameter_set {
                 signing_key: &mut [u8; SIGNING_KEY_SIZE],
                 verification_key: &mut [u8; VERIFICATION_KEY_SIZE],
             ) {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     generate_key_pair_avx2(randomness, signing_key, verification_key);
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     generate_key_pair_neon(randomness, signing_key, verification_key);
                 } else {
                     instantiations::portable::$parameter_module::generate_key_pair(
@@ -84,9 +84,9 @@ macro_rules! parameter_set {
                 message: &[u8],
                 randomness: [u8; SIGNING_RANDOMNESS_SIZE],
             ) -> Result<MLDSASignature<SIGNATURE_SIZE>, SigningError> {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     sign_internal_avx2(signing_key, message, randomness)
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     sign_internal_neon(signing_key, message, randomness)
                 } else {
                     instantiations::portable::$parameter_module::sign_internal(
@@ -103,9 +103,9 @@ macro_rules! parameter_set {
                 context: &[u8],
                 randomness: [u8; SIGNING_RANDOMNESS_SIZE],
             ) -> Result<MLDSASignature<SIGNATURE_SIZE>, SigningError> {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     sign_avx2(signing_key, message, context, randomness)
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     sign_neon(signing_key, message, context, randomness)
                 } else {
                     instantiations::portable::$parameter_module::sign(
@@ -124,7 +124,7 @@ macro_rules! parameter_set {
                 pre_hash_buffer: &mut [u8],
                 randomness: [u8; SIGNING_RANDOMNESS_SIZE],
             ) -> Result<MLDSASignature<SIGNATURE_SIZE>, SigningError> {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     sign_pre_hashed_shake128_avx2(
                         signing_key,
                         message,
@@ -132,7 +132,7 @@ macro_rules! parameter_set {
                         pre_hash_buffer,
                         randomness,
                     )
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     sign_pre_hashed_shake128_neon(
                         signing_key,
                         message,
@@ -157,9 +157,9 @@ macro_rules! parameter_set {
                 message: &[u8],
                 signature_serialized: &[u8; SIGNATURE_SIZE],
             ) -> Result<(), VerificationError> {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     verify_internal_avx2(verification_key_serialized, message, signature_serialized)
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     verify_internal_neon(verification_key_serialized, message, signature_serialized)
                 } else {
                     instantiations::portable::$parameter_module::verify_internal(
@@ -176,14 +176,14 @@ macro_rules! parameter_set {
                 context: &[u8],
                 signature_serialized: &[u8; SIGNATURE_SIZE],
             ) -> Result<(), VerificationError> {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     verify_avx2(
                         verification_key_serialized,
                         message,
                         context,
                         signature_serialized,
                     )
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     verify_neon(
                         verification_key_serialized,
                         message,
@@ -207,7 +207,7 @@ macro_rules! parameter_set {
                 pre_hash_buffer: &mut [u8],
                 signature_serialized: &[u8; SIGNATURE_SIZE],
             ) -> Result<(), VerificationError> {
-                if libcrux_platform::simd256_support() {
+                if test_foo_bar_platform::simd256_support() {
                     verify_pre_hashed_shake128_avx2(
                         verification_key_serialized,
                         message,
@@ -215,7 +215,7 @@ macro_rules! parameter_set {
                         pre_hash_buffer,
                         signature_serialized,
                     )
-                } else if libcrux_platform::simd128_support() {
+                } else if test_foo_bar_platform::simd128_support() {
                     verify_pre_hashed_shake128_neon(
                         verification_key_serialized,
                         message,

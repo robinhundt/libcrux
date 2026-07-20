@@ -1,4 +1,4 @@
-use libcrux_intrinsics::avx2::*;
+use test_foo_bar_intrinsics::avx2::*;
 
 #[inline(always)]
 #[hax_lib::fstar::options("--z3rlimit 800")]
@@ -51,7 +51,7 @@ pub(crate) fn serialize(simd_unit: &Vec256, out: &mut [u8]) {
    forall (j:nat).
     j < 256 ==>
     j % 32 > 10 ==>
-       ${out}_future.(mk_int j) == Libcrux_core_models.Abstractions.Bit.Bit_Zero
+       ${out}_future.(mk_int j) == Libcrux_test_foo_bar_core_models.Abstractions.Bit.Bit_Zero
   )"))]
 pub(crate) fn deserialize(bytes: &[u8], out: &mut Vec256) {
     #[cfg(not(eurydice))]

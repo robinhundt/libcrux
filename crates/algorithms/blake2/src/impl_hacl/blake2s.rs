@@ -3,7 +3,7 @@ extern crate alloc;
 use alloc::boxed::Box;
 use core::marker::PhantomData;
 
-use libcrux_hacl_rs::streaming_types::error_code;
+use test_foo_bar_hacl_rs::streaming_types::error_code;
 
 use crate::hacl::hash_blake2b::{blake2_params, index, params_and_key};
 use crate::hacl::hash_blake2s::{digest, malloc_raw, reset, reset_with_key, state_t, update0};

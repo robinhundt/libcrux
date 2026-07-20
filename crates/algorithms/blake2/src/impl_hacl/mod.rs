@@ -33,7 +33,7 @@ pub struct Dynamic;
 /// # Example
 ///
 /// ```
-/// use libcrux_blake2::{Blake2b, Blake2bBuilder, LengthBounds, SupportsKeyLen, SupportsOutLen};
+/// use test_foo_bar_blake2::{Blake2b, Blake2bBuilder, LengthBounds, SupportsKeyLen, SupportsOutLen};
 ///
 /// // A function that does a keyed Blake2b and only accepts valid key lengths
 /// fn keyed_hash<const KEY_LEN: usize>(key: &[u8; KEY_LEN], msg: &[u8]) -> [u8; 32]

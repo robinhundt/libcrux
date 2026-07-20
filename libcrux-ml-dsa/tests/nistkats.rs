@@ -44,13 +44,13 @@ macro_rules! impl_nist_known_answer_tests {
                 let key_pair = $key_gen(kat.key_generation_seed);
 
                 let verification_key_hash =
-                    libcrux_sha3::sha256(key_pair.verification_key.as_ref());
+                    test_foo_bar_sha3::sha256(key_pair.verification_key.as_ref());
                 assert_eq!(
                     verification_key_hash, kat.sha3_256_hash_of_verification_key,
                     "verification_key_hash != kat.sha3_256_hash_of_verification_key"
                 );
 
-                let signing_key_hash = libcrux_sha3::sha256(key_pair.signing_key.as_ref());
+                let signing_key_hash = test_foo_bar_sha3::sha256(key_pair.signing_key.as_ref());
                 assert_eq!(
                     signing_key_hash, kat.sha3_256_hash_of_signing_key,
                     "signing_key_hash != kat.sha3_256_hash_of_signing_key"
@@ -61,7 +61,7 @@ macro_rules! impl_nist_known_answer_tests {
                 let signature = $sign(&key_pair.signing_key, &message, b"", kat.signing_randomness)
                     .expect("Rejection sampling failure probability is < 2⁻¹²⁸");
 
-                let signature_hash = libcrux_sha3::sha256(signature.as_ref());
+                let signature_hash = test_foo_bar_sha3::sha256(signature.as_ref());
                 assert_eq!(
                     signature_hash, kat.sha3_256_hash_of_signature,
                     "signature_hash != kat.sha3_256_hash_of_signature"
@@ -87,13 +87,13 @@ macro_rules! impl_nist_known_answer_tests {
                 let key_pair = $key_gen(kat.key_generation_seed);
 
                 let verification_key_hash =
-                    libcrux_sha3::sha256(key_pair.verification_key.as_ref());
+                    test_foo_bar_sha3::sha256(key_pair.verification_key.as_ref());
                 assert_eq!(
                     verification_key_hash, kat.sha3_256_hash_of_verification_key,
                     "verification_key_hash != kat.sha3_256_hash_of_verification_key"
                 );
 
-                let signing_key_hash = libcrux_sha3::sha256(key_pair.signing_key.as_ref());
+                let signing_key_hash = test_foo_bar_sha3::sha256(key_pair.signing_key.as_ref());
                 assert_eq!(
                     signing_key_hash, kat.sha3_256_hash_of_signing_key,
                     "signing_key_hash != kat.sha3_256_hash_of_signing_key"
@@ -105,7 +105,7 @@ macro_rules! impl_nist_known_answer_tests {
                     $sign_pre_hashed(&key_pair.signing_key, &message, b"", kat.signing_randomness)
                         .expect("Rejection sampling failure probability is < 2⁻¹²⁸");
 
-                let signature_hash = libcrux_sha3::sha256(signature.as_ref());
+                let signature_hash = test_foo_bar_sha3::sha256(signature.as_ref());
                 assert_eq!(
                     signature_hash, kat.sha3_256_hash_of_signature,
                     "signature_hash != kat.sha3_256_hash_of_signature"
@@ -125,11 +125,11 @@ impl_nist_known_answer_tests!(
     nist_known_answer_tests_44,
     nist_known_answer_tests_pre_hashed_44,
     44,
-    libcrux_ml_dsa::ml_dsa_44::generate_key_pair,
-    libcrux_ml_dsa::ml_dsa_44::sign,
-    libcrux_ml_dsa::ml_dsa_44::verify,
-    libcrux_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
-    libcrux_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
+    test_foo_bar_ml_dsa::ml_dsa_44::generate_key_pair,
+    test_foo_bar_ml_dsa::ml_dsa_44::sign,
+    test_foo_bar_ml_dsa::ml_dsa_44::verify,
+    test_foo_bar_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
+    test_foo_bar_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
 );
 
 #[cfg(feature = "mldsa44")]
@@ -137,11 +137,11 @@ impl_nist_known_answer_tests!(
     nist_known_answer_tests_44_portable,
     nist_known_answer_tests_pre_hashed_44_portable,
     44,
-    libcrux_ml_dsa::ml_dsa_44::portable::generate_key_pair,
-    libcrux_ml_dsa::ml_dsa_44::portable::sign,
-    libcrux_ml_dsa::ml_dsa_44::portable::verify,
-    libcrux_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
-    libcrux_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
+    test_foo_bar_ml_dsa::ml_dsa_44::portable::generate_key_pair,
+    test_foo_bar_ml_dsa::ml_dsa_44::portable::sign,
+    test_foo_bar_ml_dsa::ml_dsa_44::portable::verify,
+    test_foo_bar_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
+    test_foo_bar_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
 );
 
 #[cfg(all(feature = "simd128", feature = "mldsa44"))]
@@ -149,11 +149,11 @@ impl_nist_known_answer_tests!(
     nist_known_answer_tests_44_simd128,
     nist_known_answer_tests_pre_hashed_44_simd128,
     44,
-    libcrux_ml_dsa::ml_dsa_44::neon::generate_key_pair,
-    libcrux_ml_dsa::ml_dsa_44::neon::sign,
-    libcrux_ml_dsa::ml_dsa_44::neon::verify,
-    libcrux_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
-    libcrux_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
+    test_foo_bar_ml_dsa::ml_dsa_44::neon::generate_key_pair,
+    test_foo_bar_ml_dsa::ml_dsa_44::neon::sign,
+    test_foo_bar_ml_dsa::ml_dsa_44::neon::verify,
+    test_foo_bar_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
+    test_foo_bar_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
 );
 
 #[cfg(all(feature = "simd256", feature = "mldsa44"))]
@@ -161,11 +161,11 @@ impl_nist_known_answer_tests!(
     nist_known_answer_tests_44_simd256,
     nist_known_answer_tests_pre_hashed_44_simd256,
     44,
-    libcrux_ml_dsa::ml_dsa_44::avx2::generate_key_pair,
-    libcrux_ml_dsa::ml_dsa_44::avx2::sign,
-    libcrux_ml_dsa::ml_dsa_44::avx2::verify,
-    libcrux_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
-    libcrux_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
+    test_foo_bar_ml_dsa::ml_dsa_44::avx2::generate_key_pair,
+    test_foo_bar_ml_dsa::ml_dsa_44::avx2::sign,
+    test_foo_bar_ml_dsa::ml_dsa_44::avx2::verify,
+    test_foo_bar_ml_dsa::ml_dsa_44::sign_pre_hashed_shake128,
+    test_foo_bar_ml_dsa::ml_dsa_44::verify_pre_hashed_shake128
 );
 
 // 65
@@ -174,11 +174,11 @@ impl_nist_known_answer_tests!(
     nist_known_answer_tests_65,
     nist_known_answer_tests_pre_hashed_65,
     65,
-    libcrux_ml_dsa::ml_dsa_65::generate_key_pair,
-    libcrux_ml_dsa::ml_dsa_65::sign,
-    libcrux_ml_dsa::ml_dsa_65::verify,
-    libcrux_ml_dsa::ml_dsa_65::sign_pre_hashed_shake128,
-    libcrux_ml_dsa::ml_dsa_65::verify_pre_hashed_shake128
+    test_foo_bar_ml_dsa::ml_dsa_65::generate_key_pair,
+    test_foo_bar_ml_dsa::ml_dsa_65::sign,
+    test_foo_bar_ml_dsa::ml_dsa_65::verify,
+    test_foo_bar_ml_dsa::ml_dsa_65::sign_pre_hashed_shake128,
+    test_foo_bar_ml_dsa::ml_dsa_65::verify_pre_hashed_shake128
 );
 
 // 87
@@ -187,9 +187,9 @@ impl_nist_known_answer_tests!(
     nist_known_answer_tests_87,
     nist_known_answer_tests_pre_hashed_87,
     87,
-    libcrux_ml_dsa::ml_dsa_87::generate_key_pair,
-    libcrux_ml_dsa::ml_dsa_87::sign,
-    libcrux_ml_dsa::ml_dsa_87::verify,
-    libcrux_ml_dsa::ml_dsa_87::sign_pre_hashed_shake128,
-    libcrux_ml_dsa::ml_dsa_87::verify_pre_hashed_shake128
+    test_foo_bar_ml_dsa::ml_dsa_87::generate_key_pair,
+    test_foo_bar_ml_dsa::ml_dsa_87::sign,
+    test_foo_bar_ml_dsa::ml_dsa_87::verify,
+    test_foo_bar_ml_dsa::ml_dsa_87::sign_pre_hashed_shake128,
+    test_foo_bar_ml_dsa::ml_dsa_87::verify_pre_hashed_shake128
 );

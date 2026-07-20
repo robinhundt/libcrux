@@ -5,7 +5,7 @@ mod test_vectors;
 use crate::test_vectors::{
     DIGEST_LEN_SHAKE128, DIGEST_LEN_SHAKE256, STRING_LEN_SHAKE128, STRING_LEN_SHAKE256,
 };
-use libcrux_sha3::avx2::x4::incremental;
+use test_foo_bar_sha3::avx2::x4::incremental;
 
 #[test]
 fn sha3_shake128_squeeze_first_three_next_block() {

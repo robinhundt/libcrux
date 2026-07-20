@@ -1,4 +1,4 @@
-use libcrux_ml_dsa::{ml_dsa_44, ml_dsa_65, ml_dsa_87};
+use test_foo_bar_ml_dsa::{ml_dsa_44, ml_dsa_65, ml_dsa_87};
 use rand::{rngs::SysRng, RngExt, TryRng};
 
 fn random_array<const L: usize>() -> [u8; L] {
@@ -525,7 +525,7 @@ fn mask_exceeds_norm() {
     let sig = ml_dsa_65::MLDSA65Signature::new(bad_sig);
     assert!(matches!(
         ml_dsa_65::verify(&vk, &msg, b"", &sig),
-        Err(libcrux_ml_dsa::VerificationError::SignerResponseExceedsBoundError)
+        Err(test_foo_bar_ml_dsa::VerificationError::SignerResponseExceedsBoundError)
     ));
 }
 
@@ -581,7 +581,7 @@ fn bad_hint() {
     eprintln!("result: {result:?}");
     assert!(matches!(
         result,
-        Err(libcrux_ml_dsa::VerificationError::MalformedHintError),
+        Err(test_foo_bar_ml_dsa::VerificationError::MalformedHintError),
     ));
 }
 
@@ -613,6 +613,6 @@ fn bad_hint_out_of_bounds() {
     eprintln!("result: {result:?}");
     assert!(matches!(
         result,
-        Err(libcrux_ml_dsa::VerificationError::MalformedHintError),
+        Err(test_foo_bar_ml_dsa::VerificationError::MalformedHintError),
     ));
 }

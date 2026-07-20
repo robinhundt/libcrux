@@ -2,7 +2,7 @@
 //! Encryption with Associated Data (AEAD) scheme that takes slices
 //! as arguments and writes outputs to mutable slices.
 
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 /// An Authenticated Encryption with Associated Data (AEAD) scheme.
 ///
@@ -185,10 +185,10 @@ macro_rules! impl_aead_slice_trait {
     ($type:ty => $key:expr, $tag:expr, $nonce:expr) => {
         impl $crate::aead::slice::Aead for $type {
             fn keygen(
-                key: &mut [$crate::libcrux_secrets::U8],
-                rand: &[$crate::libcrux_secrets::U8],
+                key: &mut [$crate::test_foo_bar_secrets::U8],
+                rand: &[$crate::test_foo_bar_secrets::U8],
             ) -> Result<(), $crate::aead::slice::KeyGenError> {
-                let key: &mut [$crate::libcrux_secrets::U8; $key] = key
+                let key: &mut [$crate::test_foo_bar_secrets::U8; $key] = key
                     .try_into()
                     .map_err(|_| $crate::aead::slice::KeyGenError::WrongKeyLength)?;
                 if rand.len() < $key {
@@ -200,19 +200,19 @@ macro_rules! impl_aead_slice_trait {
 
             fn encrypt(
                 ciphertext: &mut [u8],
-                tag: &mut [$crate::libcrux_secrets::U8],
-                key: &[$crate::libcrux_secrets::U8],
-                nonce: &[$crate::libcrux_secrets::U8],
+                tag: &mut [$crate::test_foo_bar_secrets::U8],
+                key: &[$crate::test_foo_bar_secrets::U8],
+                nonce: &[$crate::test_foo_bar_secrets::U8],
                 aad: &[u8],
-                plaintext: &[$crate::libcrux_secrets::U8],
+                plaintext: &[$crate::test_foo_bar_secrets::U8],
             ) -> Result<(), $crate::aead::slice::EncryptError> {
-                let key: &[$crate::libcrux_secrets::U8; $key] = key
+                let key: &[$crate::test_foo_bar_secrets::U8; $key] = key
                     .try_into()
                     .map_err(|_| $crate::aead::slice::EncryptError::WrongKeyLength)?;
-                let tag: &mut [$crate::libcrux_secrets::U8; $tag] = tag
+                let tag: &mut [$crate::test_foo_bar_secrets::U8; $tag] = tag
                     .try_into()
                     .map_err(|_| $crate::aead::slice::EncryptError::WrongTagLength)?;
-                let nonce: &[$crate::libcrux_secrets::U8; $nonce] = nonce
+                let nonce: &[$crate::test_foo_bar_secrets::U8; $nonce] = nonce
                     .try_into()
                     .map_err(|_| $crate::aead::slice::EncryptError::WrongNonceLength)?;
 
@@ -223,20 +223,20 @@ macro_rules! impl_aead_slice_trait {
             }
 
             fn decrypt(
-                plaintext: &mut [$crate::libcrux_secrets::U8],
-                key: &[$crate::libcrux_secrets::U8],
-                nonce: &[$crate::libcrux_secrets::U8],
+                plaintext: &mut [$crate::test_foo_bar_secrets::U8],
+                key: &[$crate::test_foo_bar_secrets::U8],
+                nonce: &[$crate::test_foo_bar_secrets::U8],
                 aad: &[u8],
                 ciphertext: &[u8],
-                tag: &[$crate::libcrux_secrets::U8],
+                tag: &[$crate::test_foo_bar_secrets::U8],
             ) -> Result<(), $crate::aead::slice::DecryptError> {
-                let key: &[$crate::libcrux_secrets::U8; $key] = key
+                let key: &[$crate::test_foo_bar_secrets::U8; $key] = key
                     .try_into()
                     .map_err(|_| $crate::aead::slice::DecryptError::WrongKeyLength)?;
-                let tag: &[$crate::libcrux_secrets::U8; $tag] = tag
+                let tag: &[$crate::test_foo_bar_secrets::U8; $tag] = tag
                     .try_into()
                     .map_err(|_| $crate::aead::slice::DecryptError::WrongTagLength)?;
-                let nonce: &[$crate::libcrux_secrets::U8; $nonce] = nonce
+                let nonce: &[$crate::test_foo_bar_secrets::U8; $nonce] = nonce
                     .try_into()
                     .map_err(|_| $crate::aead::slice::DecryptError::WrongNonceLength)?;
 

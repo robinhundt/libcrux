@@ -1,5 +1,5 @@
-use libcrux_secrets::U8;
-use libcrux_traits::aead::arrayref::{Aead, DecryptError, EncryptError, KeyGenError};
+use test_foo_bar_secrets::U8;
+use test_foo_bar_traits::aead::arrayref::{Aead, DecryptError, EncryptError, KeyGenError};
 
 use crate::{KEY_LEN, NONCE_LEN, TAG_LEN};
 
@@ -18,9 +18,9 @@ pub struct ChaCha20Poly1305;
 pub struct XChaCha20Poly1305;
 
 mod impl_chachapoly {
-    use libcrux_secrets::DeclassifyRef;
-    use libcrux_secrets::DeclassifyRefMut;
-    use libcrux_traits::aead::consts::AeadConsts;
+    use test_foo_bar_secrets::DeclassifyRef;
+    use test_foo_bar_secrets::DeclassifyRefMut;
+    use test_foo_bar_traits::aead::consts::AeadConsts;
 
     use super::*;
 
@@ -105,15 +105,15 @@ mod impl_chachapoly {
         }
     }
 
-    // Implements the traits in libcrux_traits::aead::slice based on
-    // libcrux_traits::aead::arrayref:Aead.
+    // Implements the traits in test_foo_bar_traits::aead::slice based on
+    // test_foo_bar_traits::aead::arrayref:Aead.
     // This way we can use slices as keys, tags and nonces instead of array references.
-    libcrux_traits::aead::slice::impl_aead_slice_trait!(ChaCha20Poly1305 => KEY_LEN, TAG_LEN, NONCE_LEN);
+    test_foo_bar_traits::aead::slice::impl_aead_slice_trait!(ChaCha20Poly1305 => KEY_LEN, TAG_LEN, NONCE_LEN);
 
-    // Implements the traits in libcrux_traits::aead::typed_owned based on
-    // libcrux_traits::aead::arrayref:Aead.
+    // Implements the traits in test_foo_bar_traits::aead::typed_owned based on
+    // test_foo_bar_traits::aead::arrayref:Aead.
     // This way we can use the user-facing key-centric APIs.
-    libcrux_traits::aead::typed_owned::impl_aead_typed_owned!(
+    test_foo_bar_traits::aead::typed_owned::impl_aead_typed_owned!(
         ChaCha20Poly1305,
         KEY_LEN,
         TAG_LEN,
@@ -122,8 +122,8 @@ mod impl_chachapoly {
 }
 
 mod impl_xchachapoly {
-    use libcrux_secrets::{Classify, DeclassifyRef, DeclassifyRefMut};
-    use libcrux_traits::aead::consts::AeadConsts;
+    use test_foo_bar_secrets::{Classify, DeclassifyRef, DeclassifyRefMut};
+    use test_foo_bar_traits::aead::consts::AeadConsts;
 
     use crate::xchacha20_poly1305::NONCE_LEN as XNONCE_LEN;
 
@@ -184,8 +184,8 @@ mod impl_xchachapoly {
         }
     }
 
-    libcrux_traits::aead::slice::impl_aead_slice_trait!(XChaCha20Poly1305 => KEY_LEN, TAG_LEN, XNONCE_LEN);
-    libcrux_traits::aead::typed_owned::impl_aead_typed_owned!(
+    test_foo_bar_traits::aead::slice::impl_aead_slice_trait!(XChaCha20Poly1305 => KEY_LEN, TAG_LEN, XNONCE_LEN);
+    test_foo_bar_traits::aead::typed_owned::impl_aead_typed_owned!(
         XChaCha20Poly1305,
         KEY_LEN,
         TAG_LEN,
@@ -195,11 +195,11 @@ mod impl_xchachapoly {
 
 #[cfg(test)]
 mod tests {
-    use libcrux_secrets::Classify;
-    use libcrux_secrets::ClassifyRef;
-    use libcrux_secrets::DeclassifyRef;
-    use libcrux_traits::aead::typed_owned;
-    use libcrux_traits::aead::typed_refs;
+    use test_foo_bar_secrets::Classify;
+    use test_foo_bar_secrets::ClassifyRef;
+    use test_foo_bar_secrets::DeclassifyRef;
+    use test_foo_bar_traits::aead::typed_owned;
+    use test_foo_bar_traits::aead::typed_refs;
 
     type Key = typed_owned::Key<super::ChaCha20Poly1305>;
     type Nonce = typed_owned::Nonce<super::ChaCha20Poly1305>;

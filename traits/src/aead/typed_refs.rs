@@ -2,7 +2,7 @@
 //! Encryption with Associated Data (AEAD) scheme that takes array references
 //! as arguments and writes outputs to mutable array references.
 
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 use super::slice::KeyGenError;
 

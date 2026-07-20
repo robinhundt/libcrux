@@ -78,7 +78,7 @@ pub(crate) mod alloc {
     >(
         randomness: [u8; KEY_GENERATION_SEED_SIZE],
     ) -> Box<dyn Keys> {
-        if libcrux_platform::simd256_support() {
+        if test_foo_bar_platform::simd256_support() {
             // This is only unsafe on avx2 platforms
             #[allow(unsafe_code, unused_unsafe)]
             let keys = unsafe {
@@ -93,7 +93,7 @@ pub(crate) mod alloc {
                 >(randomness)
             };
             Box::new(keys)
-        } else if libcrux_platform::simd128_support() {
+        } else if test_foo_bar_platform::simd128_support() {
             Box::new(generate_keypair_neon::<
                 K,
                 CPA_PRIVATE_KEY_SIZE,
@@ -135,7 +135,7 @@ pub(crate) mod alloc {
         Box<dyn State>,
         [u8; SHARED_SECRET_SIZE],
     ) {
-        if libcrux_platform::simd256_support() {
+        if test_foo_bar_platform::simd256_support() {
             // This is only unsafe on avx2 platforms
             #[allow(unsafe_code, unused_unsafe)]
             let (c, s, ss) = unsafe {
@@ -152,7 +152,7 @@ pub(crate) mod alloc {
                 >(public_key_part, randomness)
             };
             (c, Box::new(s), ss)
-        } else if libcrux_platform::simd128_support() {
+        } else if test_foo_bar_platform::simd128_support() {
             let (c, s, ss) = encapsulate1_neon::<
                 K,
                 CIPHERTEXT_SIZE,
@@ -191,7 +191,7 @@ pub(crate) mod alloc {
         state: &dyn State,
         public_key_part: &[u8],
     ) -> Result<Ciphertext2<C2_SIZE>, Error> {
-        if libcrux_platform::simd256_support() {
+        if test_foo_bar_platform::simd256_support() {
             let as_avx2_state = as_avx2_state(state.as_any());
             let state = as_avx2_state;
             let pk2 = PublicKey2::try_from(public_key_part)?;
@@ -202,7 +202,7 @@ pub(crate) mod alloc {
                 encapsulate2_avx2::<K, PK2_LEN, C2_SIZE, VECTOR_V_COMPRESSION_FACTOR>(state, &pk2)
             };
             Ok(ct)
-        } else if libcrux_platform::simd128_support() {
+        } else if test_foo_bar_platform::simd128_support() {
             let state = as_neon_state(state.as_any());
             let pk2 = PublicKey2::try_from(public_key_part)?;
             Ok(encapsulate2_neon::<
@@ -246,7 +246,7 @@ pub(crate) mod alloc {
         ciphertext1: &Ciphertext1<C1_SIZE>,
         ciphertext2: &Ciphertext2<C2_SIZE>,
     ) -> MlKemSharedSecret {
-        if libcrux_platform::simd256_support() {
+        if test_foo_bar_platform::simd256_support() {
             let private_key = as_avx2_keypair(private_key.as_any());
 
             // This is only unsafe on avx2 platforms
@@ -271,7 +271,7 @@ pub(crate) mod alloc {
                     IMPLICIT_REJECTION_HASH_INPUT_SIZE,
                 >(private_key, ciphertext1, ciphertext2)
             }
-        } else if libcrux_platform::simd128_support() {
+        } else if test_foo_bar_platform::simd128_support() {
             let private_key = as_neon_keypair(private_key.as_any());
             decapsulate_neon::<
                 K,
@@ -329,7 +329,7 @@ pub(crate) fn generate_keypair<
     randomness: [u8; KEY_GENERATION_SEED_SIZE],
     key_pair: &mut [u8],
 ) -> Result<(), Error> {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
@@ -344,7 +344,7 @@ pub(crate) fn generate_keypair<
                 ETA1_RANDOMNESS_SIZE,
             >(randomness, key_pair)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         generate_keypair_serialized_neon::<
             K,
             PK2_LEN,
@@ -384,7 +384,7 @@ pub(crate) fn generate_keypair_compressed<
     randomness: [u8; KEY_GENERATION_SEED_SIZE],
     key_pair: &mut [u8; KEYPAIR_LEN],
 ) {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
@@ -400,7 +400,7 @@ pub(crate) fn generate_keypair_compressed<
                 KEYPAIR_LEN,
             >(randomness, key_pair)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         generate_keypair_compressed_neon::<
             K,
             PK2_LEN,
@@ -432,13 +432,13 @@ pub(crate) fn validate_pk<const K: usize, const PK_LEN: usize>(
     pk1: &PublicKey1,
     pk2: &[u8],
 ) -> Result<(), Error> {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
             validate_pk_avx2::<K, PK_LEN>(pk1, pk2)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         validate_pk_neon::<K, PK_LEN>(pk1, pk2)
     } else {
         portable::validate_pk::<K, PK_LEN>(pk1, pk2)
@@ -450,13 +450,13 @@ pub(crate) fn validate_pk_bytes<const K: usize, const PK_LEN: usize>(
     pk1: &[u8],
     pk2: &[u8],
 ) -> Result<(), Error> {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
             validate_pk_bytes_avx2::<K, PK_LEN>(pk1, pk2)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         validate_pk_bytes_neon::<K, PK_LEN>(pk1, pk2)
     } else {
         portable::validate_pk_bytes::<K, PK_LEN>(pk1, pk2)
@@ -480,7 +480,7 @@ pub(crate) fn encapsulate1<
     state: &mut [u8],
     shared_secret: &mut [u8],
 ) -> Result<Ciphertext1<C1_SIZE>, Error> {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
@@ -496,7 +496,7 @@ pub(crate) fn encapsulate1<
                 ETA2_RANDOMNESS_SIZE,
             >(public_key_part, randomness, state, shared_secret)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         encapsulate1_serialized_neon::<
             K,
             CIPHERTEXT_SIZE,
@@ -534,7 +534,7 @@ pub(crate) fn encapsulate2<
     state: &[u8; STATE_LEN],
     public_key_part: &[u8; PK2_LEN],
 ) -> Ciphertext2<C2_SIZE> {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         let pk2 = PublicKey2::from(public_key_part);
 
         // This is only unsafe on avx2 platforms
@@ -548,7 +548,7 @@ pub(crate) fn encapsulate2<
                 STATE_LEN,
             >(state, &pk2)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         let pk2 = PublicKey2::from(public_key_part);
         encapsulate2_serialized_neon::<K, PK2_LEN, C2_SIZE, VECTOR_V_COMPRESSION_FACTOR, STATE_LEN>(
             state, &pk2,
@@ -589,7 +589,7 @@ pub(crate) fn decapsulate<
     ciphertext1: &Ciphertext1<C1_SIZE>,
     ciphertext2: &Ciphertext2<C2_SIZE>,
 ) -> Result<MlKemSharedSecret, Error> {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
@@ -613,7 +613,7 @@ pub(crate) fn decapsulate<
                 IMPLICIT_REJECTION_HASH_INPUT_SIZE,
             >(private_key, ciphertext1, ciphertext2)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         decapsulate_incremental_key_neon::<
             K,
             PK2_LEN,
@@ -680,7 +680,7 @@ pub(crate) fn decapsulate_compressed<
     ciphertext1: &Ciphertext1<C1_SIZE>,
     ciphertext2: &Ciphertext2<C2_SIZE>,
 ) -> MlKemSharedSecret {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         // This is only unsafe on avx2 platforms
         #[allow(unsafe_code, unused_unsafe)]
         unsafe {
@@ -704,7 +704,7 @@ pub(crate) fn decapsulate_compressed<
                 IMPLICIT_REJECTION_HASH_INPUT_SIZE,
             >(private_key, ciphertext1, ciphertext2)
         }
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         decapsulate_compressed_key_neon::<
             K,
             PK2_LEN,

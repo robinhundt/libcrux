@@ -1,5 +1,5 @@
 use clap::Parser;
-use libcrux_sha3::*;
+use test_foo_bar_sha3::*;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about = "Computes SHA3 of a the given string.", long_about = None)]

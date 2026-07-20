@@ -1,4 +1,4 @@
-use libcrux_intrinsics::avx2::*;
+use test_foo_bar_intrinsics::avx2::*;
 
 use crate::{generic_keccak::KeccakState, traits::*};
 

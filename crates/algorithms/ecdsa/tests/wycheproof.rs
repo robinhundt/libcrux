@@ -1,5 +1,5 @@
 mod util;
-use libcrux_ecdsa::{
+use test_foo_bar_ecdsa::{
     p256::{self, PublicKey},
     DigestAlgorithm,
 };

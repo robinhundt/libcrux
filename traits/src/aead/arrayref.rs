@@ -2,7 +2,7 @@
 //! Encryption with Associated Data (AEAD) scheme that takes array references
 //! as arguments and writes outputs to mutable array references.
 
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 /// An Authenticated Encryption with Associated Data (AEAD) scheme. This trait
 /// is low-level and is mostly used for implementing other, more usable APIs.

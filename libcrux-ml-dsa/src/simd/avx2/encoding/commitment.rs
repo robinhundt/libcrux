@@ -1,4 +1,4 @@
-use libcrux_intrinsics::avx2::*;
+use test_foo_bar_intrinsics::avx2::*;
 
 #[hax_lib::ensures(|result| fstar!(r#"
       let open Spec.Intrinsics in

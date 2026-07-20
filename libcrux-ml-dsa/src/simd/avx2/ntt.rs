@@ -1,7 +1,7 @@
 use super::{arithmetic, AVX2RingElement, AVX2SIMDUnit};
 use crate::simd::traits::COEFFICIENTS_IN_SIMD_UNIT;
 
-use libcrux_intrinsics::avx2::*;
+use test_foo_bar_intrinsics::avx2::*;
 
 // Compute (a,b) ↦ (a + ζb, a - ζb) at layer 0 for 2 SIMD Units in one go.
 #[inline(always)]

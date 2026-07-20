@@ -1,7 +1,7 @@
 use std::{hint::black_box, time::Duration};
 
 use criterion::{criterion_group, criterion_main, BatchSize, Criterion};
-use libcrux_ml_kem::{mlkem1024, mlkem512, mlkem768};
+use test_foo_bar_ml_kem::{mlkem1024, mlkem512, mlkem768};
 use rand::{rngs::SysRng, Rng, TryRng};
 
 macro_rules! init {

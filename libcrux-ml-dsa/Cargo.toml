@@ -1,23 +1,23 @@
 [package]
-name = "libcrux-ml-dsa"
 description = "Libcrux ML-DSA implementation"
-version = "0.0.9"
+name = "test-foo-bar-ml-dsa"
 readme = "README.md"
+version = "0.0.9"
 
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
 edition.workspace = true
+homepage.workspace = true
+license.workspace = true
 repository.workspace = true
 
 exclude = [
-    "boring.sh",
-    "/cg",
     "*.sh",
     "*.yaml",
+    "/cg",
     "/proofs",
-    "tests/nistkats.rs",
+    "boring.sh",
     "tests/kats",
+    "tests/nistkats.rs",
 ]
 
 [lib]
@@ -26,22 +26,22 @@ bench = false # so libtest doesn't eat the arguments to criterion
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-libcrux-sha3.workspace = true
-libcrux-intrinsics.workspace = true
-libcrux-platform.workspace = true
-libcrux-macros.workspace = true
 hax-lib.workspace = true
+test-foo-bar-intrinsics.workspace = true
+test-foo-bar-macros.workspace = true
+test-foo-bar-platform.workspace = true
+test-foo-bar-sha3.workspace = true
 tls_codec = { version = "0.4.2", features = [
     "derive",
 ], default-features = false, optional = true }
 
 [dev-dependencies]
-rand = { version = "0.10" }
-hex = { version = "0.4.3", features = ["serde"] }
-serde_json = { version = "1.0" }
-serde = { version = "1.0", features = ["derive"] }
 criterion = "0.8"
-libcrux-kats = { workspace = true, features = ["mldsa"] }
+hex = { version = "0.4.3", features = ["serde"] }
+rand = { version = "0.10" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+test-foo-bar-kats = { workspace = true, features = ["mldsa"] }
 
 
 # This doesn't build on intel macos.
@@ -49,14 +49,14 @@ libcrux-kats = { workspace = true, features = ["mldsa"] }
 pqcrypto-mldsa = { version = "0.1.0" } #, default-features = false
 
 [target.'cfg(hax)'.dependencies]
-core-models = { path = "../crates/utils/core-models", version = "0.0.6" }
+test-foo-bar-core-models = { path = "../crates/utils/core-models", version = "0.0.6" }
 
 [features]
-default = ["std", "mldsa44", "mldsa65", "mldsa87"]
-simd128 = ["libcrux-sha3/simd128", "libcrux-intrinsics/simd128"]
-simd256 = ["libcrux-sha3/simd256", "libcrux-intrinsics/simd256"]
-acvp = []                                                        # expose internal API for ACVP testing
-test-utils = []                                                  # exposing internal functions for testing
+acvp = []                                                                  # expose internal API for ACVP testing
+default = ["mldsa44", "mldsa65", "mldsa87", "std"]
+simd128 = ["test-foo-bar-intrinsics/simd128", "test-foo-bar-sha3/simd128"]
+simd256 = ["test-foo-bar-intrinsics/simd256", "test-foo-bar-sha3/simd256"]
+test-utils = []                                                            # exposing internal functions for testing
 
 # Features for the different key sizes of ML-DSA
 mldsa44 = []
@@ -70,20 +70,20 @@ std = []
 codec = ["dep:tls_codec"]
 
 [[bench]]
+harness = false
 name = "manual44"
-harness = false
 
 [[bench]]
+harness = false
 name = "manual65"
-harness = false
 
 [[bench]]
+harness = false
 name = "manual87"
-harness = false
 
 [[bench]]
-name = "ml-dsa"
 harness = false
+name = "ml-dsa"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(hax)'] }

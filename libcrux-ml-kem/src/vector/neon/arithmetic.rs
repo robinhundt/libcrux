@@ -1,6 +1,6 @@
 use super::vector_type::*;
 use crate::vector::{traits::INVERSE_OF_MODULUS_MOD_MONTGOMERY_R, FIELD_MODULUS};
-use libcrux_intrinsics::arm64::*;
+use test_foo_bar_intrinsics::arm64::*;
 
 #[inline(always)]
 pub(crate) fn add(mut lhs: SIMD128Vector, rhs: &SIMD128Vector) -> SIMD128Vector {

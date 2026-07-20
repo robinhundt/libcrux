@@ -15,7 +15,7 @@ pub fn comparisons_key_generation(c: &mut Criterion) {
         let mut seed = [0; 64];
         rng.fill_bytes(&mut seed);
         b.iter(|| {
-            let _kp = libcrux_kem::deterministic::mlkem768_generate_keypair_derand(seed);
+            let _kp = test_foo_bar_kem::deterministic::mlkem768_generate_keypair_derand(seed);
         })
     });
 
@@ -24,7 +24,7 @@ pub fn comparisons_key_generation(c: &mut Criterion) {
     //     b.iter(|| {
     //         let mut seed = [0; 64];
     //         rng.try_fill_bytes(&mut seed).unwrap();
-    //         let _tuple = libcrux_ml_kem::mlkem768::generate_key_pair_unpacked(seed);
+    //         let _tuple = test_foo_bar_ml_kem::mlkem768::generate_key_pair_unpacked(seed);
     //     })
     // });
 
@@ -73,9 +73,9 @@ pub fn comparisons_pk_validation(c: &mut Criterion) {
         let mut seed = [0; 64];
         rng.try_fill_bytes(&mut seed).unwrap();
         b.iter_batched(
-            || libcrux_kem::deterministic::mlkem768_generate_keypair_derand(seed),
+            || test_foo_bar_kem::deterministic::mlkem768_generate_keypair_derand(seed),
             |key_pair| {
-                let _valid = libcrux_kem::ml_kem768_validate_public_key(&key_pair.into_parts().1);
+                let _valid = test_foo_bar_kem::ml_kem768_validate_public_key(&key_pair.into_parts().1);
             },
             BatchSize::SmallInput,
         )
@@ -92,10 +92,10 @@ pub fn comparisons_encapsulation(c: &mut Criterion) {
         let mut seed2 = [0; 32];
         SysRng.try_fill_bytes(&mut seed2).unwrap();
         b.iter_batched(
-            || libcrux_kem::deterministic::mlkem768_generate_keypair_derand(seed1),
+            || test_foo_bar_kem::deterministic::mlkem768_generate_keypair_derand(seed1),
             |keypair| {
                 let (_shared_secret, _ciphertext) =
-                    libcrux_kem::deterministic::mlkem768_encapsulate_derand(
+                    test_foo_bar_kem::deterministic::mlkem768_encapsulate_derand(
                         &keypair.public_key(),
                         seed2,
                     );
@@ -109,7 +109,7 @@ pub fn comparisons_encapsulation(c: &mut Criterion) {
             || {
                 let mut rng = UnwrapErr(SysRng);
                 let (_secret_key, public_key) =
-                    libcrux_kem::key_gen(Algorithm::MlKem768, &mut rng).unwrap();
+                    test_foo_bar_kem::key_gen(Algorithm::MlKem768, &mut rng).unwrap();
 
                 (rng, public_key)
             },
@@ -125,7 +125,7 @@ pub fn comparisons_encapsulation(c: &mut Criterion) {
             || {
                 let mut drbg = UnwrapErr(SysRng);
                 let (_secret_key, public_key) =
-                    libcrux_kem::key_gen(Algorithm::MlKem768, &mut drbg).unwrap();
+                    test_foo_bar_kem::key_gen(Algorithm::MlKem768, &mut drbg).unwrap();
 
                 public_key
             },
@@ -202,7 +202,7 @@ pub fn comparisons_decapsulation(c: &mut Criterion) {
                 let mut rng = UnwrapErr(SysRng);
 
                 let (secret_key, public_key) =
-                    libcrux_kem::key_gen(Algorithm::MlKem768, &mut rng).unwrap();
+                    test_foo_bar_kem::key_gen(Algorithm::MlKem768, &mut rng).unwrap();
                 let (_shared_secret, ciphertext) = public_key.encapsulate(&mut rng).unwrap();
                 (secret_key, ciphertext)
             },
@@ -219,16 +219,16 @@ pub fn comparisons_decapsulation(c: &mut Criterion) {
     //         || {
     //             let mut seed = [0; 64];
     //             SysRng.try_fill_bytes(&mut seed).unwrap();
-    //             let (sk_state, pubkey) = libcrux_ml_kem::mlkem768::generate_key_pair_unpacked(seed);
+    //             let (sk_state, pubkey) = test_foo_bar_ml_kem::mlkem768::generate_key_pair_unpacked(seed);
 
     //             let mut rand = [0; 32];
     //             SysRng.try_fill_bytes(&mut rand).unwrap();
-    //             let (ciphertext, _) = libcrux_ml_kem::mlkem768::encapsulate(&pubkey, rand);
+    //             let (ciphertext, _) = test_foo_bar_ml_kem::mlkem768::encapsulate(&pubkey, rand);
     //             (sk_state, ciphertext)
     //         },
     //         |(sk_state, ciphertext)| {
     //             let _shared_secret =
-    //                 libcrux_ml_kem::mlkem768::decapsulate_unpacked(&sk_state, &ciphertext);
+    //                 test_foo_bar_ml_kem::mlkem768::decapsulate_unpacked(&sk_state, &ciphertext);
     //         },
     //         BatchSize::SmallInput,
     //     )

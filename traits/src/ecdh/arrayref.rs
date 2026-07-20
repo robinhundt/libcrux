@@ -2,7 +2,7 @@
 //! implementation that takes array references as arguments and writes
 //! outputs to mutable array references.
 
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 /// An Elliptic Curve Diffie-Hellman (ECDH) key exchange. This trait is the most low-level and mostly used in the
 /// implementation of other, more usabe APIs on top.

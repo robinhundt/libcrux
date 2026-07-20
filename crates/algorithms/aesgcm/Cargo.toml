@@ -5,7 +5,7 @@ edition.workspace = true
 exclude = []
 homepage.workspace = true
 license.workspace = true
-name = "libcrux-aesgcm"
+name = "test-foo-bar-aesgcm"
 readme = "README.md"
 repository.workspace = true
 version = "0.0.8"
@@ -14,10 +14,10 @@ version = "0.0.8"
 bench = false # so libtest doesn't eat the arguments to criterion
 
 [dependencies]
-libcrux-intrinsics.workspace = true
-libcrux-platform.workspace = true
-libcrux-traits.workspace = true
-libcrux-secrets.workspace = true
+test-foo-bar-intrinsics.workspace = true
+test-foo-bar-platform.workspace = true
+test-foo-bar-secrets.workspace = true
+test-foo-bar-traits.workspace = true
 
 [features]
 default = []
@@ -26,8 +26,8 @@ std = []
 # Hardware features can be force enabled.
 # It is not recommended to use these. This crate performs CPU feature detection
 # and enables the features when they are available.
-simd128 = ["libcrux-intrinsics/simd128"]
-simd256 = ["libcrux-intrinsics/simd256"]
+simd128 = ["test-foo-bar-intrinsics/simd128"]
+simd256 = ["test-foo-bar-intrinsics/simd256"]
 
 [[bench]]
 harness = false
@@ -35,7 +35,7 @@ name = "aesgcm"
 
 [dev-dependencies]
 aes-gcm = "0.10.3"
-cavp = { path = "../../../cavp" }
+test-foo-bar-cavp = { path = "../../../cavp" }
 criterion = "0.8.0"
 hex = "0.4.3"
 pretty_env_logger = "0.5.0"
@@ -44,4 +44,4 @@ wycheproof = "0.6.0"
 
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(hax)', 'cfg(eurydice)'] }
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(eurydice)', 'cfg(hax)'] }

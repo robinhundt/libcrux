@@ -5,12 +5,12 @@
 //!
 //! ```rust
 //! # fn main(){
-//! # use libcrux_secrets::{Classify, ClassifyRef, Declassify, DeclassifyRef, U8};
+//! # use test_foo_bar_secrets::{Classify, ClassifyRef, Declassify, DeclassifyRef, U8};
 //! # let key_bytes = [0u8.classify(); 32];
 //! # const MSG_LEN: usize = 19;
 //! #
-//! use libcrux_chacha20poly1305::*;
-//! use libcrux_traits::aead::typed_owned::Aead as _;
+//! use test_foo_bar_chacha20poly1305::*;
+//! use test_foo_bar_traits::aead::typed_owned::Aead as _;
 //!
 //! let msg: &[U8; MSG_LEN] = b"squeamish ossifrage".classify_ref();
 //! let mut ciphertext = [0u8; MSG_LEN];
@@ -41,14 +41,14 @@
 //!
 //! ```rust
 //! # fn main(){
-//! # use libcrux_secrets::{Classify, Declassify, DeclassifyRef};
+//! # use test_foo_bar_secrets::{Classify, Declassify, DeclassifyRef};
 //! # let key_bytes  = [0u8; 32].classify();
 //! # let ciphertext = [181, 223,  66, 115, 105, 181,  98, 178, 247, 139, 196, 238, 169, 225, 143,  94, 174, 123, 232];
 //! # let tag_bytes  = [155, 112, 155, 212, 133,  38, 145, 115,  27, 221, 245, 237, 125,  28,  22, 101].classify();
 //! # const MSG_LEN: usize = 19;
 //! #
-//! use libcrux_chacha20poly1305::*;
-//! use libcrux_traits::aead::typed_owned::Aead as _;
+//! use test_foo_bar_chacha20poly1305::*;
+//! use test_foo_bar_traits::aead::typed_owned::Aead as _;
 //!
 //! let mut plaintext = [0u8.classify(); MSG_LEN];
 //! let mut tag = Tag::from(tag_bytes);
@@ -65,12 +65,12 @@
 
 #![no_std]
 
-use libcrux_traits::aead::{typed_owned, typed_refs};
+use test_foo_bar_traits::aead::{typed_owned, typed_refs};
 
 pub mod xchacha20_poly1305;
 
 mod hacl {
-    pub(crate) use libcrux_poly1305::hacl::mac_poly1305;
+    pub(crate) use test_foo_bar_poly1305::hacl::mac_poly1305;
 
     pub(crate) mod aead_chacha20poly1305;
     pub(crate) mod chacha20;

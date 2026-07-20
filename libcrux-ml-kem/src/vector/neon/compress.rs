@@ -1,6 +1,6 @@
 use super::vector_type::*;
 use crate::vector::FIELD_MODULUS;
-use libcrux_intrinsics::arm64::*;
+use test_foo_bar_intrinsics::arm64::*;
 
 #[inline(always)]
 pub(crate) fn compress_1(mut v: SIMD128Vector) -> SIMD128Vector {

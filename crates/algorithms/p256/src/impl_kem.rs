@@ -1,5 +1,5 @@
-use libcrux_secrets::{DeclassifyRef, DeclassifyRefMut, U8};
-use libcrux_traits::kem::arrayref::*;
+use test_foo_bar_secrets::{DeclassifyRef, DeclassifyRefMut, U8};
+use test_foo_bar_traits::kem::arrayref::*;
 
 use super::{POINT_LEN, SCALAR_LEN};
 
@@ -76,4 +76,4 @@ impl Kem<EK_LEN, DK_LEN, CT_LEN, SS_LEN, RAND_KEYGEN_LEN, RAND_ENCAPS_LEN> for s
     }
 }
 
-libcrux_traits::kem::slice::impl_trait!(super::P256 => EK_LEN, DK_LEN, CT_LEN, SS_LEN, RAND_KEYGEN_LEN, RAND_ENCAPS_LEN);
+test_foo_bar_traits::kem::slice::impl_trait!(super::P256 => EK_LEN, DK_LEN, CT_LEN, SS_LEN, RAND_KEYGEN_LEN, RAND_ENCAPS_LEN);

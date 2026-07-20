@@ -1,6 +1,6 @@
 #![allow(non_snake_case)]
 use criterion::{criterion_group, criterion_main, BatchSize, BenchmarkId, Criterion, Throughput};
-use libcrux_sha3::{portable::incremental::Xof, *};
+use test_foo_bar_sha3::{portable::incremental::Xof, *};
 
 pub fn randombytes(n: usize) -> Vec<u8> {
     use rand::{rngs::SysRng, TryRng};

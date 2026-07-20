@@ -1,2 +1,2 @@
 //! # ML-DSA
-pub use libcrux_ml_dsa::*;
+pub use test_foo_bar_ml_dsa::*;

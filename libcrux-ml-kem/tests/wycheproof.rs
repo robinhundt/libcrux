@@ -1,7 +1,7 @@
-use libcrux_kats::wycheproof::mlkem::schema::*;
-use libcrux_kats::wycheproof::mlkem::TestGroupType;
+use test_foo_bar_kats::wycheproof::mlkem::schema::*;
+use test_foo_bar_kats::wycheproof::mlkem::TestGroupType;
 
-use libcrux_ml_kem::{MlKemCiphertext, MlKemPrivateKey, MlKemPublicKey};
+use test_foo_bar_ml_kem::{MlKemCiphertext, MlKemPrivateKey, MlKemPublicKey};
 
 macro_rules! wycheproof_test {
     ($name:ident, $parameter_set:expr, $module:path) => {
@@ -134,18 +134,18 @@ macro_rules! wycheproof_test {
 
 // multiplexing API
 #[cfg(feature = "mlkem512")]
-wycheproof_test!(ml_kem_512, ParameterSet::MlKem512, libcrux_ml_kem::mlkem512);
+wycheproof_test!(ml_kem_512, ParameterSet::MlKem512, test_foo_bar_ml_kem::mlkem512);
 
 // multiplexing API
 #[cfg(feature = "mlkem768")]
-wycheproof_test!(ml_kem_768, ParameterSet::MlKem768, libcrux_ml_kem::mlkem768);
+wycheproof_test!(ml_kem_768, ParameterSet::MlKem768, test_foo_bar_ml_kem::mlkem768);
 
 // multiplexing API
 #[cfg(feature = "mlkem1024")]
 wycheproof_test!(
     ml_kem_1024,
     ParameterSet::MlKem1024,
-    libcrux_ml_kem::mlkem1024
+    test_foo_bar_ml_kem::mlkem1024
 );
 
 // portable
@@ -153,7 +153,7 @@ wycheproof_test!(
 wycheproof_test!(
     ml_kem_512_portable,
     ParameterSet::MlKem512,
-    libcrux_ml_kem::mlkem512::portable
+    test_foo_bar_ml_kem::mlkem512::portable
 );
 
 // portable
@@ -161,7 +161,7 @@ wycheproof_test!(
 wycheproof_test!(
     ml_kem_768_portable,
     ParameterSet::MlKem768,
-    libcrux_ml_kem::mlkem768::portable
+    test_foo_bar_ml_kem::mlkem768::portable
 );
 
 // portable
@@ -169,5 +169,5 @@ wycheproof_test!(
 wycheproof_test!(
     ml_kem_1024_portable,
     ParameterSet::MlKem1024,
-    libcrux_ml_kem::mlkem1024::portable
+    test_foo_bar_ml_kem::mlkem1024::portable
 );

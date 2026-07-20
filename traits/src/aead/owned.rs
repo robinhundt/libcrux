@@ -3,7 +3,7 @@
 //! as arguments and returns outputs as arrays or vectors.
 
 use super::arrayref::{DecryptError, EncryptError, KeyGenError};
-use libcrux_secrets::{Classify, U8};
+use test_foo_bar_secrets::{Classify, U8};
 
 /// An Authenticated Encryption with Associated Data (AEAD) scheme
 ///

@@ -2,7 +2,7 @@
 //!
 //! This module provides a builder pattern for PSQ ciphersuites.
 
-use libcrux_kem::{MlKem768PrivateKey, MlKem768PublicKey};
+use test_foo_bar_kem::{MlKem768PrivateKey, MlKem768PublicKey};
 
 #[cfg(feature = "classic-mceliece")]
 use crate::classic_mceliece::{PublicKey, SecretKey};

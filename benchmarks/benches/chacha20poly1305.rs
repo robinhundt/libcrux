@@ -1,7 +1,7 @@
 use benchmarks::util::*;
 use chacha20poly1305::{AeadCore, AeadInPlace, KeyInit};
 use criterion::{criterion_group, criterion_main, BatchSize, BenchmarkId, Criterion, Throughput};
-use libcrux_chacha20poly1305::*;
+use test_foo_bar_chacha20poly1305::*;
 use rand::Rng;
 use ring::aead::UnboundKey;
 

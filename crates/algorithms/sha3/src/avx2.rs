@@ -21,7 +21,7 @@ pub mod x4 {
     /// An incremental API to perform 4 operations in parallel
     pub mod incremental {
         use crate::generic_keccak::KeccakState as GenericState;
-        use libcrux_intrinsics::avx2::*;
+        use test_foo_bar_intrinsics::avx2::*;
 
         /// The Keccak state for the incremental API.
         pub struct KeccakState {

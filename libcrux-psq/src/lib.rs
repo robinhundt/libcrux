@@ -4,8 +4,8 @@
 //! registering a PQ-PSK between an initiator and a responder.
 //!
 //! ```rust
-//! use libcrux_ml_kem::mlkem768::MlKem768KeyPair;
-//! use libcrux_psq::{
+//! use test_foo_bar_ml_kem::mlkem768::MlKem768KeyPair;
+//! use test_foo_bar_psq::{
 //!     handshake::{builders::*, ciphersuites::*, types::*, HandshakeError},
 //!     session::{Session, SessionBinding, SessionError},
 //!     Channel, IntoSession,
@@ -16,7 +16,7 @@
 //! let mut rng = rand::rng();
 //!
 //! // External setup: Responder keys
-//! let responder_mlkem_keys = libcrux_ml_kem::mlkem768::rand::generate_key_pair(&mut rng);
+//! let responder_mlkem_keys = test_foo_bar_ml_kem::mlkem768::rand::generate_key_pair(&mut rng);
 //!
 //! let responder_ecdh_keys = DHKeyPair::new(&mut rng);
 //!

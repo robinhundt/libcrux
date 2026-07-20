@@ -1,6 +1,6 @@
 // C extraction:
 // A couple helper functions and definitions -- this file ends up being bundled in
-// libcrux_core.{c,h}, so if you need something that has to be shared across multiple mlkem
+// test_foo_bar_core.{c,h}, so if you need something that has to be shared across multiple mlkem
 // instances / implementations, it can go in here.
 
 type PaddedArray<const N: usize> = [u8; N];

@@ -1,6 +1,6 @@
 use crate::simd::{avx2::rejection_sample::shuffle_table::SHUFFLE_TABLE, traits::FIELD_MODULUS};
 
-use libcrux_intrinsics::avx2::*;
+use test_foo_bar_intrinsics::avx2::*;
 
 // Partition a stream of bytes into 24-bit values, and then clear the most
 // significant bit to turn them into 23-bit ones.

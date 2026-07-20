@@ -1,13 +1,13 @@
 #![cfg(feature = "acvp")]
 
-use libcrux_kats::acvp::mldsa::keygen_schema::*;
-use libcrux_kats::acvp::mldsa::sign_schema::*;
-use libcrux_kats::acvp::mldsa::verify_schema::*;
-use libcrux_kats::acvp::schema_common::*;
+use test_foo_bar_kats::acvp::mldsa::keygen_schema::*;
+use test_foo_bar_kats::acvp::mldsa::sign_schema::*;
+use test_foo_bar_kats::acvp::mldsa::verify_schema::*;
+use test_foo_bar_kats::acvp::schema_common::*;
 
 #[test]
 fn keygen() {
-    use libcrux_kats::acvp::mldsa::KeyGenTests;
+    use test_foo_bar_kats::acvp::mldsa::KeyGenTests;
 
     let KeyGenTests { prompts, results } = KeyGenTests::load();
     // checks
@@ -39,7 +39,7 @@ fn keygen_inner(
     tgId: usize,
     parameter_set: &String,
 ) {
-    use libcrux_ml_dsa::*;
+    use test_foo_bar_ml_dsa::*;
     eprintln!("  {}", test.tcId);
     #[inline(never)]
     fn check<const VK_LEN: usize, const SK_LEN: usize>(
@@ -64,7 +64,7 @@ fn keygen_inner(
 
 #[test]
 fn siggen() {
-    use libcrux_kats::acvp::mldsa::SigGenTests;
+    use test_foo_bar_kats::acvp::mldsa::SigGenTests;
 
     let SigGenTests { prompts, results } = SigGenTests::load();
     // checks
@@ -118,7 +118,7 @@ fn siggen_inner_internal(
     tgId: usize,
     parameter_set: &String,
 ) {
-    use libcrux_ml_dsa::*;
+    use test_foo_bar_ml_dsa::*;
     eprintln!("  {}", test.tcId);
 
     let Randomness(rnd) = test.rnd.unwrap_or(Randomness([0u8; 32]));
@@ -169,7 +169,7 @@ macro_rules! siggen_test {
             tgId: usize,
             parameter_set: &String,
         ) {
-            use libcrux_ml_dsa::*;
+            use test_foo_bar_ml_dsa::*;
 
             eprintln!("  {}", test.tcId);
 
@@ -220,7 +220,7 @@ siggen_test!(siggen_inner_external_prehash, sign_pre_hashed_shake128);
 
 #[test]
 fn sigver() {
-    use libcrux_kats::acvp::mldsa::SigVerTests;
+    use test_foo_bar_kats::acvp::mldsa::SigVerTests;
 
     let SigVerTests { prompts, results } = SigVerTests::load();
     // checks
@@ -270,7 +270,7 @@ fn sigver_inner_external(
     parameter_set: &String,
     pre_hash: bool,
 ) {
-    use libcrux_ml_dsa::*;
+    use test_foo_bar_ml_dsa::*;
     eprintln!("  {}", test.tcId);
     let expected_result = results.find_expected_result(tgId, test.tcId);
 
@@ -330,7 +330,7 @@ fn sigver_inner_internal(
     tgId: usize,
     parameter_set: &String,
 ) {
-    use libcrux_ml_dsa::*;
+    use test_foo_bar_ml_dsa::*;
     eprintln!("  {}", test.tcId);
     let expected_result = results.find_expected_result(tgId, test.tcId);
 

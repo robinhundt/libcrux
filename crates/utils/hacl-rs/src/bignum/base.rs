@@ -7,7 +7,7 @@
 
 use crate::prelude::*;
 
-use libcrux_macros as krml;
+use test_foo_bar_macros as krml;
 
 pub(crate) fn bn_karatsuba_mul_uint32(
     aLen: u32,

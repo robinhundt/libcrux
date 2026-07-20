@@ -1,4 +1,4 @@
-use libcrux_intrinsics::arm64::*;
+use test_foo_bar_intrinsics::arm64::*;
 #[derive(Clone, Copy)]
 #[hax_lib::fstar::after(interface, "val repr (x:t_SIMD128Vector) : t_Array i16 (sz 16)")]
 #[hax_lib::fstar::after("let repr (x:t_SIMD128Vector) = admit()")]

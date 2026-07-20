@@ -96,25 +96,25 @@ impl_comp!(
     Sha3_224,
     libcrux::primitives::digest::sha3::Sha3_224,
     sha3::Sha3_224,
-    MessageDigest::sha3_224() // libcrux_pqclean::sha3_256 // This is wrong, but it's not actually used.
+    MessageDigest::sha3_224() // test_foo_bar_pqclean::sha3_256 // This is wrong, but it's not actually used.
 );
 impl_comp!(
     Sha3_256,
     libcrux::primitives::digest::sha3::Sha3_256,
     sha3::Sha3_256,
-    MessageDigest::sha3_256() // libcrux_pqclean::sha3_256
+    MessageDigest::sha3_256() // test_foo_bar_pqclean::sha3_256
 );
 impl_comp!(
     Sha3_384,
     libcrux::primitives::digest::sha3::Sha3_384,
     sha3::Sha3_384,
-    MessageDigest::sha3_384() // libcrux_pqclean::sha3_384
+    MessageDigest::sha3_384() // test_foo_bar_pqclean::sha3_384
 );
 impl_comp!(
     Sha3_512,
     libcrux::primitives::digest::sha3::Sha3_512,
     sha3::Sha3_512,
-    MessageDigest::sha3_512() // libcrux_pqclean::sha3_512
+    MessageDigest::sha3_512() // test_foo_bar_pqclean::sha3_512
 );
 
 fn benchmarks(c: &mut Criterion) {

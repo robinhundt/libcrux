@@ -143,8 +143,8 @@ pub fn main() {
         }
     } else {
         Platform {
-            simd128: libcrux_platform::simd128_support(),
-            simd256: libcrux_platform::simd256_support(),
+            simd128: test_foo_bar_platform::simd128_support(),
+            simd256: test_foo_bar_platform::simd256_support(),
         }
     };
 

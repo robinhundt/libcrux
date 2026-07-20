@@ -1,12 +1,12 @@
 [package]
-name = "libcrux-platform"
-edition.workspace = true
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
-repository.workspace = true
-readme.workspace = true
 description = "Platform detection crate for libcrux."
+edition.workspace = true
+homepage.workspace = true
+license.workspace = true
+name = "test-foo-bar-platform"
+readme.workspace = true
+repository.workspace = true
 
 version = "0.0.3"
 
@@ -14,4 +14,4 @@ version = "0.0.3"
 libc = "0.2.153"
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(hax)', 'cfg(eurydice)'] }
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(eurydice)', 'cfg(hax)'] }

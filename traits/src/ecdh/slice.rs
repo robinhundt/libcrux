@@ -3,7 +3,7 @@
 //! to mutable slices.
 
 use super::arrayref;
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 pub trait EcdhSlice {
     /// Generate a Diffie-Hellman secret value.

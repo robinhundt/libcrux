@@ -6,7 +6,7 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_hacl_rs::prelude::*;
+use test_foo_bar_hacl_rs::prelude::*;
 
 pub fn poly1305_init(ctx: &mut [u64], key: &[u8]) {
     let acc: (&mut [u64], &mut [u64]) = ctx.split_at_mut(0usize);

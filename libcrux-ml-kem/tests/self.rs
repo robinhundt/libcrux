@@ -1,5 +1,5 @@
-use libcrux_ml_kem::{MlKemCiphertext, MlKemPrivateKey};
-use libcrux_sha3::shake256;
+use test_foo_bar_ml_kem::{MlKemCiphertext, MlKemPrivateKey};
+use test_foo_bar_sha3::shake256;
 use rand::{rng, rngs::SysRng, TryRng};
 
 const SHARED_SECRET_SIZE: usize = 32;
@@ -240,13 +240,13 @@ macro_rules! impl_consistency_incremental {
 }
 
 #[cfg(all(feature = "mlkem512", feature = "incremental"))]
-impl_consistency_incremental!(consistency_incremental_512, libcrux_ml_kem::mlkem512);
+impl_consistency_incremental!(consistency_incremental_512, test_foo_bar_ml_kem::mlkem512);
 
 #[cfg(all(feature = "mlkem768", feature = "incremental"))]
-impl_consistency_incremental!(consistency_incremental_768, libcrux_ml_kem::mlkem768);
+impl_consistency_incremental!(consistency_incremental_768, test_foo_bar_ml_kem::mlkem768);
 
 #[cfg(all(feature = "mlkem1024", feature = "incremental"))]
-impl_consistency_incremental!(consistency_incremental_1024, libcrux_ml_kem::mlkem1024);
+impl_consistency_incremental!(consistency_incremental_1024, test_foo_bar_ml_kem::mlkem1024);
 
 fn modify_ciphertext<const LEN: usize>(ciphertext: MlKemCiphertext<LEN>) -> MlKemCiphertext<LEN> {
     let mut raw_ciphertext = [0u8; LEN];
@@ -390,140 +390,140 @@ macro_rules! impl_modified_ciphertext_and_implicit_rejection_value {
 #[cfg(feature = "mlkem512")]
 impl_consistency!(
     consistency_512,
-    libcrux_ml_kem::mlkem512::generate_key_pair,
-    libcrux_ml_kem::mlkem512::encapsulate,
-    libcrux_ml_kem::mlkem512::decapsulate
+    test_foo_bar_ml_kem::mlkem512::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem512::encapsulate,
+    test_foo_bar_ml_kem::mlkem512::decapsulate
 );
 #[cfg(feature = "mlkem768")]
 impl_consistency!(
     consistency_768,
-    libcrux_ml_kem::mlkem768::generate_key_pair,
-    libcrux_ml_kem::mlkem768::encapsulate,
-    libcrux_ml_kem::mlkem768::decapsulate
+    test_foo_bar_ml_kem::mlkem768::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem768::encapsulate,
+    test_foo_bar_ml_kem::mlkem768::decapsulate
 );
 #[cfg(feature = "mlkem1024")]
 impl_consistency!(
     consistency_1024,
-    libcrux_ml_kem::mlkem1024::generate_key_pair,
-    libcrux_ml_kem::mlkem1024::encapsulate,
-    libcrux_ml_kem::mlkem1024::decapsulate
+    test_foo_bar_ml_kem::mlkem1024::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem1024::encapsulate,
+    test_foo_bar_ml_kem::mlkem1024::decapsulate
 );
 
 #[cfg(all(feature = "mlkem512"))]
 impl_consistency_unpacked!(
     consistency_unpacked_512_portable,
-    libcrux_ml_kem::mlkem512::portable
+    test_foo_bar_ml_kem::mlkem512::portable
 );
 
 #[cfg(all(feature = "mlkem512", feature = "simd128",))]
 impl_consistency_unpacked!(
     consistency_unpacked_512_neon,
-    libcrux_ml_kem::mlkem512::neon
+    test_foo_bar_ml_kem::mlkem512::neon
 );
 
 #[cfg(all(feature = "mlkem512", feature = "simd256",))]
 impl_consistency_unpacked!(
     consistency_unpacked_512_avx2,
-    libcrux_ml_kem::mlkem512::avx2
+    test_foo_bar_ml_kem::mlkem512::avx2
 );
 
 #[cfg(all(feature = "mlkem1024"))]
 impl_consistency_unpacked!(
     consistency_unpacked_1024_portable,
-    libcrux_ml_kem::mlkem1024::portable
+    test_foo_bar_ml_kem::mlkem1024::portable
 );
 
 #[cfg(all(feature = "mlkem1024", feature = "simd128",))]
 impl_consistency_unpacked!(
     consistency_unpacked_1024_neon,
-    libcrux_ml_kem::mlkem1024::neon
+    test_foo_bar_ml_kem::mlkem1024::neon
 );
 
 #[cfg(all(feature = "mlkem1024", feature = "simd256",))]
 impl_consistency_unpacked!(
     consistency_unpacked_1024_avx2,
-    libcrux_ml_kem::mlkem1024::avx2
+    test_foo_bar_ml_kem::mlkem1024::avx2
 );
 
 #[cfg(all(feature = "mlkem768",))]
 impl_consistency_unpacked!(
     consistency_unpacked_768_portable,
-    libcrux_ml_kem::mlkem768::portable
+    test_foo_bar_ml_kem::mlkem768::portable
 );
 
 #[cfg(all(feature = "mlkem768", feature = "simd128",))]
 impl_consistency_unpacked!(
     consistency_unpacked_768_neon,
-    libcrux_ml_kem::mlkem768::neon
+    test_foo_bar_ml_kem::mlkem768::neon
 );
 
 #[cfg(all(feature = "mlkem768", feature = "simd256",))]
 impl_consistency_unpacked!(
     consistency_unpacked_768_avx2,
-    libcrux_ml_kem::mlkem768::avx2
+    test_foo_bar_ml_kem::mlkem768::avx2
 );
 
 #[cfg(feature = "mlkem512")]
 impl_modified_ciphertext!(
     modified_ciphertext_512,
-    libcrux_ml_kem::mlkem512::generate_key_pair,
-    libcrux_ml_kem::mlkem512::encapsulate,
-    libcrux_ml_kem::mlkem512::decapsulate
+    test_foo_bar_ml_kem::mlkem512::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem512::encapsulate,
+    test_foo_bar_ml_kem::mlkem512::decapsulate
 );
 #[cfg(feature = "mlkem768")]
 impl_modified_ciphertext!(
     modified_ciphertext_768,
-    libcrux_ml_kem::mlkem768::generate_key_pair,
-    libcrux_ml_kem::mlkem768::encapsulate,
-    libcrux_ml_kem::mlkem768::decapsulate
+    test_foo_bar_ml_kem::mlkem768::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem768::encapsulate,
+    test_foo_bar_ml_kem::mlkem768::decapsulate
 );
 #[cfg(feature = "mlkem1024")]
 impl_modified_ciphertext!(
     modified_ciphertext_1024,
-    libcrux_ml_kem::mlkem1024::generate_key_pair,
-    libcrux_ml_kem::mlkem1024::encapsulate,
-    libcrux_ml_kem::mlkem1024::decapsulate
+    test_foo_bar_ml_kem::mlkem1024::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem1024::encapsulate,
+    test_foo_bar_ml_kem::mlkem1024::decapsulate
 );
 #[cfg(feature = "mlkem512")]
 impl_modified_secret_key!(
     modified_secret_key_512,
-    libcrux_ml_kem::mlkem512::generate_key_pair,
-    libcrux_ml_kem::mlkem512::encapsulate,
-    libcrux_ml_kem::mlkem512::decapsulate
+    test_foo_bar_ml_kem::mlkem512::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem512::encapsulate,
+    test_foo_bar_ml_kem::mlkem512::decapsulate
 );
 #[cfg(feature = "mlkem768")]
 impl_modified_secret_key!(
     modified_secret_key_768,
-    libcrux_ml_kem::mlkem768::generate_key_pair,
-    libcrux_ml_kem::mlkem768::encapsulate,
-    libcrux_ml_kem::mlkem768::decapsulate
+    test_foo_bar_ml_kem::mlkem768::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem768::encapsulate,
+    test_foo_bar_ml_kem::mlkem768::decapsulate
 );
 #[cfg(feature = "mlkem1024")]
 impl_modified_secret_key!(
     modified_secret_key_1024,
-    libcrux_ml_kem::mlkem1024::generate_key_pair,
-    libcrux_ml_kem::mlkem1024::encapsulate,
-    libcrux_ml_kem::mlkem1024::decapsulate
+    test_foo_bar_ml_kem::mlkem1024::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem1024::encapsulate,
+    test_foo_bar_ml_kem::mlkem1024::decapsulate
 );
 
 #[cfg(feature = "mlkem512")]
 impl_modified_ciphertext_and_implicit_rejection_value!(
     modified_ciphertext_and_implicit_rejection_value_512,
-    libcrux_ml_kem::mlkem512::generate_key_pair,
-    libcrux_ml_kem::mlkem512::encapsulate,
-    libcrux_ml_kem::mlkem512::decapsulate
+    test_foo_bar_ml_kem::mlkem512::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem512::encapsulate,
+    test_foo_bar_ml_kem::mlkem512::decapsulate
 );
 #[cfg(feature = "mlkem768")]
 impl_modified_ciphertext_and_implicit_rejection_value!(
     modified_ciphertext_and_implicit_rejection_value_768,
-    libcrux_ml_kem::mlkem768::generate_key_pair,
-    libcrux_ml_kem::mlkem768::encapsulate,
-    libcrux_ml_kem::mlkem768::decapsulate
+    test_foo_bar_ml_kem::mlkem768::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem768::encapsulate,
+    test_foo_bar_ml_kem::mlkem768::decapsulate
 );
 #[cfg(feature = "mlkem1024")]
 impl_modified_ciphertext_and_implicit_rejection_value!(
     modified_ciphertext_and_implicit_rejection_value_1024,
-    libcrux_ml_kem::mlkem1024::generate_key_pair,
-    libcrux_ml_kem::mlkem1024::encapsulate,
-    libcrux_ml_kem::mlkem1024::decapsulate
+    test_foo_bar_ml_kem::mlkem1024::generate_key_pair,
+    test_foo_bar_ml_kem::mlkem1024::encapsulate,
+    test_foo_bar_ml_kem::mlkem1024::decapsulate
 );

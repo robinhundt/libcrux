@@ -2,8 +2,8 @@ mod test_vectors;
 
 // Portable implementation tests
 use crate::test_vectors::{DIGEST_LEN, DIGEST_LEN_SHAKE256, STRING_LEN, STRING_LEN_SHAKE256};
-use libcrux_sha3::portable::incremental::Xof;
-use libcrux_sha3::portable::{incremental, sha224, sha256, sha384, sha512, shake128, shake256};
+use test_foo_bar_sha3::portable::incremental::Xof;
+use test_foo_bar_sha3::portable::{incremental, sha224, sha256, sha384, sha512, shake128, shake256};
 
 #[test]
 fn sha3_224() {

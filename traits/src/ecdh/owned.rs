@@ -5,7 +5,7 @@
 use super::arrayref;
 use super::arrayref::{DeriveError, GenerateSecretError, SecretToPublicError, ValidateSecretError};
 
-use libcrux_secrets::{Classify, U8};
+use test_foo_bar_secrets::{Classify, U8};
 
 /// An Elliptic Curve Diffie-Hellman (ECDH) key exchange.
 pub trait EcdhOwned<const RAND_LEN: usize, const SECRET_LEN: usize, const PUBLIC_LEN: usize> {

@@ -445,14 +445,14 @@ fn main() {
             _ => 0, //unknown
         };
         Platform {
-            simd128: !x86 && libcrux_platform::simd128_support(),
-            simd256: !x86 && libcrux_platform::simd256_support(),
-            aes_ni: libcrux_platform::aes_ni_support(),
-            x25519: !x86 && libcrux_platform::x25519_support(),
-            bmi2_adx_support: libcrux_platform::bmi2_adx_support(),
-            pmull: libcrux_platform::pmull_support(),
-            adv_simd: libcrux_platform::adv_simd_support(),
-            sha256: libcrux_platform::sha256_support(),
+            simd128: !x86 && test_foo_bar_platform::simd128_support(),
+            simd256: !x86 && test_foo_bar_platform::simd256_support(),
+            aes_ni: test_foo_bar_platform::aes_ni_support(),
+            x25519: !x86 && test_foo_bar_platform::x25519_support(),
+            bmi2_adx_support: test_foo_bar_platform::bmi2_adx_support(),
+            pmull: test_foo_bar_platform::pmull_support(),
+            adv_simd: test_foo_bar_platform::adv_simd_support(),
+            sha256: test_foo_bar_platform::sha256_support(),
             target_arch: target_arch.clone(),
             target_env: target_env.clone(),
             target_os: target_os.clone(),

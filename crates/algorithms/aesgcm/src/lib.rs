@@ -13,8 +13,8 @@
 //!
 //! ```rust
 //! // Multiplexed owned API
-//! use libcrux_aesgcm::AeadConsts as _;
-//! use libcrux_aesgcm::{AesGcm128, AesGcm128Key, AesGcm128Nonce, AesGcm128Tag, NONCE_LEN, TAG_LEN};
+//! use test_foo_bar_aesgcm::AeadConsts as _;
+//! use test_foo_bar_aesgcm::{AesGcm128, AesGcm128Key, AesGcm128Nonce, AesGcm128Tag, NONCE_LEN, TAG_LEN};
 //!
 //! let k: AesGcm128Key = [0; AesGcm128::KEY_LEN].into();
 //! let nonce: AesGcm128Nonce = [0; NONCE_LEN].into();
@@ -30,7 +30,7 @@
 //! ```
 //!
 //! We also provide access to [lower-level AEAD
-//! APIs](libcrux_traits::aead) for the platform-multiplexing
+//! APIs](test_foo_bar_traits::aead) for the platform-multiplexing
 //! implementation with the [`AesGcm128`] and [`AesGcm256`] structs.
 //!
 //! Users who want to use a platform-specific implementation directly can
@@ -69,18 +69,18 @@ mod aes_gcm;
 /// - [`aes_gcm_128::portable::PortableAesGcm128`]: A portable, bit-sliced implementation.
 ///
 /// See [`EncryptError`],
-/// [`DecryptError`](libcrux_traits::aead::arrayref::DecryptError) and
-/// [`KeyGenError`](libcrux_traits::aead::arrayref::DecryptError) for
+/// [`DecryptError`](test_foo_bar_traits::aead::arrayref::DecryptError) and
+/// [`KeyGenError`](test_foo_bar_traits::aead::arrayref::DecryptError) for
 /// errors.
 ///
-/// The [`libcrux_traits`](libcrux_traits) crate provides two typed APIs for AEADs:
+/// The [`test_foo_bar_traits`](test_foo_bar_traits) crate provides two typed APIs for AEADs:
 ///
 /// ## Owned key-centric API
 /// This API operates on owned arrays for keys, nonces and tags:
 /// ```rust
 /// // Using the multiplexed implementation.
-/// use libcrux_aesgcm::AeadConsts as _;
-/// use libcrux_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_128::{AesGcm128, Key, Tag, Nonce}};
+/// use test_foo_bar_aesgcm::AeadConsts as _;
+/// use test_foo_bar_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_128::{AesGcm128, Key, Tag, Nonce}};
 ///
 /// let k: Key = [0; AesGcm128::KEY_LEN].into();
 /// let nonce: Nonce = [0; NONCE_LEN].into();
@@ -99,8 +99,8 @@ mod aes_gcm;
 /// This API operates on array references for keys, nonces and tags:
 /// ```rust
 /// // Using the multiplexed API
-/// use libcrux_aesgcm::{AeadConsts as _, Aead as _};
-/// use libcrux_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_128::{AesGcm128}};
+/// use test_foo_bar_aesgcm::{AeadConsts as _, Aead as _};
+/// use test_foo_bar_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_128::{AesGcm128}};
 ///
 /// let algo = AesGcm128;
 ///
@@ -138,18 +138,18 @@ pub mod aes_gcm_128;
 /// - [`aes_gcm_256::portable::PortableAesGcm256`]: A portable, bit-sliced implementation.
 ///
 /// See [`EncryptError`],
-/// [`DecryptError`](libcrux_traits::aead::arrayref::DecryptError) and
-/// [`KeyGenError`](libcrux_traits::aead::arrayref::DecryptError) for
+/// [`DecryptError`](test_foo_bar_traits::aead::arrayref::DecryptError) and
+/// [`KeyGenError`](test_foo_bar_traits::aead::arrayref::DecryptError) for
 /// errors.
 ///
-/// The [`libcrux_traits`](libcrux_traits) crate provides two typed APIs for AEADs:
+/// The [`test_foo_bar_traits`](test_foo_bar_traits) crate provides two typed APIs for AEADs:
 ///
 /// ## Owned key-centric API
 /// This API operates on owned arrays for keys, nonces and tags:
 /// ```rust
 /// // Using the multiplexed implementation.
-/// use libcrux_aesgcm::AeadConsts as _;
-/// use libcrux_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_256::{AesGcm256, Key, Tag, Nonce}};
+/// use test_foo_bar_aesgcm::AeadConsts as _;
+/// use test_foo_bar_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_256::{AesGcm256, Key, Tag, Nonce}};
 ///
 /// let k: Key = [0; AesGcm256::KEY_LEN].into();
 /// let nonce: Nonce = [0; NONCE_LEN].into();
@@ -168,8 +168,8 @@ pub mod aes_gcm_128;
 /// This API operates on array references for keys, nonces and tags:
 /// ```rust
 /// // Using the multiplexed API
-/// use libcrux_aesgcm::{AeadConsts as _, Aead as _};
-/// use libcrux_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_256::{AesGcm256}};
+/// use test_foo_bar_aesgcm::{AeadConsts as _, Aead as _};
+/// use test_foo_bar_aesgcm::{NONCE_LEN, TAG_LEN, aes_gcm_256::{AesGcm256}};
 ///
 /// let algo = AesGcm256;
 ///
@@ -210,7 +210,7 @@ pub(crate) mod implementations {
     #[cfg(doc)]
     use super::{aes_gcm_128, aes_gcm_256};
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for platform-multiplexed AES-GCM 128.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for platform-multiplexed AES-GCM 128.
     ///
     /// The implementation used is determined automatically at runtime.
     /// - `x64`
@@ -221,7 +221,7 @@ pub(crate) mod implementations {
     #[derive(Clone, Copy, PartialEq, Eq)]
     pub struct AesGcm128;
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for portable AES-GCM 128.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for portable AES-GCM 128.
     ///
     /// For more information on usage, see [`aes_gcm_128`].
     #[derive(Clone, Copy, PartialEq, Eq)]
@@ -229,7 +229,7 @@ pub(crate) mod implementations {
 
     #[cfg(feature = "simd128")]
     #[derive(Clone, Copy, PartialEq, Eq)]
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for ARM Neon optimized AES-GCM 128.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for ARM Neon optimized AES-GCM 128.
     ///
     /// Should only be used directly after performing runtime checks for the necessary CPU
     /// features.
@@ -237,7 +237,7 @@ pub(crate) mod implementations {
     /// For more information on usage, see [`aes_gcm_128`].
     pub struct NeonAesGcm128;
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for x86_64 AES-NI optimized AES-GCM 128.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for x86_64 AES-NI optimized AES-GCM 128.
     ///
     /// Should only be used directly after performing runtime checks for the necessary CPU
     /// features.
@@ -247,7 +247,7 @@ pub(crate) mod implementations {
     #[derive(Clone, Copy, PartialEq, Eq)]
     pub struct X64AesGcm128;
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for platform-multiplexed AES-GCM 256.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for platform-multiplexed AES-GCM 256.
     ///
     /// The implementation used is determined automatically at runtime.
     /// - `x64`
@@ -258,20 +258,20 @@ pub(crate) mod implementations {
     #[derive(Clone, Copy, PartialEq, Eq)]
     pub struct AesGcm256;
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for portable AES-GCM 256.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for portable AES-GCM 256.
     ///
     /// For more information on usage, see [`aes_gcm_256`].
     #[derive(Clone, Copy, PartialEq, Eq)]
     pub struct PortableAesGcm256;
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for ARM Neon optimized AES-GCM 256.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for ARM Neon optimized AES-GCM 256.
     ///
     /// For more information on usage, see [`aes_gcm_256`].
     #[cfg(feature = "simd128")]
     #[derive(Clone, Copy, PartialEq, Eq)]
     pub struct NeonAesGcm256;
 
-    /// Access to [lower-level AEAD APIs](libcrux_traits::aead) for x86_64 AES-NI optimized AES-GCM 256.
+    /// Access to [lower-level AEAD APIs](test_foo_bar_traits::aead) for x86_64 AES-NI optimized AES-GCM 256.
     ///
     /// For more information on usage, see [`aes_gcm_256`].
     #[derive(Clone, Copy, PartialEq, Eq)]
@@ -291,7 +291,7 @@ pub use aes_gcm_128::KEY_LEN as AESGCM128_KEY_LEN;
 #[doc(inline)]
 pub use aes_gcm_256::KEY_LEN as AESGCM256_KEY_LEN;
 
-pub use libcrux_traits::aead::arrayref::{DecryptError, EncryptError, KeyGenError};
+pub use test_foo_bar_traits::aead::arrayref::{DecryptError, EncryptError, KeyGenError};
 
 /// Generic AES-GCM encrypt.
 pub(crate) fn encrypt<S: State>(
@@ -488,8 +488,8 @@ pub(crate) mod x64 {
 }
 
 // traits re-exports
-pub use libcrux_traits::aead::consts::AeadConsts;
-pub use libcrux_traits::aead::typed_refs::Aead;
+pub use test_foo_bar_traits::aead::consts::AeadConsts;
+pub use test_foo_bar_traits::aead::typed_refs::Aead;
 
 pub use implementations::{AesGcm128, AesGcm256};
 

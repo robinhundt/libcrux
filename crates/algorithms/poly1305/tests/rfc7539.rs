@@ -21,7 +21,7 @@ fn wrapper_rfc7539_section_2_5_2() {
     let expected_tag = hex_to_bytes("a8061dc1305136c6c22b8baf0c0127a9");
 
     let mut tag = [0u8; 16];
-    assert!(libcrux_poly1305::mac(&key, msg, &mut tag).is_ok());
+    assert!(test_foo_bar_poly1305::mac(&key, msg, &mut tag).is_ok());
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }
@@ -35,7 +35,7 @@ fn rfc7539_section_2_5_2_via_hacl() {
     let expected_tag = hex_to_bytes("a8061dc1305136c6c22b8baf0c0127a9");
 
     let mut tag = [0u8; 16];
-    libcrux_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, msg.len() as u32, &key);
+    test_foo_bar_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, msg.len() as u32, &key);
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }
@@ -49,7 +49,7 @@ fn poly1305_empty_message() {
     let expected_tag = [0u8; 16]; // With r=0 and s=0, tag = s = 0
 
     let mut tag = [0u8; 16];
-    libcrux_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, 0, &key);
+    test_foo_bar_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, 0, &key);
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }
@@ -67,7 +67,7 @@ fn rfc8439_appendix_a3_test1() {
     let expected_tag = hex_to_bytes("00000000000000000000000000000000");
 
     let mut tag = [0u8; 16];
-    libcrux_poly1305::hacl::mac_poly1305::mac(&mut tag, &msg, msg.len() as u32, &key);
+    test_foo_bar_poly1305::hacl::mac_poly1305::mac(&mut tag, &msg, msg.len() as u32, &key);
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }
@@ -86,7 +86,7 @@ are addressed to";
     let expected_tag = hex_to_bytes("36e5f6b5c5e06070f0efca96227a863e");
 
     let mut tag = [0u8; 16];
-    libcrux_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, msg.len() as u32, &key);
+    test_foo_bar_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, msg.len() as u32, &key);
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }
@@ -104,7 +104,7 @@ are addressed to";
     let expected_tag = hex_to_bytes("f3477e7cd95417af89a6b8794c310cf0");
 
     let mut tag = [0u8; 16];
-    libcrux_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, msg.len() as u32, &key);
+    test_foo_bar_poly1305::hacl::mac_poly1305::mac(&mut tag, msg, msg.len() as u32, &key);
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }
@@ -126,7 +126,7 @@ fn rfc8439_appendix_a3_test4() {
     let expected_tag = hex_to_bytes("4541669a7eaaee61e708dc7cbcc5eb62");
 
     let mut tag = [0u8; 16];
-    libcrux_poly1305::hacl::mac_poly1305::mac(&mut tag, &msg, msg.len() as u32, &key);
+    test_foo_bar_poly1305::hacl::mac_poly1305::mac(&mut tag, &msg, msg.len() as u32, &key);
 
     assert_eq!(&tag[..], &expected_tag[..]);
 }

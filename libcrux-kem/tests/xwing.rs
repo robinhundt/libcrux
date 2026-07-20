@@ -1,4 +1,4 @@
-use libcrux_kem::{key_gen, key_gen_derand, Algorithm::XWingKemDraft06};
+use test_foo_bar_kem::{key_gen, key_gen_derand, Algorithm::XWingKemDraft06};
 
 #[test]
 fn self_test() {

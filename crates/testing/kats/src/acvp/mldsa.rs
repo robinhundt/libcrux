@@ -5,7 +5,7 @@
 //!
 //! ### Example usage
 //! ```rust
-//! use libcrux_kats::acvp::mldsa::{KeyGenTests, SigGenTests, SigVerTests};
+//! use test_foo_bar_kats::acvp::mldsa::{KeyGenTests, SigGenTests, SigVerTests};
 //!
 //! // keygen tests
 //! let keygen_tests = KeyGenTests::load();

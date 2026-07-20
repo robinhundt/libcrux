@@ -1,6 +1,6 @@
 use super::*;
 use crate::vector::portable::PortableVector;
-use libcrux_intrinsics::arm64::*;
+use test_foo_bar_intrinsics::arm64::*;
 
 #[inline(always)]
 pub(crate) fn serialize_1(v: SIMD128Vector) -> [u8; 2] {

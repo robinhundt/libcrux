@@ -1,6 +1,6 @@
 use super::*;
 
-use libcrux_intrinsics::arm64::_uint64x2_t;
+use test_foo_bar_intrinsics::arm64::_uint64x2_t;
 
 #[inline]
 pub(crate) fn keccak2<const RATE: usize, const DELIM: u8>(

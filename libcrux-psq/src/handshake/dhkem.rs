@@ -2,7 +2,7 @@
 //!
 //! This module provides wrappers around KEM types, assuming a DH-KEM
 //! style API.
-use libcrux_ecdh::{secret_to_public, Algorithm};
+use test_foo_bar_ecdh::{secret_to_public, Algorithm};
 use rand::CryptoRng;
 use tls_codec::{TlsDeserialize, TlsDeserializeBytes, TlsSerialize, TlsSerializeBytes, TlsSize};
 
@@ -69,7 +69,7 @@ impl DHSharedSecret {
     /// Derive a shared secret, DH-KEM style.
     pub(crate) fn derive(sk: &DHPrivateKey, pk: &DHPublicKey) -> Result<DHSharedSecret, Error> {
         Ok(DHSharedSecret(
-            libcrux_ecdh::derive(Algorithm::X25519, pk.0, &sk.0).map_err(|_| Error::CryptoError)?,
+            test_foo_bar_ecdh::derive(Algorithm::X25519, pk.0, &sk.0).map_err(|_| Error::CryptoError)?,
         ))
     }
 }
@@ -78,7 +78,7 @@ impl DHPrivateKey {
     /// Creates a new KEM private key.
     pub fn new(rng: &mut impl CryptoRng) -> Self {
         Self(
-            libcrux_ecdh::generate_secret(libcrux_ecdh::Algorithm::X25519, rng)
+            test_foo_bar_ecdh::generate_secret(test_foo_bar_ecdh::Algorithm::X25519, rng)
                 .expect("Insufficient Randomness"),
         )
     }
@@ -86,7 +86,7 @@ impl DHPrivateKey {
     /// Compute the KEM public key from the KEM private key.
     pub fn to_public(&self) -> DHPublicKey {
         DHPublicKey(
-            secret_to_public(libcrux_ecdh::Algorithm::X25519, &self.0)
+            secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &self.0)
                 .expect("secret key is honestly generated X25519 key")
                 .try_into()
                 .expect("secret key is honestly generated X25519 key"),
@@ -96,7 +96,7 @@ impl DHPrivateKey {
     /// Import a Diffie-Hellman private key from raw bytes.
     pub fn from_bytes(value: &[u8; 32]) -> Result<Self, Error> {
         // Test whether the key is already clamped to make sure it can't be misused.
-        if libcrux_ecdh::validate_scalar(libcrux_ecdh::Algorithm::X25519, value).is_err() {
+        if test_foo_bar_ecdh::validate_scalar(test_foo_bar_ecdh::Algorithm::X25519, value).is_err() {
             Err(Error::InvalidDHSecret)
         } else {
             Ok(Self(Vec::from(value)))

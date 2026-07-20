@@ -1,35 +1,31 @@
 [package]
-name = "libcrux-p256"
 description = "Formally verified P-256 implementation"
+name = "test-foo-bar-p256"
 readme = "Readme.md"
 
-version = "0.0.7"
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
 edition.workspace = true
+homepage.workspace = true
+license.workspace = true
 repository.workspace = true
+version = "0.0.7"
 
 [dependencies]
-libcrux-macros = { version = "=0.0.3", path = "../../utils/macros" }
-libcrux-traits.workspace = true
-libcrux-hacl-rs.workspace = true
-libcrux-secrets.workspace = true
-libcrux-sha2 = { workspace = true, features = [
-    "expose-hacl",
-] }
+test-foo-bar-hacl-rs.workspace = true
+test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
+test-foo-bar-secrets.workspace = true
+test-foo-bar-sha2 = { workspace = true, features = ["expose-hacl"] }
+test-foo-bar-traits.workspace = true
 
 [features]
 expose-hacl = []
 
 # Checking secret independence
 check-secret-independence = [
-    "libcrux-secrets/check-secret-independence",
-    "libcrux-traits/check-secret-independence",
+    "test-foo-bar-secrets/check-secret-independence",
+    "test-foo-bar-traits/check-secret-independence",
 ]
 
 
 [dev-dependencies]
-libcrux-traits = { workspace = true, features = [
-    "generic-tests",
-] }
+test-foo-bar-traits = { workspace = true, features = ["generic-tests"] }

@@ -67,7 +67,7 @@ pub(crate) struct PolynomialRingElement<Vector: Operations> {
 fn ZERO<Vector: Operations>() -> PolynomialRingElement<Vector> {
     PolynomialRingElement {
         // https://github.com/hacspec/hax/issues/27
-        // FIXME:  The THIR body of item DefId(0:415 ~ libcrux_ml_kem[9000]::polynomial::{impl#0}::ZERO::{constant#0}) was stolen.
+        // FIXME:  The THIR body of item DefId(0:415 ~ test_foo_bar_ml_kem[9000]::polynomial::{impl#0}::ZERO::{constant#0}) was stolen.
         coefficients: [Vector::ZERO(); 16],
     }
 }
@@ -689,7 +689,7 @@ mod tests {
     use crate::vector::portable::PortableVector;
 
     use super::PolynomialRingElement;
-    use libcrux_secrets::*;
+    use test_foo_bar_secrets::*;
 
     #[test]
     fn encoding_portable() {

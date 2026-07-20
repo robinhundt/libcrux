@@ -1,7 +1,7 @@
 //! This module contains the trait and related errors for a KEM that takes slices as
 //! arguments and writes the results to mutable slices..
 
-use libcrux_secrets::U8;
+use test_foo_bar_secrets::U8;
 
 use super::arrayref;
 
@@ -106,31 +106,31 @@ impl From<arrayref::DecapsError> for DecapsError {
 macro_rules! impl_trait {
     ($type:ty => $ek:expr, $dk:expr, $ct:expr, $ss:expr, $rand_kg:expr, $rand_encaps:expr) => {
         impl $crate::kem::slice::Kem for $type {
-            fn keygen(ek: &mut [u8], dk: &mut [$crate::libcrux_secrets::U8], rand: &[$crate::libcrux_secrets::U8]) -> Result<(), $crate::kem::slice::KeyGenError> {
+            fn keygen(ek: &mut [u8], dk: &mut [$crate::test_foo_bar_secrets::U8], rand: &[$crate::test_foo_bar_secrets::U8]) -> Result<(), $crate::kem::slice::KeyGenError> {
                 let ek : &mut [u8; $ek] = ek
                     .try_into()
                     .map_err(|_| $crate::kem::slice::KeyGenError::InvalidEncapsKeyLength)?;
-                let dk : &mut [$crate::libcrux_secrets::U8; $dk] = dk
+                let dk : &mut [$crate::test_foo_bar_secrets::U8; $dk] = dk
                     .try_into()
                     .map_err(|_| $crate::kem::slice::KeyGenError::InvalidDecapsKeyLength)?;
-                let rand : &[$crate::libcrux_secrets::U8; $rand_kg] = rand
+                let rand : &[$crate::test_foo_bar_secrets::U8; $rand_kg] = rand
                     .try_into()
                     .map_err(|_| $crate::kem::slice::KeyGenError::InvalidRandomnessLength)?;
 
                 <$type as $crate::kem::arrayref::Kem<$ek, $dk, $ct, $ss, $rand_kg, $rand_encaps>>::keygen(ek, dk, rand).map_err($crate::kem::slice::KeyGenError::from)
             }
 
-            fn encaps(ct: &mut [u8], ss: &mut [$crate::libcrux_secrets::U8], ek: &[u8], rand: &[$crate::libcrux_secrets::U8]) -> Result<(), $crate::kem::slice::EncapsError>{
+            fn encaps(ct: &mut [u8], ss: &mut [$crate::test_foo_bar_secrets::U8], ek: &[u8], rand: &[$crate::test_foo_bar_secrets::U8]) -> Result<(), $crate::kem::slice::EncapsError>{
                 let ct : &mut [u8; $ct] = ct
                     .try_into()
                     .map_err(|_| $crate::kem::slice::EncapsError::InvalidCiphertextLength)?;
-                let ss : &mut [$crate::libcrux_secrets::U8; $ss] = ss
+                let ss : &mut [$crate::test_foo_bar_secrets::U8; $ss] = ss
                     .try_into()
                     .map_err(|_| $crate::kem::slice::EncapsError::InvalidSharedSecretLength)?;
                 let ek : & [u8; $ek] = ek
                     .try_into()
                     .map_err(|_| $crate::kem::slice::EncapsError::InvalidEncapsKeyLength)?;
-                let rand : &[$crate::libcrux_secrets::U8; $rand_encaps] = rand
+                let rand : &[$crate::test_foo_bar_secrets::U8; $rand_encaps] = rand
                     .try_into()
                     .map_err(|_| $crate::kem::slice::EncapsError::InvalidRandomnessLength)?;
 
@@ -138,14 +138,14 @@ macro_rules! impl_trait {
                 <$type as $crate::kem::arrayref::Kem<$ek, $dk, $ct, $ss, $rand_kg, $rand_encaps>>::encaps(ct, ss, ek,rand).map_err($crate::kem::slice::EncapsError::from)
             }
 
-            fn decaps(ss: &mut [$crate::libcrux_secrets::U8], ct: &[u8], dk: &[$crate::libcrux_secrets::U8]) -> Result<(), $crate::kem::slice::DecapsError> {
-                let ss : &mut [$crate::libcrux_secrets::U8; $ss] = ss
+            fn decaps(ss: &mut [$crate::test_foo_bar_secrets::U8], ct: &[u8], dk: &[$crate::test_foo_bar_secrets::U8]) -> Result<(), $crate::kem::slice::DecapsError> {
+                let ss : &mut [$crate::test_foo_bar_secrets::U8; $ss] = ss
                     .try_into()
                     .map_err(|_| $crate::kem::slice::DecapsError::InvalidSharedSecretLength)?;
                 let ct : &[u8; $ct] = ct
                     .try_into()
                     .map_err(|_| $crate::kem::slice::DecapsError::InvalidCiphertextLength)?;
-                let dk : &[$crate::libcrux_secrets::U8; $dk] = dk
+                let dk : &[$crate::test_foo_bar_secrets::U8; $dk] = dk
                     .try_into()
                     .map_err(|_| $crate::kem::slice::DecapsError::InvalidDecapsKeyLength)?;
 

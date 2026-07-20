@@ -1,2 +1,2 @@
 //! # Hash Algorithms
-pub use libcrux_digest::*;
+pub use test_foo_bar_digest::*;

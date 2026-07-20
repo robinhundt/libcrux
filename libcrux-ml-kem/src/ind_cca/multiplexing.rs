@@ -91,7 +91,7 @@ pub(crate) fn kyber_generate_keypair<
     randomness: [u8; KEY_GENERATION_SEED_SIZE],
 ) -> MlKemKeyPair<PRIVATE_KEY_SIZE, PUBLIC_KEY_SIZE> {
     // Runtime feature detection.
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         kyber_generate_keypair_avx2::<
             K,
             CPA_PRIVATE_KEY_SIZE,
@@ -100,7 +100,7 @@ pub(crate) fn kyber_generate_keypair<
             ETA1,
             ETA1_RANDOMNESS_SIZE,
         >(&randomness)
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         kyber_generate_keypair_neon::<
             K,
             CPA_PRIVATE_KEY_SIZE,
@@ -138,7 +138,7 @@ pub(crate) fn generate_keypair<
     randomness: &[u8; KEY_GENERATION_SEED_SIZE],
 ) -> MlKemKeyPair<PRIVATE_KEY_SIZE, PUBLIC_KEY_SIZE> {
     // Runtime feature detection.
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         generate_keypair_avx2::<
             K,
             CPA_PRIVATE_KEY_SIZE,
@@ -147,7 +147,7 @@ pub(crate) fn generate_keypair<
             ETA1,
             ETA1_RANDOMNESS_SIZE,
         >(randomness)
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         generate_keypair_neon::<
             K,
             CPA_PRIVATE_KEY_SIZE,
@@ -187,7 +187,7 @@ pub(crate) fn kyber_encapsulate<
     public_key: &MlKemPublicKey<PUBLIC_KEY_SIZE>,
     randomness: [u8; SHARED_SECRET_SIZE],
 ) -> (MlKemCiphertext<CIPHERTEXT_SIZE>, MlKemSharedSecret) {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         kyber_encapsulate_avx2::<
             K,
             CIPHERTEXT_SIZE,
@@ -203,7 +203,7 @@ pub(crate) fn kyber_encapsulate<
             ETA2,
             ETA2_RANDOMNESS_SIZE,
         >(public_key, &randomness)
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         kyber_encapsulate_neon::<
             K,
             CIPHERTEXT_SIZE,
@@ -269,7 +269,7 @@ pub(crate) fn encapsulate<
     public_key: &MlKemPublicKey<PUBLIC_KEY_SIZE>,
     randomness: &[u8; SHARED_SECRET_SIZE],
 ) -> (MlKemCiphertext<CIPHERTEXT_SIZE>, MlKemSharedSecret) {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         encapsulate_avx2::<
             K,
             CIPHERTEXT_SIZE,
@@ -285,7 +285,7 @@ pub(crate) fn encapsulate<
             ETA2,
             ETA2_RANDOMNESS_SIZE,
         >(public_key, randomness)
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         encapsulate_neon::<
             K,
             CIPHERTEXT_SIZE,
@@ -342,7 +342,7 @@ pub(crate) fn kyber_decapsulate<
     private_key: &MlKemPrivateKey<SECRET_KEY_SIZE>,
     ciphertext: &MlKemCiphertext<CIPHERTEXT_SIZE>,
 ) -> MlKemSharedSecret {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         kyber_decapsulate_avx2::<
             K,
             SECRET_KEY_SIZE,
@@ -361,7 +361,7 @@ pub(crate) fn kyber_decapsulate<
             ETA2_RANDOMNESS_SIZE,
             IMPLICIT_REJECTION_HASH_INPUT_SIZE,
         >(private_key, ciphertext)
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         kyber_decapsulate_neon::<
             K,
             SECRET_KEY_SIZE,
@@ -439,7 +439,7 @@ pub(crate) fn decapsulate<
     private_key: &MlKemPrivateKey<SECRET_KEY_SIZE>,
     ciphertext: &MlKemCiphertext<CIPHERTEXT_SIZE>,
 ) -> MlKemSharedSecret {
-    if libcrux_platform::simd256_support() {
+    if test_foo_bar_platform::simd256_support() {
         decapsulate_avx2::<
             K,
             SECRET_KEY_SIZE,
@@ -458,7 +458,7 @@ pub(crate) fn decapsulate<
             ETA2_RANDOMNESS_SIZE,
             IMPLICIT_REJECTION_HASH_INPUT_SIZE,
         >(private_key, ciphertext)
-    } else if libcrux_platform::simd128_support() {
+    } else if test_foo_bar_platform::simd128_support() {
         decapsulate_neon::<
             K,
             SECRET_KEY_SIZE,

@@ -7,7 +7,7 @@ use crate::{
     hacl::chacha20::{chacha20_constants, rounds},
     AeadError,
 };
-use libcrux_traits::aead::{typed_owned, typed_refs};
+use test_foo_bar_traits::aead::{typed_owned, typed_refs};
 
 pub use crate::{KEY_LEN, TAG_LEN};
 

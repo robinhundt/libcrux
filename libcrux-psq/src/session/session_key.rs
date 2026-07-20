@@ -31,7 +31,7 @@ const SESSION_KEY_SALT: &[u8] = b"session key salt";
 fn session_key_id(key: &AEADKeyNonce) -> Result<[u8; SESSION_ID_LENGTH], Error> {
     let mut session_id = [0u8; SESSION_ID_LENGTH];
 
-    libcrux_hkdf::sha2_256::hkdf(
+    test_foo_bar_hkdf::sha2_256::hkdf(
         &mut session_id,
         SESSION_KEY_SALT,
         &SerializeBytes::tls_serialize(&key).map_err(Error::Serialize)?,

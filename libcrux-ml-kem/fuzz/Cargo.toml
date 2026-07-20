@@ -1,8 +1,8 @@
 [package]
-name = "libcrux-ml-kem-fuzz"
-version = "0.0.0"
-publish = false
 edition = "2021"
+name = "test-foo-bar-ml-kem-fuzz"
+publish = false
+version = "0.0.0"
 
 [package.metadata]
 cargo-fuzz = true
@@ -10,26 +10,26 @@ cargo-fuzz = true
 [dependencies]
 libfuzzer-sys = "0.4"
 
-[dependencies.libcrux-ml-kem]
+[dependencies.test-foo-bar-ml-kem]
 path = ".."
 
 [[bin]]
+bench = false
+doc = false
 name = "keygen"
 path = "fuzz_targets/keygen.rs"
 test = false
-doc = false
-bench = false
 
 [[bin]]
+bench = false
+doc = false
 name = "encaps"
 path = "fuzz_targets/encaps.rs"
 test = false
-doc = false
-bench = false
 
 [[bin]]
+bench = false
+doc = false
 name = "decaps"
 path = "fuzz_targets/decaps.rs"
 test = false
-doc = false
-bench = false

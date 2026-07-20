@@ -10,14 +10,14 @@ fn derive(c: &mut Criterion) {
             || {
                 use rand::rngs::SysRng;
                 let mut rng = UnwrapErr(SysRng);
-                let (_, pk1) = libcrux_ecdh::x25519_key_gen(&mut rng).unwrap();
-                let sk2 = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let (_, pk1) = test_foo_bar_ecdh::x25519_key_gen(&mut rng).unwrap();
+                let sk2 = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
 
                 (pk1, sk2)
             },
             |(pk1, sk2)| {
                 let _zz =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -150,12 +150,12 @@ fn secret_to_public(c: &mut Criterion) {
             || {
                 use rand::rngs::SysRng;
                 let mut rng = UnwrapErr(SysRng);
-                let sk = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let sk = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
                 sk
             },
             |sk| {
                 let _pk =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &sk).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &sk).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -256,32 +256,32 @@ fn nym_outfox_create(c: &mut Criterion) {
                 use rand::rngs::SysRng;
                 let mut rng = UnwrapErr(SysRng);
 
-                let (_, pk1) = libcrux_ecdh::x25519_key_gen(&mut rng).unwrap();
+                let (_, pk1) = test_foo_bar_ecdh::x25519_key_gen(&mut rng).unwrap();
 
-                let sk2a = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
-                let sk2b = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
-                let sk2c = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
-                let sk2d = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let sk2a = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let sk2b = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let sk2c = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let sk2d = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
 
                 (pk1, sk2a, sk2b, sk2c, sk2d)
             },
             |(pk1, sk2a, sk2b, sk2c, sk2d)| {
                 let _pk2a =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &sk2a).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &sk2a).unwrap();
                 let _pk2b =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &sk2b).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &sk2b).unwrap();
                 let _pk2c =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &sk2c).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &sk2c).unwrap();
                 let _pk2d =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &sk2d).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &sk2d).unwrap();
                 let _zza =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2a).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2a).unwrap();
                 let _zzb =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2b).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2b).unwrap();
                 let _zzc =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2c).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2c).unwrap();
                 let _zzd =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2d).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2d).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -513,14 +513,14 @@ fn nym_outfox_process(c: &mut Criterion) {
                 use rand::rngs::SysRng;
                 let mut rng = UnwrapErr(SysRng);
 
-                let (_, pk1) = libcrux_ecdh::x25519_key_gen(&mut rng).unwrap();
-                let sk2 = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let (_, pk1) = test_foo_bar_ecdh::x25519_key_gen(&mut rng).unwrap();
+                let sk2 = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
 
                 (pk1, sk2)
             },
             |(pk1, sk2)| {
                 let _zz =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -654,28 +654,28 @@ fn nym_sphinx_create(c: &mut Criterion) {
             || {
                 use rand::rngs::SysRng;
                 let mut rng = UnwrapErr(SysRng);
-                let (_, pk1) = libcrux_ecdh::x25519_key_gen(&mut rng).unwrap();
-                let sk2 = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let (_, pk1) = test_foo_bar_ecdh::x25519_key_gen(&mut rng).unwrap();
+                let sk2 = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
 
                 (pk1, sk2)
             },
             |(pk1, sk2)| {
                 let _pk2a =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &sk2).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &sk2).unwrap();
                 let zza =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
                 let _pk2b =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &zza).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &zza).unwrap();
                 let zzb =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &zza).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &zza).unwrap();
                 let _pk2c =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &zzb).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &zzb).unwrap();
                 let zzc =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &zzb).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &zzb).unwrap();
                 let _pk2d =
-                    libcrux_ecdh::secret_to_public(libcrux_ecdh::Algorithm::X25519, &zzc).unwrap();
+                    test_foo_bar_ecdh::secret_to_public(test_foo_bar_ecdh::Algorithm::X25519, &zzc).unwrap();
                 let _zzd =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &zzc).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &zzc).unwrap();
             },
             BatchSize::SmallInput,
         )
@@ -903,16 +903,16 @@ fn nym_sphinx_process(c: &mut Criterion) {
             || {
                 use rand::rngs::SysRng;
                 let mut rng = UnwrapErr(SysRng);
-                let (_, pk1) = libcrux_ecdh::x25519_key_gen(&mut rng).unwrap();
-                let sk2 = libcrux_ecdh::x25519_generate_secret(&mut rng).unwrap();
+                let (_, pk1) = test_foo_bar_ecdh::x25519_key_gen(&mut rng).unwrap();
+                let sk2 = test_foo_bar_ecdh::x25519_generate_secret(&mut rng).unwrap();
 
                 (pk1, sk2)
             },
             |(pk1, sk2)| {
                 let _zz1 =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
                 let _zz2 =
-                    libcrux_ecdh::derive(libcrux_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
+                    test_foo_bar_ecdh::derive(test_foo_bar_ecdh::Algorithm::X25519, &pk1, &sk2).unwrap();
             },
             BatchSize::SmallInput,
         )

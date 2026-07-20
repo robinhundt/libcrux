@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, BatchSize, Criterion};
 
 use benchmarks::util::*;
-use libcrux_ecdsa::{
+use test_foo_bar_ecdsa::{
     p256::{Nonce, PrivateKey, PublicKey},
     DigestAlgorithm,
 };
@@ -27,7 +27,7 @@ fn sign(c: &mut Criterion) {
             },
             |(msg, sk, nonce)| {
                 let _sig =
-                    libcrux_ecdsa::p256::sign(DigestAlgorithm::Sha256, &msg[..], &sk, &nonce)
+                    test_foo_bar_ecdsa::p256::sign(DigestAlgorithm::Sha256, &msg[..], &sk, &nonce)
                         .unwrap();
             },
             BatchSize::SmallInput,
@@ -98,12 +98,12 @@ fn verify(c: &mut Criterion) {
                 let sk = PrivateKey::try_from(&sk).unwrap();
                 let nonce = Nonce::random(&mut rng).unwrap();
                 let msg = b"sample";
-                let sig = libcrux_ecdsa::p256::sign(DigestAlgorithm::Sha256, &msg[..], &sk, &nonce)
+                let sig = test_foo_bar_ecdsa::p256::sign(DigestAlgorithm::Sha256, &msg[..], &sk, &nonce)
                     .unwrap();
                 (msg, sig, pk)
             },
             |(msg, sig, pk)| {
-                let _ = libcrux_ecdsa::p256::verify(DigestAlgorithm::Sha256, &msg[..], &sig, &pk);
+                let _ = test_foo_bar_ecdsa::p256::verify(DigestAlgorithm::Sha256, &msg[..], &sig, &pk);
             },
             BatchSize::SmallInput,
         )

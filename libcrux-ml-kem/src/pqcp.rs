@@ -21,7 +21,7 @@ pub enum PQCPError {
 ///   another way inserts an ugly linebreak in the doc output,
 ///   cf. https://stackoverflow.com/questions/60905060/prevent-line-break-in-doc-test)
 /// - `$trait_implementer` must be a type implementing the
-///   `libcrux_traits::kem::arrayref::Kem` trait.
+///   `test_foo_bar_traits::kem::arrayref::Kem` trait.
 /// - `$variant` must be a string containing the numeric parameter set
 ///   identifier with a space in front and one after, e.g. " 512 ". It is
 ///   used only for generating documentation.
@@ -63,7 +63,7 @@ macro_rules! pqcp_api {
         pub mod pqcp {
             #[cfg(feature = "rand")]
             use ::rand::CryptoRng;
-            use libcrux_traits::kem::arrayref::Kem;
+            use test_foo_bar_traits::kem::arrayref::Kem;
 
             use super::*;
             use crate::pqcp::PQCPError;

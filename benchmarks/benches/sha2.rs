@@ -85,28 +85,28 @@ macro_rules! impl_comp {
 
 impl_comp!(
     Sha2_224,
-    libcrux_sha2::sha224,
+    test_foo_bar_sha2::sha224,
     None,
     sha2::Sha224,
     MessageDigest::sha224()
 );
 impl_comp!(
     Sha2_256,
-    libcrux_sha2::sha256,
+    test_foo_bar_sha2::sha256,
     Some(&ring::digest::SHA256),
     sha2::Sha256,
     MessageDigest::sha256()
 );
 impl_comp!(
     Sha2_384,
-    libcrux_sha2::sha384,
+    test_foo_bar_sha2::sha384,
     Some(&ring::digest::SHA384),
     sha2::Sha384,
     MessageDigest::sha384()
 );
 impl_comp!(
     Sha2_512,
-    libcrux_sha2::sha512,
+    test_foo_bar_sha2::sha512,
     Some(&ring::digest::SHA512),
     sha2::Sha512,
     MessageDigest::sha512()

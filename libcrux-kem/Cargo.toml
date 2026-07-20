@@ -1,45 +1,45 @@
 [package]
-name = "libcrux-kem"
-version = "0.0.8"
 description = "Libcrux KEM implementation"
+name = "test-foo-bar-kem"
 readme = "README.md"
+version = "0.0.8"
 
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
 edition.workspace = true
-repository.workspace = true
 exclude = ["/tests"]
+homepage.workspace = true
+license.workspace = true
+repository.workspace = true
 
 [lib]
 path = "src/kem.rs"
 
 [dependencies]
-libcrux-ml-kem = { workspace = true, features = [
-    "default-no-std",
-] }
-libcrux-sha3.workspace = true
-libcrux-ecdh.workspace = true
-libcrux-curve25519.workspace = true
-libcrux-p256.workspace = true
-libcrux-traits.workspace = true
+test-foo-bar-curve25519.workspace = true
+test-foo-bar-ecdh.workspace = true
+test-foo-bar-ml-kem = { workspace = true, features = ["default-no-std"] }
+test-foo-bar-p256.workspace = true
+test-foo-bar-sha3.workspace = true
+test-foo-bar-traits.workspace = true
 
 rand = { version = "0.10", default-features = false }
 tls_codec = { version = "0.4.2", features = ["derive"], optional = true }
 
 [features]
 default = ["std"]
-std = ["rand/std", "libcrux-ecdh/std", "libcrux-ml-kem/std"]
-tests = []                                                   # Expose functions for testing.
 pre-verification = []
+std = ["rand/std", "test-foo-bar-ecdh/std", "test-foo-bar-ml-kem/std"]
+tests = []                                                             # Expose functions for testing.
 # Encoding and decoding with TLSCodec
-codec = ["dep:tls_codec", "libcrux-ml-kem/codec", "libcrux-ecdh/codec"]
+codec = [
+    "dep:tls_codec",
+    "test-foo-bar-ecdh/codec",
+    "test-foo-bar-ml-kem/codec",
+]
 
 [dev-dependencies]
-libcrux-kem = { path = "./", features = ["tests"] }
+hex = { version = "0.4.3", features = ["serde"] }
 rand = { version = "0.10", features = ["sys_rng"] }
 rand_core = { version = "0.10" }
-hex = { version = "0.4.3", features = ["serde"] }
-libcrux-traits = { workspace = true, features = [
-    "generic-tests",
-] }
+test-foo-bar-kem = { path = "./", features = ["tests"] }
+test-foo-bar-traits = { workspace = true, features = ["generic-tests"] }

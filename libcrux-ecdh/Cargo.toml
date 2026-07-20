@@ -1,13 +1,13 @@
 [package]
-name = "libcrux-ecdh"
-version = "0.0.7"
 description = "Libcrux ECDH implementation"
+name = "test-foo-bar-ecdh"
 readme = "Readme.md"
+version = "0.0.7"
 
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
 edition.workspace = true
+homepage.workspace = true
+license.workspace = true
 repository.workspace = true
 
 [lib]
@@ -15,23 +15,21 @@ path = "src/ecdh.rs"
 
 [dependencies]
 rand = { version = "0.10", default-features = false }
-libcrux-curve25519 = { workspace = true, default-features = true }
-libcrux-p256 = { workspace = true, default-features = true, features = [
+test-foo-bar-curve25519 = { workspace = true, default-features = true }
+test-foo-bar-p256 = { workspace = true, default-features = true, features = [
     "expose-hacl",
 ] }
-tls_codec = { version = "0.4.2", features = [
-    "derive",
-], optional = true }
+tls_codec = { version = "0.4.2", features = ["derive"], optional = true }
 
 [features]
+codec = ["dep:tls_codec"]
 default = ["std"]
 std = ["rand/std"]
-codec = ["dep:tls_codec"]
 
 [dev-dependencies]
+hex = { version = "0.4.3", features = ["serde"] }
+pretty_env_logger = "0.5"
 rand = { version = "0.10", features = ["sys_rng"] }
 rand_core = { version = "0.10" }
-hex = { version = "0.4.3", features = ["serde"] }
-serde_json = { version = "1.0" }
 serde = { version = "1.0", features = ["derive"] }
-pretty_env_logger = "0.5"
+serde_json = { version = "1.0" }

@@ -3,7 +3,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use libcrux_test_utils::tracing::{EventType, MutexTrace, RefCellTrace, Trace};
+use test_foo_bar_test_utils::tracing::{EventType, MutexTrace, RefCellTrace, Trace};
 
 #[test]
 fn test_refcell_trace_entries() {

@@ -1,4 +1,4 @@
-use libcrux_kem::{
+use test_foo_bar_kem::{
     self, MlKem1024PrivateKey, MlKem1024PublicKey, MlKem512PrivateKey, MlKem512PublicKey,
     MlKem768PrivateKey, MlKem768PublicKey, MlKemCiphertext,
 };
@@ -169,10 +169,10 @@ macro_rules! impl_known_answer_test {
 impl_known_answer_test!(
     ml_kem512_wycheproof_early_kat,
     512,
-    libcrux_kem::deterministic::mlkem512_generate_keypair_derand,
-    libcrux_kem::deterministic::mlkem512_encapsulate_derand,
-    libcrux_kem::deterministic::mlkem512_decapsulate_derand,
-    libcrux_kem::ml_kem512_validate_public_key,
+    test_foo_bar_kem::deterministic::mlkem512_generate_keypair_derand,
+    test_foo_bar_kem::deterministic::mlkem512_encapsulate_derand,
+    test_foo_bar_kem::deterministic::mlkem512_decapsulate_derand,
+    test_foo_bar_kem::ml_kem512_validate_public_key,
     MlKem512PublicKey,
     MlKem512PrivateKey,
     768,
@@ -182,10 +182,10 @@ impl_known_answer_test!(
 impl_known_answer_test!(
     ml_kem768_wycheproof_early_kat,
     768,
-    libcrux_kem::deterministic::mlkem768_generate_keypair_derand,
-    libcrux_kem::deterministic::mlkem768_encapsulate_derand,
-    libcrux_kem::deterministic::mlkem768_decapsulate_derand,
-    libcrux_kem::ml_kem768_validate_public_key,
+    test_foo_bar_kem::deterministic::mlkem768_generate_keypair_derand,
+    test_foo_bar_kem::deterministic::mlkem768_encapsulate_derand,
+    test_foo_bar_kem::deterministic::mlkem768_decapsulate_derand,
+    test_foo_bar_kem::ml_kem768_validate_public_key,
     MlKem768PublicKey,
     MlKem768PrivateKey,
     1088,
@@ -195,10 +195,10 @@ impl_known_answer_test!(
 impl_known_answer_test!(
     ml_kem1024_wycheproof_early_kat,
     1024,
-    libcrux_kem::deterministic::mlkem1024_generate_keypair_derand,
-    libcrux_kem::deterministic::mlkem1024_encapsulate_derand,
-    libcrux_kem::deterministic::mlkem1024_decapsulate_derand,
-    libcrux_kem::ml_kem1024_validate_public_key,
+    test_foo_bar_kem::deterministic::mlkem1024_generate_keypair_derand,
+    test_foo_bar_kem::deterministic::mlkem1024_encapsulate_derand,
+    test_foo_bar_kem::deterministic::mlkem1024_decapsulate_derand,
+    test_foo_bar_kem::ml_kem1024_validate_public_key,
     MlKem1024PublicKey,
     MlKem1024PrivateKey,
     1568,

@@ -2,8 +2,8 @@
 
 #![allow(non_snake_case)]
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
 
 #[inline]
 fn bn_is_zero_mask4(f: &[u64]) -> u64 {
@@ -2009,7 +2009,7 @@ pub fn ecdsa_sign_p256_sha2(
 ) -> bool {
     let mut m_q: [u64; 4] = [0u64; 4usize];
     let mut mHash: [u8; 32] = [0u8; 32usize];
-    libcrux_sha2::hacl::hash_256(&mut mHash, msg, msg_len);
+    test_foo_bar_sha2::hacl::hash_256(&mut mHash, msg, msg_len);
     lowstar::ignore::ignore::<u32>(msg_len);
     let mHash32: (&[u8], &[u8]) = mHash.split_at(0usize);
     crate::p256::bn_from_bytes_be4(&mut m_q, mHash32.1);
@@ -2043,7 +2043,7 @@ pub fn ecdsa_sign_p256_sha384(
 ) -> bool {
     let mut m_q: [u64; 4] = [0u64; 4usize];
     let mut mHash: [u8; 48] = [0u8; 48usize];
-    libcrux_sha2::hacl::hash_384(&mut mHash, msg, msg_len);
+    test_foo_bar_sha2::hacl::hash_384(&mut mHash, msg, msg_len);
     lowstar::ignore::ignore::<u32>(msg_len);
     let mHash32: (&[u8], &[u8]) = mHash.split_at(0usize);
     crate::p256::bn_from_bytes_be4(&mut m_q, mHash32.1);
@@ -2077,7 +2077,7 @@ pub fn ecdsa_sign_p256_sha512(
 ) -> bool {
     let mut m_q: [u64; 4] = [0u64; 4usize];
     let mut mHash: [u8; 64] = [0u8; 64usize];
-    libcrux_sha2::hacl::hash_512(&mut mHash, msg, msg_len);
+    test_foo_bar_sha2::hacl::hash_512(&mut mHash, msg, msg_len);
     lowstar::ignore::ignore::<u32>(msg_len);
     let mHash32: (&[u8], &[u8]) = mHash.split_at(0usize);
     crate::p256::bn_from_bytes_be4(&mut m_q, mHash32.1);
@@ -2153,7 +2153,7 @@ pub fn ecdsa_verif_p256_sha2(
 ) -> bool {
     let mut m_q: [u64; 4] = [0u64; 4usize];
     let mut mHash: [u8; 32] = [0u8; 32usize];
-    libcrux_sha2::hacl::hash_256(&mut mHash, msg, msg_len);
+    test_foo_bar_sha2::hacl::hash_256(&mut mHash, msg, msg_len);
     lowstar::ignore::ignore::<u32>(msg_len);
     let mHash32: (&[u8], &[u8]) = mHash.split_at(0usize);
     crate::p256::bn_from_bytes_be4(&mut m_q, mHash32.1);
@@ -2186,7 +2186,7 @@ pub fn ecdsa_verif_p256_sha384(
 ) -> bool {
     let mut m_q: [u64; 4] = [0u64; 4usize];
     let mut mHash: [u8; 48] = [0u8; 48usize];
-    libcrux_sha2::hacl::hash_384(&mut mHash, msg, msg_len);
+    test_foo_bar_sha2::hacl::hash_384(&mut mHash, msg, msg_len);
     lowstar::ignore::ignore::<u32>(msg_len);
     let mHash32: (&[u8], &[u8]) = mHash.split_at(0usize);
     crate::p256::bn_from_bytes_be4(&mut m_q, mHash32.1);
@@ -2219,7 +2219,7 @@ pub fn ecdsa_verif_p256_sha512(
 ) -> bool {
     let mut m_q: [u64; 4] = [0u64; 4usize];
     let mut mHash: [u8; 64] = [0u8; 64usize];
-    libcrux_sha2::hacl::hash_512(&mut mHash, msg, msg_len);
+    test_foo_bar_sha2::hacl::hash_512(&mut mHash, msg, msg_len);
     lowstar::ignore::ignore::<u32>(msg_len);
     let mHash32: (&[u8], &[u8]) = mHash.split_at(0usize);
     crate::p256::bn_from_bytes_be4(&mut m_q, mHash32.1);

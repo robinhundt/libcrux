@@ -6,18 +6,18 @@
 
 //! This module contains generated hacl code.
 
-use libcrux_macros as krml;
+use test_foo_bar_macros as krml;
 
-use libcrux_hacl_rs::prelude::*;
+use test_foo_bar_hacl_rs::prelude::*;
 
 #[inline]
 fn fsum(out: &mut [u64], a: &[u64], b: &[u64]) {
-    libcrux_hacl_rs::bignum25519_51::fadd(out, a, b)
+    test_foo_bar_hacl_rs::bignum25519_51::fadd(out, a, b)
 }
 
 #[inline]
 fn fdifference(out: &mut [u64], a: &[u64], b: &[u64]) {
-    libcrux_hacl_rs::bignum25519_51::fsub(out, a, b)
+    test_foo_bar_hacl_rs::bignum25519_51::fsub(out, a, b)
 }
 
 pub(crate) fn reduce_513(a: &mut [u64]) {
@@ -54,7 +54,7 @@ pub(crate) fn reduce_513(a: &mut [u64]) {
 #[inline]
 fn fmul(output: &mut [u64], input: &[u64], input2: &[u64]) {
     let tmp: [fstar::uint128::uint128; 10] = [fstar::uint128::uint64_to_uint128(0u64); 10usize];
-    libcrux_hacl_rs::bignum25519_51::fmul(output, input, input2, &tmp)
+    test_foo_bar_hacl_rs::bignum25519_51::fmul(output, input, input2, &tmp)
 }
 
 #[inline]
@@ -101,13 +101,13 @@ fn times_2d(out: &mut [u64], a: &[u64]) {
 #[inline]
 fn fsquare(out: &mut [u64], a: &[u64]) {
     let tmp: [fstar::uint128::uint128; 5] = [fstar::uint128::uint64_to_uint128(0u64); 5usize];
-    libcrux_hacl_rs::bignum25519_51::fsqr(out, a, &tmp)
+    test_foo_bar_hacl_rs::bignum25519_51::fsqr(out, a, &tmp)
 }
 
 #[inline]
 fn fsquare_times(output: &mut [u64], input: &[u64], count: u32) {
     let tmp: [fstar::uint128::uint128; 5] = [fstar::uint128::uint64_to_uint128(0u64); 5usize];
-    libcrux_hacl_rs::curve25519_51::fsquare_times(output, input, &tmp, count)
+    test_foo_bar_hacl_rs::curve25519_51::fsquare_times(output, input, &tmp, count)
 }
 
 #[inline]
@@ -115,13 +115,13 @@ fn fsquare_times_inplace(output: &mut [u64], count: u32) {
     let tmp: [fstar::uint128::uint128; 5] = [fstar::uint128::uint64_to_uint128(0u64); 5usize];
     let mut input: [u64; 5] = [0u64; 5usize];
     ((&mut input)[0usize..5usize]).copy_from_slice(&output[0usize..5usize]);
-    libcrux_hacl_rs::curve25519_51::fsquare_times(output, &input, &tmp, count)
+    test_foo_bar_hacl_rs::curve25519_51::fsquare_times(output, &input, &tmp, count)
 }
 
 #[inline]
 pub(crate) fn inverse(out: &mut [u64], a: &[u64]) {
     let tmp: [fstar::uint128::uint128; 10] = [fstar::uint128::uint64_to_uint128(0u64); 10usize];
-    libcrux_hacl_rs::curve25519_51::finv(out, a, &tmp)
+    test_foo_bar_hacl_rs::curve25519_51::finv(out, a, &tmp)
 }
 
 #[inline]
@@ -201,7 +201,7 @@ pub(crate) fn load_51(output: &mut [u64], input: &[u8]) {
 
 pub(crate) fn store_51(output: &mut [u8], input: &[u64]) {
     let mut u64s: [u64; 4] = [0u64; 4usize];
-    libcrux_hacl_rs::bignum25519_51::store_felem(&mut u64s, input);
+    test_foo_bar_hacl_rs::bignum25519_51::store_felem(&mut u64s, input);
     krml::unroll_for!(
         4,
         "i",
@@ -1676,45 +1676,45 @@ fn load_32_bytes(out: &mut [u64], b: &[u8]) {
 fn sha512_pre_msg(hash: &mut [u8], prefix: &[u8], len: u32, input: &[u8]) {
     let buf: [u8; 128] = [0u8; 128usize];
     let mut block_state: [u64; 8] = [0u64; 8usize];
-    libcrux_sha2::hacl::sha512_init(&mut block_state);
-    let mut s: libcrux_hacl_rs::streaming_types::state_64 =
-        libcrux_hacl_rs::streaming_types::state_64 {
+    test_foo_bar_sha2::hacl::sha512_init(&mut block_state);
+    let mut s: test_foo_bar_hacl_rs::streaming_types::state_64 =
+        test_foo_bar_hacl_rs::streaming_types::state_64 {
             block_state: block_state,
             buf: buf,
             total_len: 0u32 as u64,
         };
     let st = &mut s;
-    let err0: libcrux_hacl_rs::streaming_types::error_code =
-        libcrux_sha2::hacl::update_512(st, prefix, 32u32);
-    let err1: libcrux_hacl_rs::streaming_types::error_code =
-        libcrux_sha2::hacl::update_512(st, input, len);
-    lowstar::ignore::ignore::<libcrux_hacl_rs::streaming_types::error_code>(err0);
-    lowstar::ignore::ignore::<libcrux_hacl_rs::streaming_types::error_code>(err1);
-    libcrux_sha2::hacl::digest_512(st, hash)
+    let err0: test_foo_bar_hacl_rs::streaming_types::error_code =
+        test_foo_bar_sha2::hacl::update_512(st, prefix, 32u32);
+    let err1: test_foo_bar_hacl_rs::streaming_types::error_code =
+        test_foo_bar_sha2::hacl::update_512(st, input, len);
+    lowstar::ignore::ignore::<test_foo_bar_hacl_rs::streaming_types::error_code>(err0);
+    lowstar::ignore::ignore::<test_foo_bar_hacl_rs::streaming_types::error_code>(err1);
+    test_foo_bar_sha2::hacl::digest_512(st, hash)
 }
 
 #[inline]
 fn sha512_pre_pre2_msg(hash: &mut [u8], prefix: &[u8], prefix2: &[u8], len: u32, input: &[u8]) {
     let buf: [u8; 128] = [0u8; 128usize];
     let mut block_state: [u64; 8] = [0u64; 8usize];
-    libcrux_sha2::hacl::sha512_init(&mut block_state);
-    let mut s: libcrux_hacl_rs::streaming_types::state_64 =
-        libcrux_hacl_rs::streaming_types::state_64 {
+    test_foo_bar_sha2::hacl::sha512_init(&mut block_state);
+    let mut s: test_foo_bar_hacl_rs::streaming_types::state_64 =
+        test_foo_bar_hacl_rs::streaming_types::state_64 {
             block_state: block_state,
             buf: buf,
             total_len: 0u32 as u64,
         };
     let st = &mut s;
-    let err0: libcrux_hacl_rs::streaming_types::error_code =
-        libcrux_sha2::hacl::update_512(st, prefix, 32u32);
-    let err1: libcrux_hacl_rs::streaming_types::error_code =
-        libcrux_sha2::hacl::update_512(st, prefix2, 32u32);
-    let err2: libcrux_hacl_rs::streaming_types::error_code =
-        libcrux_sha2::hacl::update_512(st, input, len);
-    lowstar::ignore::ignore::<libcrux_hacl_rs::streaming_types::error_code>(err0);
-    lowstar::ignore::ignore::<libcrux_hacl_rs::streaming_types::error_code>(err1);
-    lowstar::ignore::ignore::<libcrux_hacl_rs::streaming_types::error_code>(err2);
-    libcrux_sha2::hacl::digest_512(st, hash)
+    let err0: test_foo_bar_hacl_rs::streaming_types::error_code =
+        test_foo_bar_sha2::hacl::update_512(st, prefix, 32u32);
+    let err1: test_foo_bar_hacl_rs::streaming_types::error_code =
+        test_foo_bar_sha2::hacl::update_512(st, prefix2, 32u32);
+    let err2: test_foo_bar_hacl_rs::streaming_types::error_code =
+        test_foo_bar_sha2::hacl::update_512(st, input, len);
+    lowstar::ignore::ignore::<test_foo_bar_hacl_rs::streaming_types::error_code>(err0);
+    lowstar::ignore::ignore::<test_foo_bar_hacl_rs::streaming_types::error_code>(err1);
+    lowstar::ignore::ignore::<test_foo_bar_hacl_rs::streaming_types::error_code>(err2);
+    test_foo_bar_sha2::hacl::digest_512(st, hash)
 }
 
 #[inline]
@@ -1744,7 +1744,7 @@ fn point_mul_g_compress(out: &mut [u8], s: &[u8]) {
 
 #[inline]
 fn secret_expand(expanded: &mut [u8], secret: &[u8]) {
-    libcrux_sha2::hacl::hash_512(expanded, secret, 32u32);
+    test_foo_bar_sha2::hacl::hash_512(expanded, secret, 32u32);
     let h_low: (&mut [u8], &mut [u8]) = expanded.split_at_mut(0usize);
     let h_low0: u8 = h_low.1[0usize];
     let h_low31: u8 = h_low.1[31usize];

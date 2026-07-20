@@ -37,10 +37,10 @@ fn run_wycheproof() {
 
                 match test.result {
                     wycheproof::TestResult::Valid => {
-                        libcrux_ed25519::verify(&test.msg, &pk_buf, &sig_buf).unwrap();
+                        test_foo_bar_ed25519::verify(&test.msg, &pk_buf, &sig_buf).unwrap();
                     }
                     wycheproof::TestResult::Invalid => {
-                        libcrux_ed25519::verify(&test.msg, &pk_buf, &sig_buf)
+                        test_foo_bar_ed25519::verify(&test.msg, &pk_buf, &sig_buf)
                             .expect_err("expected error");
                     }
                     _ => unreachable!(),
@@ -90,7 +90,7 @@ fn secret_to_public() {
         let signing_key: [u8; 32] = hex::decode(sk_bytes)
             .map(|res| res.try_into().unwrap())
             .unwrap();
-        libcrux_ed25519::secret_to_public(&mut verification_key, &signing_key);
+        test_foo_bar_ed25519::secret_to_public(&mut verification_key, &signing_key);
 
         assert_eq!(verification_key, verification_key_expected);
     }
@@ -114,7 +114,7 @@ fn sign() {
             .unwrap();
         let message = hex::decode(m).unwrap();
 
-        let signature = libcrux_ed25519::sign(&message, &signing_key).unwrap();
+        let signature = test_foo_bar_ed25519::sign(&message, &signing_key).unwrap();
 
         assert_eq!(signature, signature_expected);
     }

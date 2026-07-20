@@ -1,4 +1,4 @@
-use libcrux_intrinsics::avx2::{
+use test_foo_bar_intrinsics::avx2::{
     mm_aesenc_si128, mm_aesenclast_si128, mm_aeskeygenassist_si128, mm_loadu_si128,
     mm_setzero_si128, mm_shuffle_epi32, mm_slli_si128, mm_storeu_si128_u8, mm_xor_si128, Vec128,
 };
@@ -120,7 +120,7 @@ impl crate::platform::AESState for State {
 #[cfg(feature = "std")]
 #[test]
 fn test() {
-    use libcrux_intrinsics::avx2::{mm_set_epi32, mm_storeu_si128_i32};
+    use test_foo_bar_intrinsics::avx2::{mm_set_epi32, mm_storeu_si128_i32};
 
     let x = mm_set_epi32(3, 2, 1, 0);
     let y = mm_shuffle_epi32::<0xaa>(x);

@@ -1,6 +1,6 @@
 #![cfg(feature = "rand")]
 
-use libcrux_ed25519::{generate_key_pair, sign, verify};
+use test_foo_bar_ed25519::{generate_key_pair, sign, verify};
 
 #[test]
 fn self_test() {

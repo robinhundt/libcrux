@@ -3,8 +3,8 @@
 #![allow(non_camel_case_types)]
 #![allow(dead_code)]
 
-use libcrux_hacl_rs::prelude::*;
-use libcrux_macros as krml;
+use test_foo_bar_hacl_rs::prelude::*;
+use test_foo_bar_macros as krml;
 
 #[derive(PartialEq, Clone, Copy)]
 pub struct blake2_params<'a> {
@@ -516,7 +516,7 @@ fn update_key(wv: &mut [u64], hash: &mut [u64], kk: u32, k: &[u8], ll: u32) {
     } else {
         crate::hacl::hash_blake2b::update_block(wv, hash, false, false, lb, &b)
     };
-    libcrux_hacl_rs::util::memzero0::memzero::<u8>(&mut b, 128u32)
+    test_foo_bar_hacl_rs::util::memzero0::memzero::<u8>(&mut b, 128u32)
 }
 
 pub(crate) fn update_multi(
@@ -553,7 +553,7 @@ pub(crate) fn update_last(
     let totlen: fstar::uint128::uint128 =
         fstar::uint128::add_mod(prev, fstar::uint128::uint64_to_uint128(len as u64));
     crate::hacl::hash_blake2b::update_block(wv, hash, true, last_node, totlen, &b);
-    libcrux_hacl_rs::util::memzero0::memzero::<u8>(&mut b, 128u32)
+    test_foo_bar_hacl_rs::util::memzero0::memzero::<u8>(&mut b, 128u32)
 }
 
 fn update_blocks(

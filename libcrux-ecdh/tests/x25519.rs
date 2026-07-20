@@ -1,5 +1,5 @@
 mod test_util;
-use libcrux_ecdh::{self, key_gen, Algorithm, Error};
+use test_foo_bar_ecdh::{self, key_gen, Algorithm, Error};
 use rand::rngs::SysRng;
 use rand_core::UnwrapErr;
 use serde::{Deserialize, Serialize};
@@ -16,8 +16,8 @@ fn derive() {
     let (private_a, public_a) = key_gen(Algorithm::X25519, &mut rng).unwrap();
     let (private_b, public_b) = key_gen(Algorithm::X25519, &mut rng).unwrap();
 
-    let shared_a = libcrux_ecdh::derive(Algorithm::X25519, &public_b, &private_a).unwrap();
-    let shared_b = libcrux_ecdh::derive(Algorithm::X25519, &public_a, &private_b).unwrap();
+    let shared_a = test_foo_bar_ecdh::derive(Algorithm::X25519, &public_b, &private_a).unwrap();
+    let shared_b = test_foo_bar_ecdh::derive(Algorithm::X25519, &public_a, &private_b).unwrap();
     assert_eq!(shared_a, shared_b);
 }
 
@@ -123,7 +123,7 @@ fn wycheproof() {
             let private = hex_str_to_bytes(&test.private);
             let shared = hex_str_to_bytes(&test.shared);
 
-            match libcrux_ecdh::derive(Algorithm::X25519, &public, &private) {
+            match test_foo_bar_ecdh::derive(Algorithm::X25519, &public, &private) {
                 Ok(r) => {
                     assert!(valid);
                     assert_eq!(r[..], shared[..]);

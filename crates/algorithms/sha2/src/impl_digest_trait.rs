@@ -1,8 +1,8 @@
 use crate::impl_hacl::*;
 
-use libcrux_traits::Digest;
+use test_foo_bar_traits::Digest;
 
-use libcrux_traits::digest::{
+use test_foo_bar_traits::digest::{
     arrayref, slice, DigestIncrementalBase, InitializeDigestState, UpdateError,
 };
 
@@ -12,14 +12,14 @@ macro_rules! impl_hash {
     ($hasher_name:ident, $name:ident, $state_name:ty, $digest_size:literal) => {
         #[derive(Clone, Default)]
 
-        #[doc = concat!("A struct that implements [`libcrux_traits::digest`] traits.")]
+        #[doc = concat!("A struct that implements [`test_foo_bar_traits::digest`] traits.")]
         #[doc = concat!("\n\n")]
         #[doc = concat!("[`",stringify!($hasher_name), "`] is a convenience hasher for this struct.")]
         #[allow(non_camel_case_types)]
         pub struct $name;
 
         #[doc = concat!("A hasher for [`",stringify!($name), "`].")]
-        pub type $hasher_name = libcrux_traits::digest::Hasher<$digest_size, $name>;
+        pub type $hasher_name = test_foo_bar_traits::digest::Hasher<$digest_size, $name>;
 
 
         impl arrayref::Hash<$digest_size> for $name {

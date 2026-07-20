@@ -1,4 +1,4 @@
-use libcrux_p256::{
+use test_foo_bar_p256::{
     compressed_to_raw, dh_initiator, dh_responder, uncompressed_to_raw, validate_private_key,
     validate_public_key,
 };

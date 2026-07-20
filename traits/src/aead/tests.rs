@@ -1,4 +1,4 @@
-use libcrux_secrets::{Classify, ClassifyRef, DeclassifyRef};
+use test_foo_bar_secrets::{Classify, ClassifyRef, DeclassifyRef};
 
 use super::arrayref::*;
 

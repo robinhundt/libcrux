@@ -1,39 +1,46 @@
 [package]
-name = "libcrux-sha3"
-version = "0.0.9"
 authors.workspace = true
-license.workspace = true
-homepage.workspace = true
-edition.workspace = true
-repository.workspace = true
-readme = "README.md"
 description = "Libcrux SHA-3 implementation"
-exclude = ["/proofs", "/c.sh", "/c.yaml", "/tests/tv", "tests/cavp.rs", "hax.py"]
+edition.workspace = true
+exclude = [
+    "/c.sh",
+    "/c.yaml",
+    "/proofs",
+    "/tests/tv",
+    "hax.py",
+    "tests/cavp.rs",
+]
+homepage.workspace = true
+license.workspace = true
+name = "test-foo-bar-sha3"
+readme = "README.md"
+repository.workspace = true
+version = "0.0.9"
 
 [lib]
 bench = false # so libtest doesn't eat the arguments to criterion
 
 [dependencies]
-libcrux-platform = { version = "0.0.3", path = "../../sys/platform" }
-libcrux-intrinsics.workspace = true
-libcrux-traits.workspace = true
 hax-lib.workspace = true
+test-foo-bar-intrinsics.workspace = true
+test-foo-bar-platform = { version = "0.0.3", path = "../../sys/platform" }
+test-foo-bar-traits.workspace = true
 
 [features]
-simd128 = ["libcrux-intrinsics/simd128"]
-simd256 = ["libcrux-intrinsics/simd256"]
+simd128 = ["test-foo-bar-intrinsics/simd128"]
+simd256 = ["test-foo-bar-intrinsics/simd256"]
 
 [[bench]]
-name = "sha3"
 harness = false
+name = "sha3"
 
 [dev-dependencies]
+clap = { version = "4.5.39", features = ["derive"] }
 criterion = "0.8.0"
 hex = "0.4.3"
-rand = "0.10"
-cavp = { path = "../../../cavp" }
 pretty_env_logger = "0.5.0"
-clap = { version = "4.5.39", features = ["derive"] }
+rand = "0.10"
+test-foo-bar-cavp = { path = "../../../cavp" }
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(hax)', 'cfg(eurydice)'] }
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(eurydice)', 'cfg(hax)'] }

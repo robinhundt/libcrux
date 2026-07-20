@@ -6,7 +6,7 @@
 
 use crate::prelude::*;
 
-use libcrux_macros as krml;
+use test_foo_bar_macros as krml;
 
 /**
 Write `a + b mod 2^4096` in `res`.

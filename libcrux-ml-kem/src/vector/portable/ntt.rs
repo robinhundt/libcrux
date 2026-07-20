@@ -1,6 +1,6 @@
 use super::arithmetic::*;
 use super::vector_type::*;
-use libcrux_secrets::*;
+use test_foo_bar_secrets::*;
 
 #[inline(always)]
 #[hax_lib::fstar::before("[@@ \"opaque_to_smt\"]")]

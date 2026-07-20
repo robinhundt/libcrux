@@ -108,7 +108,7 @@ fn wycheproof() {
                 let key = <&[u8; 32]>::try_from(&test.key[..]).unwrap();
 
                 let mut ctxt = msg.clone();
-                let tag = match libcrux_chacha20poly1305::encrypt(key, msg, &mut ctxt, aad, nonce) {
+                let tag = match test_foo_bar_chacha20poly1305::encrypt(key, msg, &mut ctxt, aad, nonce) {
                     Ok((_v, t)) => t,
                     Err(_) => {
                         *tests_run += 1;
@@ -123,7 +123,7 @@ fn wycheproof() {
                 assert_eq!(ctxt, exp_cipher.as_slice());
 
                 let mut decrypted = vec![0; msg.len()];
-                match libcrux_chacha20poly1305::decrypt(key, &mut decrypted, &ctxt, aad, nonce) {
+                match test_foo_bar_chacha20poly1305::decrypt(key, &mut decrypted, &ctxt, aad, nonce) {
                     Ok(m) => {
                         assert_eq!(m, msg);
                         assert_eq!(&decrypted, msg);
@@ -188,7 +188,7 @@ fn wycheproof_xchacha() {
                 let key = <&[u8; 32]>::try_from(&test.key[..]).unwrap();
 
                 let mut ctxt = msg.clone();
-                let tag = match libcrux_chacha20poly1305::xchacha20_poly1305::encrypt(
+                let tag = match test_foo_bar_chacha20poly1305::xchacha20_poly1305::encrypt(
                     key, msg, &mut ctxt, aad, nonce,
                 ) {
                     Ok((_v, t)) => t,
@@ -205,7 +205,7 @@ fn wycheproof_xchacha() {
                 assert_eq!(ctxt, exp_cipher.as_slice());
 
                 let mut decrypted = vec![0; msg.len()];
-                match libcrux_chacha20poly1305::xchacha20_poly1305::decrypt(
+                match test_foo_bar_chacha20poly1305::xchacha20_poly1305::decrypt(
                     key,
                     &mut decrypted,
                     &ctxt,
@@ -246,11 +246,11 @@ fn chachapoly_self_test() {
 
     let mut ctxt = [0; 29];
 
-    libcrux_chacha20poly1305::encrypt(&key, ptxt, &mut ctxt, aad, &nonce).unwrap();
+    test_foo_bar_chacha20poly1305::encrypt(&key, ptxt, &mut ctxt, aad, &nonce).unwrap();
 
     let mut ptxt_rx = [0; 13];
 
-    assert!(libcrux_chacha20poly1305::decrypt(&key, &mut ptxt_rx, &ctxt, aad, &nonce).is_ok());
+    assert!(test_foo_bar_chacha20poly1305::decrypt(&key, &mut ptxt_rx, &ctxt, aad, &nonce).is_ok());
     assert_eq!(ptxt, &ptxt_rx);
 }
 
@@ -268,8 +268,8 @@ fn chachapoly_self_test_rand() {
     let mut ctxt = [0; 29];
     let mut ptxt = [0; 13];
 
-    libcrux_chacha20poly1305::encrypt(&key, msg, &mut ctxt, aad, &nonce).unwrap();
-    assert!(libcrux_chacha20poly1305::decrypt(&key, &mut ptxt, &ctxt, aad, &nonce).is_ok());
+    test_foo_bar_chacha20poly1305::encrypt(&key, msg, &mut ctxt, aad, &nonce).unwrap();
+    assert!(test_foo_bar_chacha20poly1305::decrypt(&key, &mut ptxt, &ctxt, aad, &nonce).is_ok());
 
     assert_eq!(msg, &ptxt);
 }
@@ -285,49 +285,49 @@ fn chachapoly_test_invalid_buffer_lengths() {
     let nonce: [u8; 12] = randbuf(&mut rng);
 
     // test that calling with incorrect-length buffers returns error: non-detached
-    let err = libcrux_chacha20poly1305::encrypt(&key, msg, &mut [], aad, &nonce).unwrap_err();
+    let err = test_foo_bar_chacha20poly1305::encrypt(&key, msg, &mut [], aad, &nonce).unwrap_err();
     assert!(matches!(
         err,
-        libcrux_chacha20poly1305::AeadError::CiphertextTooShort
+        test_foo_bar_chacha20poly1305::AeadError::CiphertextTooShort
     ));
 
     // test that calling with incorrect-length buffers returns error: detached
     let err =
-        libcrux_chacha20poly1305::encrypt_detached(&key, msg, &mut [], &mut [0; 16], aad, &nonce)
+        test_foo_bar_chacha20poly1305::encrypt_detached(&key, msg, &mut [], &mut [0; 16], aad, &nonce)
             .unwrap_err();
     assert!(matches!(
         err,
-        libcrux_chacha20poly1305::AeadError::CiphertextTooShort
+        test_foo_bar_chacha20poly1305::AeadError::CiphertextTooShort
     ));
 
     // encrypt correctly
     let mut ctxt = [0; 29];
-    libcrux_chacha20poly1305::encrypt(&key, msg, &mut ctxt, aad, &nonce).unwrap();
+    test_foo_bar_chacha20poly1305::encrypt(&key, msg, &mut ctxt, aad, &nonce).unwrap();
 
     // encrypt correctly on ciphertext buffer longer than `ptxt.len() + TAG_LEN`
     let mut long_ctxt = [0; 30];
-    libcrux_chacha20poly1305::encrypt(&key, msg, &mut long_ctxt, aad, &nonce).unwrap();
+    test_foo_bar_chacha20poly1305::encrypt(&key, msg, &mut long_ctxt, aad, &nonce).unwrap();
 
     let mut decrypted = [0u8; 13];
     assert!(
-        libcrux_chacha20poly1305::decrypt(&key, &mut decrypted, &long_ctxt[..29], aad, &nonce)
+        test_foo_bar_chacha20poly1305::decrypt(&key, &mut decrypted, &long_ctxt[..29], aad, &nonce)
             .is_ok()
     );
     assert_eq!(decrypted, *msg);
 
     // test that calling with incorrect-length buffers returns error: non-detached
-    let err = libcrux_chacha20poly1305::decrypt(&key, &mut [], &ctxt, aad, &nonce).unwrap_err();
+    let err = test_foo_bar_chacha20poly1305::decrypt(&key, &mut [], &ctxt, aad, &nonce).unwrap_err();
     assert!(matches!(
         err,
-        libcrux_chacha20poly1305::AeadError::PlaintextTooShort
+        test_foo_bar_chacha20poly1305::AeadError::PlaintextTooShort
     ));
 
     // test that calling with incorrect-length buffers returns error: detached
     let err =
-        libcrux_chacha20poly1305::decrypt_detached(&key, &mut [], &ctxt, &mut [0; 16], aad, &nonce)
+        test_foo_bar_chacha20poly1305::decrypt_detached(&key, &mut [], &ctxt, &mut [0; 16], aad, &nonce)
             .unwrap_err();
     assert!(matches!(
         err,
-        libcrux_chacha20poly1305::AeadError::PlaintextTooShort
+        test_foo_bar_chacha20poly1305::AeadError::PlaintextTooShort
     ));
 }

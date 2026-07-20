@@ -1,5 +1,5 @@
 use super::traits::Operations;
-pub(crate) use libcrux_intrinsics::avx2::*;
+pub(crate) use test_foo_bar_intrinsics::avx2::*;
 
 mod arithmetic;
 mod compress;

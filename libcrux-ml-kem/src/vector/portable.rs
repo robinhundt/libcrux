@@ -1,5 +1,5 @@
 use super::Operations;
-use libcrux_secrets::*;
+use test_foo_bar_secrets::*;
 
 mod arithmetic;
 mod compress;

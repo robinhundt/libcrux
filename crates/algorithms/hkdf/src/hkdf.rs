@@ -8,8 +8,8 @@
 //! ### Using the typed SHA2-256 API
 //!
 //! ```
-//! use libcrux_hkdf::{Hkdf, Sha2_256};
-//! use libcrux_secrets::{U8, Classify, ClassifyRef, DeclassifyRef};
+//! use test_foo_bar_hkdf::{Hkdf, Sha2_256};
+//! use test_foo_bar_secrets::{U8, Classify, ClassifyRef, DeclassifyRef};
 //!
 //! // Input key material and salt
 //! let ikm = &[0x0b; 22].classify(); // 22 bytes of 0x0b
@@ -30,8 +30,8 @@
 //! ### Using the dynamic API
 //!
 //! ```
-//! use libcrux_hkdf::{extract, expand, Algorithm};
-//! use libcrux_secrets::{U8, Classify, ClassifyRef, DeclassifyRef};
+//! use test_foo_bar_hkdf::{extract, expand, Algorithm};
+//! use test_foo_bar_secrets::{U8, Classify, ClassifyRef, DeclassifyRef};
 //!
 //! // Input key material and salt
 //! let ikm = &[0x0b; 22].classify();
@@ -52,7 +52,7 @@
 
 use core::marker::PhantomData;
 
-use libcrux_secrets::{Classify, DeclassifyRef, DeclassifyRefMut, U8};
+use test_foo_bar_secrets::{Classify, DeclassifyRef, DeclassifyRefMut, U8};
 
 pub mod hacl;
 
@@ -165,8 +165,8 @@ pub struct Sha2_512;
 /// # Examples
 ///
 /// ```
-/// use libcrux_hkdf::{Hkdf, Sha2_256};
-/// use libcrux_secrets::{U8, Classify, ClassifyRef};
+/// use test_foo_bar_hkdf::{Hkdf, Sha2_256};
+/// use test_foo_bar_secrets::{U8, Classify, ClassifyRef};
 ///
 /// let ikm = &[0x0b; 22].classify();
 /// let salt = b"salt".classify_ref();
@@ -217,7 +217,7 @@ macro_rules! impl_hkdf {
         /// The `_arrayref` variants work with compile-time known PRK sizes for better type safety,
         /// while the regular variants accept slices and perform runtime validation.
         pub mod $name {
-            use libcrux_secrets::U8;
+            use test_foo_bar_secrets::U8;
 
             use super::*;
 

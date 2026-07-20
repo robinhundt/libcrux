@@ -1,4 +1,4 @@
-use libcrux_rsa::{
+use test_foo_bar_rsa::{
     sign, sign_2048, sign_varlen, verify, verify_2048, verify_varlen, DigestAlgorithm, Error,
     PrivateKey, PublicKey, VarLenPrivateKey, VarLenPublicKey,
 };
@@ -299,7 +299,7 @@ fn run_wycheproof() {
                 let msg = &test.msg;
                 let signature = &test.sig;
 
-                let result = libcrux_rsa::verify_varlen(
+                let result = test_foo_bar_rsa::verify_varlen(
                     hash_algorithm,
                     &pk,
                     msg,

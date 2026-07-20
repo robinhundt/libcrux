@@ -4,7 +4,7 @@
 //!
 //! ### Example usage
 //! ```rust
-//! use libcrux_kats::wycheproof::mldsa::{ParameterSet, MlDsaSignTestsNoSeed};
+//! use test_foo_bar_kats::wycheproof::mldsa::{ParameterSet, MlDsaSignTestsNoSeed};
 //!
 //! // load the tests for the ML-DSA-44 parameter set
 //! let signing_tests = MlDsaSignTestsNoSeed::load(ParameterSet::MlDsa44);

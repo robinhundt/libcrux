@@ -16,7 +16,7 @@
 //! #  time::Instant,
 //! # };
 //! # #[cfg(test)]
-//! # use libcrux_test_utils::tracing::MutexTrace;
+//! # use test_foo_bar_test_utils::tracing::MutexTrace;
 //! #
 //! #[cfg(test)]
 //! static TRACE: LazyLock<MutexTrace<&'static str, Instant>> =
@@ -36,7 +36,7 @@
 //! #  time::Instant,
 //! # };
 //! # #[cfg(test)]
-//! # use libcrux_test_utils::tracing::{MutexTrace, trace_span};
+//! # use test_foo_bar_test_utils::tracing::{MutexTrace, trace_span};
 //! # #[cfg(test)]
 //! # static TRACE: LazyLock<MutexTrace<&'static str, Instant>> =
 //! #     LazyLock::new(|| MutexTrace::default());
@@ -62,12 +62,12 @@
 //! #  sync::LazyLock,
 //! #  time::Instant,
 //! # };
-//! # use libcrux_test_utils::tracing::MutexTrace;
+//! # use test_foo_bar_test_utils::tracing::MutexTrace;
 //! # static TRACE: LazyLock<MutexTrace<&'static str, Instant>> =
 //! #     LazyLock::new(|| MutexTrace::default());
 //! #
 //! // make sure the trait is in scope
-//! use libcrux_test_utils::tracing::Trace as _;
+//! use test_foo_bar_test_utils::tracing::Trace as _;
 //!
 //! println!("{:?}", TRACE.clone().report());
 //! ```
@@ -79,7 +79,7 @@ use std::{
     sync::Mutex,
 };
 
-pub use libcrux_macros::trace_span;
+pub use test_foo_bar_macros::trace_span;
 
 /// This trait describes a trace that is behind some sort of interior mutability mechanism. It can
 /// log trace events and later make these available. This is usually an argument to the

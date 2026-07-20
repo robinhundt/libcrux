@@ -1,8 +1,8 @@
 use criterion::{criterion_group, criterion_main, BatchSize, Criterion};
-use libcrux_ml_kem::mlkem768::MlKem768KeyPair;
+use test_foo_bar_ml_kem::mlkem768::MlKem768KeyPair;
 #[cfg(feature = "classic-mceliece")]
-use libcrux_psq::classic_mceliece::KeyPair;
-use libcrux_psq::{
+use test_foo_bar_psq::classic_mceliece::KeyPair;
+use test_foo_bar_psq::{
     handshake::{
         builders::{CiphersuiteBuilder, PrincipalBuilder},
         ciphersuites::CiphersuiteName,
@@ -32,10 +32,10 @@ struct CommonSetup {
 impl CommonSetup {
     fn new() -> Self {
         let mut rng = rand::rng();
-        let responder_mlkem_keys = libcrux_ml_kem::mlkem768::rand::generate_key_pair(&mut rng);
+        let responder_mlkem_keys = test_foo_bar_ml_kem::mlkem768::rand::generate_key_pair(&mut rng);
         #[cfg(feature = "classic-mceliece")]
         let responder_cmc_keys =
-            libcrux_psq::classic_mceliece::KeyPair::generate_key_pair(&mut rng);
+            test_foo_bar_psq::classic_mceliece::KeyPair::generate_key_pair(&mut rng);
 
         let responder_ecdh_keys = DHKeyPair::new(&mut rng);
         let initiator_ecdh_keys = DHKeyPair::new(&mut rng);

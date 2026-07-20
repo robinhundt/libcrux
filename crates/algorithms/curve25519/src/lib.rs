@@ -1,13 +1,13 @@
 #![no_std]
 
-pub use libcrux_hacl_rs::curve25519_51 as hacl;
+pub use test_foo_bar_hacl_rs::curve25519_51 as hacl;
 
 mod impl_hacl;
 
 pub mod ecdh_api;
 
 pub use impl_hacl::{ecdh, secret_to_public};
-use libcrux_secrets::{DeclassifyRef, DeclassifyRefMut, U8};
+use test_foo_bar_secrets::{DeclassifyRef, DeclassifyRefMut, U8};
 
 /// The length of Curve25519 secret keys.
 pub const DK_LEN: usize = 32;
@@ -35,12 +35,12 @@ trait Curve25519 {
 
 pub struct X25519;
 
-impl libcrux_traits::kem::arrayref::Kem<DK_LEN, EK_LEN, EK_LEN, SS_LEN, DK_LEN, DK_LEN> for X25519 {
+impl test_foo_bar_traits::kem::arrayref::Kem<DK_LEN, EK_LEN, EK_LEN, SS_LEN, DK_LEN, DK_LEN> for X25519 {
     fn keygen(
         ek: &mut [u8; DK_LEN],
         dk: &mut [U8; EK_LEN],
         rand: &[U8; DK_LEN],
-    ) -> Result<(), libcrux_traits::kem::arrayref::KeyGenError> {
+    ) -> Result<(), test_foo_bar_traits::kem::arrayref::KeyGenError> {
         dk.copy_from_slice(rand);
         clamp(dk.declassify_ref_mut());
         secret_to_public(ek, dk.declassify_ref());
@@ -52,26 +52,26 @@ impl libcrux_traits::kem::arrayref::Kem<DK_LEN, EK_LEN, EK_LEN, SS_LEN, DK_LEN, 
         ss: &mut [U8; SS_LEN],
         ek: &[u8; EK_LEN],
         rand: &[U8; DK_LEN],
-    ) -> Result<(), libcrux_traits::kem::arrayref::EncapsError> {
+    ) -> Result<(), test_foo_bar_traits::kem::arrayref::EncapsError> {
         let mut eph_dk = *rand;
         clamp(eph_dk.declassify_ref_mut());
         secret_to_public(ct, eph_dk.declassify_ref());
 
         ecdh(ss.declassify_ref_mut(), ek, eph_dk.declassify_ref())
-            .map_err(|_| libcrux_traits::kem::arrayref::EncapsError::Unknown)
+            .map_err(|_| test_foo_bar_traits::kem::arrayref::EncapsError::Unknown)
     }
 
     fn decaps(
         ss: &mut [U8; SS_LEN],
         ct: &[u8; DK_LEN],
         dk: &[U8; EK_LEN],
-    ) -> Result<(), libcrux_traits::kem::arrayref::DecapsError> {
+    ) -> Result<(), test_foo_bar_traits::kem::arrayref::DecapsError> {
         ecdh(ss.declassify_ref_mut(), ct, dk.declassify_ref())
-            .map_err(|_| libcrux_traits::kem::arrayref::DecapsError::Unknown)
+            .map_err(|_| test_foo_bar_traits::kem::arrayref::DecapsError::Unknown)
     }
 }
 
-libcrux_traits::kem::slice::impl_trait!(X25519 => EK_LEN, DK_LEN, EK_LEN, EK_LEN, DK_LEN, DK_LEN);
+test_foo_bar_traits::kem::slice::impl_trait!(X25519 => EK_LEN, DK_LEN, EK_LEN, EK_LEN, DK_LEN, DK_LEN);
 
 /// Clamp a scalar.
 pub fn clamp(scalar: &mut [u8; DK_LEN]) {

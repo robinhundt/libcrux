@@ -1,7 +1,7 @@
-use libcrux_secrets::U8;
-use libcrux_traits::aead::{slice::KeyGenError, typed_refs::KeyMut};
+use test_foo_bar_secrets::U8;
+use test_foo_bar_traits::aead::{slice::KeyGenError, typed_refs::KeyMut};
 #[cfg(any(feature = "chacha20poly1305", feature = "xchacha20poly1305"))]
-use libcrux_traits::{
+use test_foo_bar_traits::{
     aead,
     aead::typed_refs::{DecryptError, EncryptError, Multiplexes},
 };
@@ -279,7 +279,7 @@ impl aead::typed_refs::Aead for Aead {
 ))]
 #[cfg(test)]
 mod tests {
-    use libcrux_traits::aead::typed_refs;
+    use test_foo_bar_traits::aead::typed_refs;
     use typed_refs::Aead as _;
 
     use super::Aead;
@@ -287,7 +287,7 @@ mod tests {
     #[test]
     #[cfg(feature = "chacha20poly1305")]
     fn test_key_centric_multiplexed_chachapoly() {
-        use libcrux_traits::libcrux_secrets::{Classify, ClassifyRef, DeclassifyRef};
+        use test_foo_bar_traits::test_foo_bar_secrets::{Classify, ClassifyRef, DeclassifyRef};
 
         let algo = Aead::ChaCha20Poly1305;
 
@@ -317,7 +317,7 @@ mod tests {
     #[test]
     #[cfg(feature = "xchacha20poly1305")]
     fn test_key_centric_multiplexed_xchachapoly() {
-        use libcrux_traits::libcrux_secrets::{Classify, ClassifyRef, DeclassifyRef};
+        use test_foo_bar_traits::test_foo_bar_secrets::{Classify, ClassifyRef, DeclassifyRef};
 
         let algo = Aead::XChaCha20Poly1305;
 
@@ -349,7 +349,7 @@ mod tests {
     #[test]
     #[cfg(feature = "aesgcm128")]
     fn test_key_centric_multiplexed_aesgcm128() {
-        use libcrux_traits::libcrux_secrets::{Classify, ClassifyRef, DeclassifyRef};
+        use test_foo_bar_traits::test_foo_bar_secrets::{Classify, ClassifyRef, DeclassifyRef};
 
         let algo = Aead::AesGcm128;
 
@@ -379,7 +379,7 @@ mod tests {
     #[test]
     #[cfg(feature = "aesgcm256")]
     fn test_key_centric_multiplexed_aesgcm256() {
-        use libcrux_traits::libcrux_secrets::{Classify, ClassifyRef, DeclassifyRef};
+        use test_foo_bar_traits::test_foo_bar_secrets::{Classify, ClassifyRef, DeclassifyRef};
 
         let algo = Aead::AesGcm256;
 

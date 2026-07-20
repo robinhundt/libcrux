@@ -1,12 +1,12 @@
 //! # AEAD API
-use libcrux_chacha20poly1305::{decrypt_detached, encrypt_detached, KEY_LEN as KEY_LEN_CHACHA};
-use libcrux_traits::aead::arrayref::Aead;
+use test_foo_bar_chacha20poly1305::{decrypt_detached, encrypt_detached, KEY_LEN as KEY_LEN_CHACHA};
+use test_foo_bar_traits::aead::arrayref::Aead;
 use tls_codec::{
     Deserialize, Serialize, SerializeBytes, TlsDeserialize, TlsSerialize, TlsSerializeBytes,
     TlsSize,
 };
 
-use libcrux_aesgcm::AESGCM128_KEY_LEN as KEY_LEN_AES;
+use test_foo_bar_aesgcm::AESGCM128_KEY_LEN as KEY_LEN_AES;
 
 /// Length of an AEAD nonce in bytes.
 pub const NONCE_LEN: usize = 12;
@@ -102,7 +102,7 @@ impl AEADKeyNonce {
         match aead_type {
             AeadType::ChaCha20Poly1305 => {
                 let mut key = [0u8; KEY_LEN_CHACHA];
-                libcrux_hkdf::sha2_256::hkdf(
+                test_foo_bar_hkdf::sha2_256::hkdf(
                     &mut key,
                     &[],
                     &ikm.tls_serialize().map_err(AEADError::Serialize)?,
@@ -117,7 +117,7 @@ impl AEADKeyNonce {
             }
             AeadType::AesGcm128 => {
                 let mut key = [0u8; KEY_LEN_AES];
-                libcrux_hkdf::sha2_256::hkdf(
+                test_foo_bar_hkdf::sha2_256::hkdf(
                     &mut key,
                     &[],
                     &ikm.tls_serialize().map_err(AEADError::Serialize)?,
@@ -185,7 +185,7 @@ impl AEADKeyNonce {
                     .map_err(|_| AEADError::CryptoError)?;
             }
             AEADKey::AesGcm128(key) => {
-                libcrux_aesgcm::AesGcm128::encrypt(
+                test_foo_bar_aesgcm::AesGcm128::encrypt(
                     ciphertext,
                     &mut tag,
                     key,
@@ -253,7 +253,7 @@ impl AEADKeyNonce {
                 }
             }
             AEADKey::AesGcm128(key) => {
-                if libcrux_aesgcm::AesGcm128::decrypt(
+                if test_foo_bar_aesgcm::AesGcm128::decrypt(
                     &mut plaintext,
                     key,
                     &self.nonce,
@@ -299,7 +299,7 @@ impl AEADKeyNonce {
                 }
             }
             AEADKey::AesGcm128(key) => {
-                if libcrux_aesgcm::AesGcm128::decrypt(
+                if test_foo_bar_aesgcm::AesGcm128::decrypt(
                     plaintext,
                     key,
                     &self.nonce,
