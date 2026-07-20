@@ -17,7 +17,7 @@ crate-type = ["cdylib", "rlib"]
 [build-dependencies]
 bindgen = { version = "0.72", optional = true }
 cc = { version = "1.1", features = ["parallel"] }
-test-foo-bar-platform = { version = "=0.0.3", path = "../platform" }
+test-foo-bar-platform = { version = "=0.0.4", path = "../platform" }
 
 [features]
 bindings = ["bindgen"] # generate fresh bindings

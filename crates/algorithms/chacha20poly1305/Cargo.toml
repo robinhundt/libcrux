@@ -2,7 +2,7 @@
 description = "Formally verified ChaCha20-Poly1305 AEAD library"
 name = "test-foo-bar-chacha20poly1305"
 readme = "Readme.md"
-version = "0.0.8"
+version = "0.0.9"
 
 authors.workspace = true
 edition.workspace = true
@@ -12,8 +12,8 @@ repository.workspace = true
 
 [dependencies]
 test-foo-bar-hacl-rs.workspace = true
-test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
-test-foo-bar-poly1305 = { version = "=0.0.6", path = "../poly1305/", features = [
+test-foo-bar-macros = { version = "=0.0.4", path = "../../utils/macros" }
+test-foo-bar-poly1305 = { version = "=0.0.7", path = "../poly1305/", features = [
     "expose-hacl",
 ] }
 test-foo-bar-secrets.workspace = true

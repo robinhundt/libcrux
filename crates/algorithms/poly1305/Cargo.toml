@@ -2,7 +2,7 @@
 description = "Formally verified Poly1305 MAC library"
 name = "test-foo-bar-poly1305"
 readme = "Readme.md"
-version = "0.0.6"
+version = "0.0.7"
 
 authors.workspace = true
 edition.workspace = true
@@ -15,7 +15,7 @@ expose-hacl = []
 
 [dependencies]
 test-foo-bar-hacl-rs.workspace = true
-test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
+test-foo-bar-macros = { version = "=0.0.4", path = "../../utils/macros" }
 
 [dev-dependencies]
 test-foo-bar-kats = { workspace = true, features = ["poly1305"] }

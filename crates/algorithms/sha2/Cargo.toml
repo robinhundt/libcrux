@@ -2,7 +2,7 @@
 description = "Formally verified SHA2 hash library"
 name = "test-foo-bar-sha2"
 readme = "Readme.md"
-version = "0.0.7"
+version = "0.0.8"
 
 authors.workspace = true
 edition.workspace = true
@@ -15,7 +15,7 @@ expose-hacl = []
 
 [dependencies]
 test-foo-bar-hacl-rs.workspace = true
-test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
+test-foo-bar-macros = { version = "=0.0.4", path = "../../utils/macros" }
 test-foo-bar-traits.workspace = true
 
 [dev-dependencies]

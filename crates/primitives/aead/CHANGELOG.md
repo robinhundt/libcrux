@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.9](https://github.com/robinhundt/libcrux/compare/test-foo-bar-aead-v0.0.8...test-foo-bar-aead-v0.0.9) - 2026-07-20
+
+### Other
+
+- rename
+
 ## [0.0.8] (2026-05-13)
 
 - [#1433](https://github.com/cryspen/libcrux/pull/1433): Update dependencies: `libcrux-traits`, `libcrux-aesgcm`, `libcrux-chacha20poly1305`

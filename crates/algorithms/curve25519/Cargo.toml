@@ -2,7 +2,7 @@
 description = "Formally verified curve25519 ECDH library"
 name = "test-foo-bar-curve25519"
 readme = "Readme.md"
-version = "0.0.7"
+version = "0.0.8"
 
 authors.workspace = true
 edition.workspace = true
@@ -12,7 +12,7 @@ repository.workspace = true
 
 [dependencies]
 test-foo-bar-hacl-rs.workspace = true
-test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
+test-foo-bar-macros = { version = "=0.0.4", path = "../../utils/macros" }
 test-foo-bar-secrets.workspace = true
 test-foo-bar-traits.workspace = true
 

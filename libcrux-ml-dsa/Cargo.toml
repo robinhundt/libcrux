@@ -49,7 +49,7 @@ test-foo-bar-kats = { workspace = true, features = ["mldsa"] }
 pqcrypto-mldsa = { version = "0.1.0" } #, default-features = false
 
 [target.'cfg(hax)'.dependencies]
-test-foo-bar-core-models = { path = "../crates/utils/core-models", version = "0.0.6" }
+test-foo-bar-core-models = { path = "../crates/utils/core-models", version = "0.0.7" }
 
 [features]
 acvp = []                                                                  # expose internal API for ACVP testing

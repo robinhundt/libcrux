@@ -8,13 +8,13 @@ license.workspace = true
 name = "test-foo-bar-intrinsics"
 readme.workspace = true
 repository.workspace = true
-version = "0.0.7"
+version = "0.0.8"
 
 [dependencies]
 hax-lib.workspace = true
 
 [target.'cfg(hax)'.dependencies]
-test-foo-bar-core-models = { path = "../core-models", version = "0.0.6" }
+test-foo-bar-core-models = { path = "../core-models", version = "0.0.7" }
 
 [features]
 simd128 = []

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.9-pre.1](https://github.com/robinhundt/libcrux/compare/test-foo-bar-aesgcm-v0.0.8...test-foo-bar-aesgcm-v0.0.9-pre.1) - 2026-07-20
+
+### Other
+
+- rename
+
 ### Changed
 
 - [#1434](https://github.com/cryspen/libcrux/pull/1434): Update dependencies: `libcrux-intrinsics`

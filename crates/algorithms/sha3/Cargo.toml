@@ -15,7 +15,7 @@ license.workspace = true
 name = "test-foo-bar-sha3"
 readme = "README.md"
 repository.workspace = true
-version = "0.0.9"
+version = "0.0.10"
 
 [lib]
 bench = false # so libtest doesn't eat the arguments to criterion
@@ -23,7 +23,7 @@ bench = false # so libtest doesn't eat the arguments to criterion
 [dependencies]
 hax-lib.workspace = true
 test-foo-bar-intrinsics.workspace = true
-test-foo-bar-platform = { version = "0.0.3", path = "../../sys/platform" }
+test-foo-bar-platform = { version = "0.0.4", path = "../../sys/platform" }
 test-foo-bar-traits.workspace = true
 
 [features]

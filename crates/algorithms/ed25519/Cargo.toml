@@ -2,7 +2,7 @@
 description = "Formally verified ed25519 signature library"
 name = "test-foo-bar-ed25519"
 readme = "Readme.md"
-version = "0.0.8"
+version = "0.0.9"
 
 authors.workspace = true
 edition.workspace = true
@@ -13,7 +13,7 @@ repository.workspace = true
 [dependencies]
 rand_core = { version = "0.10", optional = true }
 test-foo-bar-hacl-rs.workspace = true
-test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
+test-foo-bar-macros = { version = "=0.0.4", path = "../../utils/macros" }
 test-foo-bar-sha2 = { workspace = true, features = ["expose-hacl"] }
 tls_codec = { version = "0.4.2", features = ["derive"], optional = true }
 

@@ -11,4 +11,4 @@ readme.workspace = true
 repository.workspace = true
 
 [dependencies]
-test-foo-bar-macros = { version = "0.0.3", path = "../macros" }
+test-foo-bar-macros = { version = "0.0.4", path = "../macros" }

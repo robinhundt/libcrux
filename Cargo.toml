@@ -88,40 +88,40 @@ allow-branch = ["main"]
 
 [workspace.dependencies]
 hax-lib = { version = "=0.3.6" }
-test-foo-bar-aead = { version = "=0.0.8", path = "crates/primitives/aead" }
-test-foo-bar-aesgcm = { version = "=0.0.8", path = "crates/algorithms/aesgcm" }
-test-foo-bar-blake2 = { version = "=0.0.7", path = "crates/algorithms/blake2" }
+test-foo-bar-aead = { version = "=0.0.9", path = "crates/primitives/aead" }
+test-foo-bar-aesgcm = { version = "=0.0.9-pre.1", path = "crates/algorithms/aesgcm" }
+test-foo-bar-blake2 = { version = "=0.0.8", path = "crates/algorithms/blake2" }
 test-foo-bar-cavp = { path = "cavp" }
-test-foo-bar-chacha20poly1305 = { version = "=0.0.8", path = "crates/algorithms/chacha20poly1305" }
-test-foo-bar-digest = { version = "=0.0.8", path = "crates/primitives/digest" }
-test-foo-bar-ecdsa = { version = "=0.0.7", path = "crates/algorithms/ecdsa" }
-test-foo-bar-ed25519 = { version = "=0.0.8", path = "crates/algorithms/ed25519" }
-test-foo-bar-hacl-rs = { version = "=0.0.5", path = "crates/utils/hacl-rs" }
+test-foo-bar-chacha20poly1305 = { version = "=0.0.9", path = "crates/algorithms/chacha20poly1305" }
+test-foo-bar-digest = { version = "=0.0.9", path = "crates/primitives/digest" }
+test-foo-bar-ecdsa = { version = "=0.0.8", path = "crates/algorithms/ecdsa" }
+test-foo-bar-ed25519 = { version = "=0.0.9", path = "crates/algorithms/ed25519" }
+test-foo-bar-hacl-rs = { version = "=0.0.6", path = "crates/utils/hacl-rs" }
 test-foo-bar-hkdf = { version = "=0.0.7", path = "crates/algorithms/hkdf" }
 test-foo-bar-hmac = { version = "=0.0.7", path = "crates/algorithms/hmac" }
-test-foo-bar-intrinsics = { version = "=0.0.7", path = "crates/utils/intrinsics" }
+test-foo-bar-intrinsics = { version = "=0.0.8", path = "crates/utils/intrinsics" }
 test-foo-bar-kem = { version = "=0.0.8", path = "libcrux-kem" }
 test-foo-bar-ml-dsa = { version = "=0.0.9", path = "libcrux-ml-dsa" }
-test-foo-bar-platform = { version = "=0.0.3", path = "crates/sys/platform" }
-test-foo-bar-poly1305 = { version = "=0.0.6", path = "crates/algorithms/poly1305" }
+test-foo-bar-platform = { version = "=0.0.4", path = "crates/sys/platform" }
+test-foo-bar-poly1305 = { version = "=0.0.7", path = "crates/algorithms/poly1305" }
 test-foo-bar-psq = { version = "=0.0.9", path = "libcrux-psq" }
 test-foo-bar-rsa = { version = "=0.0.7", path = "crates/algorithms/rsa" }
-test-foo-bar-sha2 = { version = "=0.0.7", path = "crates/algorithms/sha2" }
-test-foo-bar-sha3 = { version = "=0.0.9", path = "crates/algorithms/sha3" }
+test-foo-bar-sha2 = { version = "=0.0.8", path = "crates/algorithms/sha2" }
+test-foo-bar-sha3 = { version = "=0.0.10", path = "crates/algorithms/sha3" }
 test-foo-bar-traits = { version = "=0.0.7", path = "traits" }
 
 # For the crates below it is necessary to set `default-features = true`
 # in workspace crates that depend on the default feature set.
-test-foo-bar-curve25519 = { version = "=0.0.7", path = "crates/algorithms/curve25519", default-features = false }
-test-foo-bar-ecdh = { version = "=0.0.7", path = "libcrux-ecdh", default-features = false }
+test-foo-bar-curve25519 = { version = "=0.0.8", path = "crates/algorithms/curve25519", default-features = false }
+test-foo-bar-ecdh = { version = "=0.0.8", path = "libcrux-ecdh", default-features = false }
 test-foo-bar-ml-kem = { version = "=0.0.9", path = "libcrux-ml-kem", default-features = false }
-test-foo-bar-p256 = { version = "=0.0.7", path = "crates/algorithms/p256", default-features = false }
+test-foo-bar-p256 = { version = "=0.0.8", path = "crates/algorithms/p256", default-features = false }
 
 # Test utilities
 test-foo-bar-kats = { path = "crates/testing/kats" }
 
 # Utilities
-test-foo-bar-macros = { version = "=0.0.3", path = "crates/utils/macros" }
+test-foo-bar-macros = { version = "=0.0.4", path = "crates/utils/macros" }
 test-foo-bar-secrets = { version = "=0.0.5", path = "crates/utils/secrets" }
 
 [lib]
@@ -221,7 +221,7 @@ test-foo-bar-psq.workspace = true
 wasm-bindgen = { version = "0.2.87", optional = true }
 
 [build-dependencies]
-test-foo-bar-platform = { version = "=0.0.3", path = "crates/sys/platform" }
+test-foo-bar-platform = { version = "=0.0.4", path = "crates/sys/platform" }
 
 [dev-dependencies]
 clap = { version = "4.5", features = ["derive"] }

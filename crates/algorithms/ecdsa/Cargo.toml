@@ -2,7 +2,7 @@
 description = "Formally verified ECDSA signature library"
 name = "test-foo-bar-ecdsa"
 readme = "Readme.md"
-version = "0.0.7"
+version = "0.0.8"
 
 authors.workspace = true
 edition.workspace = true

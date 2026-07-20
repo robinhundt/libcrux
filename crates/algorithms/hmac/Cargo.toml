@@ -18,5 +18,5 @@ expose-hacl = []
 
 [dependencies]
 test-foo-bar-hacl-rs.workspace = true
-test-foo-bar-macros = { version = "=0.0.3", path = "../../utils/macros" }
+test-foo-bar-macros = { version = "=0.0.4", path = "../../utils/macros" }
 test-foo-bar-sha2 = { workspace = true, features = ["expose-hacl"] }
